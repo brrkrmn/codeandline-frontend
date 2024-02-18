@@ -13,6 +13,7 @@ function CustomButton({ children, className }) {
     hover:text-primary-light
     hover:border-primary-dark
     hover:shadow-medium
+    data-[focus-visible=true]:outline-primary-dark
     ${className}`
     }>
       {children}

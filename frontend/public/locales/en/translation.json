@@ -1,0 +1,16 @@
+{
+  "auth": {
+    "login": "Login",
+    "signup": "Signup",
+
+    "form": {
+      "emailLabel": "Email",
+      "passwordLabel": "Password",
+      "confirmPasswordLabel": "Confirm Password",
+      "submitLabel": {
+        "login": "Log In",
+        "signup": "Sign Up"
+      }
+    }
+  }
+}
