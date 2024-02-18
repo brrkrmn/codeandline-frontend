@@ -9,7 +9,7 @@ const Auth = () => {
   return (
     <Card
       isBlurred
-      className={`overflow-visible rounded-2xl py-6 px-4 md:px-7 shadow-small bg-transparent border-1 border-border ${selected === "login" ? "bg-gradient-to-r" : "bg-gradient-to-l"} animate-gradient from-transparent from-20% to-background to-80% max-w-[500px] w-full`}
+      className={`rounded-2xl py-6 px-4 md:px-7 shadow-small bg-gradient-to-br from-background via-transparent to-background border-1 border-border max-w-[500px] w-full`}
     >
       <CardHeader className="flex justify-center">
         <Tabs
@@ -40,7 +40,7 @@ const Auth = () => {
         ) : (
             <form className="flex flex-col items-center gap-4">
               <CustomInput type="email" label="Email" />
-              <div className="flex justify-between gap-2 w-full">
+              <div className="flex flex-col gap-4 justify-between mobile:flex-row mobile:gap-2 w-full">
                 <CustomInput type="password" label="Password" />
                 <CustomInput type="password" label="Confirm Password" />
               </div>

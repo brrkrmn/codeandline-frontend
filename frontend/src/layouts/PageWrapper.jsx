@@ -1,6 +1,6 @@
-const PageWrapper = ({ children }) => {
+const PageWrapper = ({ children, background = false }) => {
   return (
-    <div className="h-screen flex justify-center items-center py-3 px-4 md:px-8">
+    <div className={`${background && 'gradientBackground'} animate-gradient h-screen flex justify-center items-center py-3 px-4 tablet:px-8`}>
       {children}
     </div>
   )

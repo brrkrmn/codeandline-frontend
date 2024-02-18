@@ -12,7 +12,7 @@ module.exports = {
         'primary': ['DM Sans', 'ui-sans-serif', 'system-ui'],
       },
       animation: {
-        'gradient': 'gradient 4s ease infinite'
+        'gradient': 'gradient 10s ease infinite'
       },
       keyframes: {
         'gradient': {
@@ -28,7 +28,9 @@ module.exports = {
       }
     },
     screens: {
-      'mobile': '320px'
+      'mobile': '425px',
+      'tablet': '640px',
+      'laptop': '1024px'
     }
   },
   darkMode: "class",

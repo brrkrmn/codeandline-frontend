@@ -13,9 +13,9 @@
 * {
   margin: 0;
 }
-html, body, #root, main {
+html, body, #root {
   height: 100%;
-  background: #030014 !important
+  background: #030014 !important;
 }
 body {
   line-height: 1.5;
@@ -33,4 +33,8 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 #root, #__next {
   isolation: isolate;
+}
+
+.gradientBackground {
+  background: linear-gradient(333deg, rgba(33,17,137,1) 0%, rgba(0,0,0,1) 31%, rgba(0,0,0,1) 63%, rgba(70,34,101,1) 89%);
 }

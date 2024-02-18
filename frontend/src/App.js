@@ -19,8 +19,8 @@ function App () {
       <main className='dark text-foreground bg-background min-h-screen'>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<PageWrapper><Auth /></PageWrapper>} />
-          <Route path="/signup" element={<Auth />} />
+          <Route path="/login" element={<PageWrapper background={true}><Auth /></PageWrapper>} />
+          <Route path="/signup" element={<PageWrapper background={true}><Auth /></PageWrapper>} />
         </Routes>
       </main>
     </NextUIProvider>
