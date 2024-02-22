@@ -2,9 +2,9 @@ import { Card, CardBody, CardHeader, Tab, Tabs } from "@nextui-org/react";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
+import { constants } from "./Auth.constants";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
-import { constants } from "./constants";
 
 const Auth = () => {
   const [selected, setSelected] = React.useState("");

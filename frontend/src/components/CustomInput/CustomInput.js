@@ -1,12 +1,18 @@
 import { Input } from '@nextui-org/react';
 import React from 'react';
 
-function CustomInput ({ type, label, className }) {
+function CustomInput ({ id, name, type, label, onChange, onBlur, value, errorMessage, className }) {
   return (
     <Input
-      className={`rounded-lg text-foreground-dark border border-divider bg-transparent ${className}`}
+      id={id}
+      name={name}
       type={type}
       label={label}
+      onChange={onChange}
+      onBlur={onBlur}
+      value={value}
+      errorMessage={errorMessage}
+      className={`rounded-lg text-foreground-dark bg-transparent ${className}`}
       variant='bordered'
       classNames={{
         label: [

@@ -51,6 +51,7 @@ module.exports = {
             light: '#bf97ff',
             background: '#f3eeff0f'
           },
+          danger: '#c93030'
         },
         layout: {
           boxShadow: {
