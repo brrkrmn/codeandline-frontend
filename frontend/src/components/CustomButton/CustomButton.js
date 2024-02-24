@@ -1,10 +1,11 @@
 import { Button } from '@nextui-org/react';
 import React from 'react';
 
-function CustomButton({ children, type, className }) {
+function CustomButton({ children, type, onPress, className }) {
   return (
     <Button
       type={type}
+      onPress={onPress}
       size='lg'
       className={`
         rounded-lg
