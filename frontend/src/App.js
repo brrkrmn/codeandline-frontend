@@ -4,15 +4,9 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import PageWrapper from './layouts/PageWrapper';
 import Auth from './pages/Auth/Auth';
 import Home from './pages/Home';
-import loginService from "./services/login";
 
 function App () {
   const navigate = useNavigate();
-  React.useEffect(() => {
-    loginService.login().then(response => {
-      console.log(response)
-    })
-  })
 
   return (
     <NextUIProvider navigate={navigate}>
