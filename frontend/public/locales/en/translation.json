@@ -11,6 +11,13 @@
         "login": "Log In",
         "signup": "Sign Up"
       }
+    },
+
+    "links": {
+      "signup1": "Don't have an account?",
+      "signup2": "Create one!",
+      "login1": "Already have an account?",
+      "login2": "Log in!"
     }
   }
 }

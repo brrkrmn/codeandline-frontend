@@ -1,7 +1,8 @@
-import { Card, CardBody, CardHeader, Tab, Tabs } from "@nextui-org/react";
+import { Card, CardBody, CardFooter, CardHeader, Link, Tab, Tabs } from "@nextui-org/react";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
+import { P } from "../../components/Typography/Typography";
 import { constants } from "./Auth.constants";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
@@ -18,7 +19,7 @@ const Auth = () => {
     } else {
       setSelected(constants.signup)
     }
-  }, [])
+  }, [location.pathname])
 
   React.useEffect(() => {
     if (selected === constants.login) {
@@ -59,6 +60,28 @@ const Auth = () => {
           <SignupForm />
         )}
       </CardBody>
+      <CardFooter className="flex justify-center items-center">
+        {selected === constants.login ? (
+          <P variant="tiny">
+            {t('auth.links.signup1')}
+            <Link
+              href="/signup"
+              className="text-primary-light ml-1">
+              {t('auth.links.signup2')}
+            </Link>
+          </P>
+        ) : (
+          <P variant="tiny">
+            {t('auth.links.login1')}
+              <Link
+                href="/login"
+                className="text-primary-light ml-1">
+              {t('auth.links.login2')}
+            </Link>
+          </P>
+        )
+        }
+      </CardFooter>
     </Card>
   );
 };
