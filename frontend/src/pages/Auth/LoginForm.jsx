@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import CustomInput from "../../components/CustomInput/CustomInput";
-import { setUser } from "../../reducers/userReducer";
+import { loginUser } from "../../reducers/userReducer";
 import { loginFormInitialValues, loginSchema } from "./Auth.constants";
 
 const LoginForm = () => {
@@ -12,7 +12,7 @@ const LoginForm = () => {
   const formik = useFormik({
     initialValues: loginFormInitialValues,
     validationSchema: loginSchema,
-    onSubmit: values => {dispatch(setUser(values))}
+    onSubmit: values => {dispatch(loginUser(values))}
   })
 
   return (
