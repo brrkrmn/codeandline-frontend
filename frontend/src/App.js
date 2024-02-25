@@ -1,21 +1,39 @@
 import { NextUIProvider } from '@nextui-org/react';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import PageWrapper from './layouts/PageWrapper';
 import Auth from './pages/Auth/Auth';
+import Dashboard from './pages/Dashboard/Dashboard';
 import Home from './pages/Home';
+import { initializeLogin } from './reducers/userReducer';
 
 function App () {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(initializeLogin())
+  }, [])
+
+  const currentUser = useSelector((state) => state.user)
 
   return (
     <NextUIProvider navigate={navigate}>
       <main className='dark text-foreground bg-background min-h-screen'>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<PageWrapper background={true}><Auth /></PageWrapper>} />
-          <Route path="/signup" element={<PageWrapper background={true}><Auth /></PageWrapper>} />
-        </Routes>
+        {!currentUser ? (
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<PageWrapper background={true}><Auth /></PageWrapper>} />
+            <Route path="/signup" element={<PageWrapper background={true}><Auth /></PageWrapper>} />
+          </Routes>
+        ): (
+          <Routes>
+            <Route path="/" element={<PageWrapper><Dashboard /></PageWrapper>}/>
+            <Route path="/dashboard" element={<PageWrapper><Dashboard /></PageWrapper>}/>
+          </Routes>
+        )}
+
       </main>
     </NextUIProvider>
   );

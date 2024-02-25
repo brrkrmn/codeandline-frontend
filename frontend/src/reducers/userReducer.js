@@ -34,8 +34,12 @@ export const loginUser = (user) => {
 
 export const logoutUser = () => {
   return async dispatch => {
-    dispatch(logout())
-    window.localStorage.removeItem("currentUser")
+    try {
+      dispatch(logout())
+      window.localStorage.removeItem("currentUser")
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
 
