@@ -2,6 +2,7 @@ import { NextUIProvider } from '@nextui-org/react';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes, useNavigate } from 'react-router-dom';
+import Toast from './components/Toast/Toast';
 import PageWrapper from './layouts/PageWrapper';
 import Auth from './pages/Auth/Auth';
 import Dashboard from './pages/Dashboard/Dashboard';
@@ -33,7 +34,7 @@ function App () {
             <Route path="/dashboard" element={<PageWrapper><Dashboard /></PageWrapper>}/>
           </Routes>
         )}
-
+        <Toast />
       </main>
     </NextUIProvider>
   );

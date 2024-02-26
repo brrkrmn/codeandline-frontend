@@ -1,4 +1,5 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const baseUrl =
   !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
@@ -11,7 +12,8 @@ const signupService = {
       const response = await axios.post(baseUrl, user);
       return response.data
     } catch (error) {
-      return error.response?.data
+      toast.error(error.response.data)
+      return error.response.data
     }
   }
 }
