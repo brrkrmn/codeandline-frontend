@@ -7,8 +7,12 @@ const baseUrl =
 
 const signupService = {
   signup: async (user) => {
-    const response = await axios.post(baseUrl, user);
-    return response.data;
+    try {
+      const response = await axios.post(baseUrl, user);
+      return response.data
+    } catch (error) {
+      return error.response?.data
+    }
   }
 }
 

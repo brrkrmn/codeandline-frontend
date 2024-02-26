@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose');
+require('express-async-errors')
 const loginRouter = require('./controllers/login');
 const signupRouter = require('./controllers/signup');
 const middleware = require('./utils/middleware')
@@ -26,5 +27,8 @@ app.use(middleware.requestLogger)
 
 app.use('/api/signup', signupRouter)
 app.use('/api/login', loginRouter)
+
+app.use(middleware.unknownEndpoint)
+app.use(middleware.errorHandler)
 
 module.exports = app

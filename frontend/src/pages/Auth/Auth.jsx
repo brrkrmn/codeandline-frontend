@@ -16,7 +16,7 @@ const Auth = () => {
   React.useEffect(() => {
     if (location.pathname === constants.loginPath) {
       setSelected(constants.login)
-    } else {
+    } else if (location.pathname === constants.signupPath) {
       setSelected(constants.signup)
     }
   }, [location.pathname])
@@ -24,7 +24,7 @@ const Auth = () => {
   React.useEffect(() => {
     if (selected === constants.login) {
       navigate(constants.loginPath)
-    } else {
+    } else if (selected === constants.signup) {
       navigate(constants.signupPath)
     }
   }, [selected])
