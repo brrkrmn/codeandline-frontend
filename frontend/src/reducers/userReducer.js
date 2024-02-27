@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
 import loginService from '../services/login';
 import signupService from '../services/signup';
 
@@ -26,9 +27,13 @@ export const initializeLogin = () => {
 
 export const loginUser = (user) => {
   return async dispatch => {
-    const userToLogin = await loginService.login(user)
-    dispatch(login(userToLogin));
-    window.localStorage.setItem("currentUser", JSON.stringify(userToLogin))
+    try {
+      const userToLogin = await loginService.login(user)
+      dispatch(login(userToLogin));
+      window.localStorage.setItem("currentUser", JSON.stringify(userToLogin))
+    } catch (error) {
+      toast.error(error.response.data)
+    }
   }
 }
 
@@ -45,7 +50,12 @@ export const logoutUser = () => {
 
 export const signupUser = (user) => {
   return async dispatch => {
-    await signupService.signup(user);
+    try {
+      const newUser = await signupService.signup(user);
+      dispatch(login(newUser))
+    } catch (error) {
+      toast.error(error.response.data)
+    }
   }
 }
 

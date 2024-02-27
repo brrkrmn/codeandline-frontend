@@ -1,26 +1,19 @@
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import CustomInput from "../../components/CustomInput/CustomInput";
 import { loginUser } from "../../reducers/userReducer";
 import { loginFormInitialValues, loginSchema } from "./Auth.constants";
 
 const LoginForm = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const formik = useFormik({
     initialValues: loginFormInitialValues,
     validationSchema: loginSchema,
-    onSubmit: values => {handleLogin(values)}
+    onSubmit: values => {dispatch(loginUser(values))}
   })
-
-  const handleLogin = (values) => {
-    dispatch(loginUser(values))
-    navigate('/')
-  }
 
   return (
     <form

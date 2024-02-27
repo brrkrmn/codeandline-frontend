@@ -19,12 +19,16 @@ function App () {
 
   const currentUser = useSelector((state) => state.user)
 
+  useEffect(() => {
+    currentUser && navigate('/')
+  },)
+
   return (
     <NextUIProvider navigate={navigate}>
       <main className='dark text-foreground bg-background min-h-screen'>
         {!currentUser ? (
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
             <Route path="/login" element={<PageWrapper background={true}><Auth /></PageWrapper>} />
             <Route path="/signup" element={<PageWrapper background={true}><Auth /></PageWrapper>} />
           </Routes>

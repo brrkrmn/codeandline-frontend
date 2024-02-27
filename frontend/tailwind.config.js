@@ -51,13 +51,13 @@ module.exports = {
             light: '#bf97ff',
             background: '#f3eeff0f'
           },
-          danger: '#751111'
+          danger: '#ff5530',
+          content1: '#100d1e'
         },
         layout: {
           boxShadow: {
             small: "inset 0 0 10px #ffffff1a",
             medium: "inset 0 0 10px #bf97ff70",
-            large: "inset 0 0 10px #751111",
           }
         }
       }

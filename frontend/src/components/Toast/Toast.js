@@ -9,10 +9,10 @@ const Toast = () => {
         duration: 4000,
         error: {
           iconTheme: {
-            primary: '#751111',
+            primary: '#ff5530',
             secondary: '#030014'
           },
-          className: "py-4 px-4 rounded-full border-1 border-danger shadow-large bg-background text-primary-dark text-sm"
+          className: "py-4 px-4 rounded-lg border-1 border-primary-background bg-content1 text-primary-light font-light"
         }
       }}
     />
