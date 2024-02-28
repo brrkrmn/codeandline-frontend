@@ -21,7 +21,7 @@ function App () {
 
   useEffect(() => {
     currentUser && navigate('/')
-  },)
+  }, [])
 
   return (
     <NextUIProvider navigate={navigate}>
@@ -36,6 +36,8 @@ function App () {
           <Routes>
             <Route path="/" element={<PageWrapper><Dashboard /></PageWrapper>}/>
             <Route path="/dashboard" element={<PageWrapper><Dashboard /></PageWrapper>}/>
+            <Route path="/explore" element={<PageWrapper>s</PageWrapper>} />
+            <Route path="/create" element={<PageWrapper>sk</PageWrapper>}/>
           </Routes>
         )}
         <Toast />
