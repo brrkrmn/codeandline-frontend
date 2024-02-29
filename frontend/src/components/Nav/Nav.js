@@ -1,20 +1,22 @@
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from '@nextui-org/react';
+import { t } from 'i18next';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import icons from '../../assets/icons';
+import ProfileBox from '../ProfileBox/ProfileBox';
 import { pStyles } from '../Typography/constants';
+import { linkProps, navLinks } from './constants';
 
 const Nav = () => {
   const location = useLocation();
   const [tab, setTab] = useState('');
 
   useEffect(() => {
-    if (location.pathname === '/create') {
-      setTab('create')
-    } else if (location.pathname === '/explore') {
-      setTab('explore')
+    if (location.pathname === linkProps.create.path) {
+      setTab(linkProps.create.name)
+    } else if (location.pathname === linkProps.explore.path) {
+      setTab(linkProps.explore.name)
     } else {
-      setTab('home')
+      setTab(linkProps.home.name)
     }
   }, [location.pathname])
 
@@ -36,46 +38,29 @@ const Nav = () => {
       }}
     >
       <NavbarBrand>
-        <p>Code&Line</p>
+        <p>{t('navBar.brand')}</p>
       </NavbarBrand>
       <NavbarContent
         justify='center'
         className='w-96 h-10 border-1 border-border rounded-full px-8 gap-12'
       >
-        <NavbarItem isActive={tab === 'create' && true}>
-          <Link to="/create">
-            {tab === "create" ? (
-              icons.create
-            ) : (
-                'Create'
-            )}
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive={tab === 'home' && true}>
-          <Link to="/">
-            {tab === "home" ? (
-              icons.home
-            ) : (
-                'Home'
-            )}
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive={tab === 'explore' && true}>
-          <Link to="/explore">
-            {tab === "explore" ? (
-              icons.explore
-            ) : (
-                'Explore'
-            )}
-          </Link>
-        </NavbarItem>
-
+        {navLinks.map(link => (
+          <NavbarItem isActive={tab === linkProps[link].name && true}>
+            <Link to={linkProps[link].path}>
+              {tab === linkProps[link].name ? (
+                linkProps[link].icon
+              ) : (
+                  linkProps[link].label
+              )}
+            </Link>
+          </NavbarItem>
+        ))}
       </NavbarContent>
       <NavbarContent
         justify='end'
       >
         <NavbarItem>
-          <button>Start Here!</button>
+          <ProfileBox />
         </NavbarItem>
       </NavbarContent>
     </Navbar>

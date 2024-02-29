@@ -21,7 +21,7 @@ function App () {
 
   useEffect(() => {
     currentUser && navigate('/')
-  }, [])
+  }, [currentUser])
 
   return (
     <NextUIProvider navigate={navigate}>

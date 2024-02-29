@@ -1,4 +1,7 @@
 {
+  "navBar": {
+    "brand": "Code&Line"
+  },
   "auth": {
     "login": "Login",
     "signup": "Signup",
