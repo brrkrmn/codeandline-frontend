@@ -1,8 +1,7 @@
 import { t } from 'i18next';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import icons from '../../assets/icons';
-import CustomButton from '../CustomButton';
+import ProfileMenu from '../ProfileMenu/ProfileMenu';
 import { pStyles } from '../Typography/constants';
 import { linkProps, navLinks } from './constants';
 
@@ -43,9 +42,7 @@ const Navbar = () => {
           </div>
         ))}
       </div>
-      <CustomButton className="ml-auto px-0 min-w-12 min-h-12 border-1 border-divider hover:border-primary-light">
-        {icons.user}
-      </CustomButton>
+      <ProfileMenu />
     </div>
   )
 }

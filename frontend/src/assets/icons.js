@@ -9,7 +9,7 @@ const icons = {
   explore: <MdOutlineExplore className="text-3xl " />,
   home: <HiOutlineHome className="text-3xl" />,
   create: <MdAddCircleOutline className="text-3xl" />,
-  logout: <MdLogout className="text-2xl" />,
+  logout: <MdLogout className="text-lg" />,
   user: <FaRegUser className="text-xl text-primary-light" />
 }
 

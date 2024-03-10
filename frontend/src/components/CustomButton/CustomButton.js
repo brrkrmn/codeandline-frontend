@@ -1,5 +1,6 @@
 import { Button } from '@nextui-org/react';
 import React from 'react';
+import { buttonStyles } from './constants';
 
 function CustomButton({ children, type, onPress, className }) {
   return (
@@ -8,16 +9,7 @@ function CustomButton({ children, type, onPress, className }) {
       onPress={onPress}
       size='lg'
       className={`
-        rounded-lg
-        border-2
-        bg-transparent
-        text-foreground-dark
-        border-border
-        shadow-small
-        hover:text-primary-light
-        hover:border-primary-dark
-        hover:shadow-medium
-        data-[focus-visible=true]:outline-primary-dark
+        ${buttonStyles}
         ${className}`
       }
     >
