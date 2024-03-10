@@ -1,3 +1,4 @@
+import { FaRegUser } from "react-icons/fa";
 import { HiOutlineHome } from "react-icons/hi";
 import { MdAddCircleOutline, MdLogout, MdOutlineExplore } from "react-icons/md";
 import { TbEye, TbEyeClosed } from "react-icons/tb";
@@ -8,7 +9,8 @@ const icons = {
   explore: <MdOutlineExplore className="text-3xl " />,
   home: <HiOutlineHome className="text-3xl" />,
   create: <MdAddCircleOutline className="text-3xl" />,
-  logout: <MdLogout className="text-2xl"/>
+  logout: <MdLogout className="text-2xl" />,
+  user: <FaRegUser className="text-xl text-primary-light" />
 }
 
 export default icons;

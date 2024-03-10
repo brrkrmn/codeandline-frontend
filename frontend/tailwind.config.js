@@ -25,7 +25,11 @@ module.exports = {
              'background-position': 'right center'
           }
         }
-      }
+      },
+      dropShadow: {
+        'md': '0 0 6px #bf97ff',
+        'lg': '0 0 20px #bf97ff',
+      },
     },
     screens: {
       'mobile': '425px',
