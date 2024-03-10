@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Toast from './components/Toast/Toast';
+import AuthenticatedPageWrapper from './layouts/AuthenticatedPageWrapper';
 import PageWrapper from './layouts/PageWrapper';
 import Auth from './pages/Auth/Auth';
 import Dashboard from './pages/Dashboard/Dashboard';
@@ -19,9 +20,9 @@ function App () {
 
   const currentUser = useSelector((state) => state.user)
 
-  useEffect(() => {
-    currentUser && navigate('/')
-  }, [currentUser])
+  // useEffect(() => {
+  //   currentUser && navigate('/')
+  // }, [currentUser])
 
   return (
     <NextUIProvider navigate={navigate}>
@@ -34,10 +35,12 @@ function App () {
           </Routes>
         ): (
           <Routes>
-            <Route path="/" element={<PageWrapper><Dashboard /></PageWrapper>}/>
-            <Route path="/dashboard" element={<PageWrapper><Dashboard /></PageWrapper>}/>
-            <Route path="/explore" element={<PageWrapper>s</PageWrapper>} />
-            <Route path="/create" element={<PageWrapper>sk</PageWrapper>}/>
+            <Route path="/" element={<AuthenticatedPageWrapper><Dashboard /></AuthenticatedPageWrapper>}/>
+            <Route path="/dashboard" element={<AuthenticatedPageWrapper><Dashboard /></AuthenticatedPageWrapper>}/>
+            <Route path="/explore" element={<AuthenticatedPageWrapper>explore page</AuthenticatedPageWrapper>} />
+            <Route path="/create" element={<AuthenticatedPageWrapper>create page</AuthenticatedPageWrapper>} />
+            <Route path="/profile" element={<AuthenticatedPageWrapper>profile page</AuthenticatedPageWrapper>} />
+            <Route path="/help" element={<AuthenticatedPageWrapper>help page</AuthenticatedPageWrapper>}/>
           </Routes>
         )}
         <Toast />

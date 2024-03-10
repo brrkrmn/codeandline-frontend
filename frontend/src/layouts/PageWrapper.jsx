@@ -1,10 +1,7 @@
-import Navbar from "../components/Navbar/Navbar";
-
 const PageWrapper = ({ children, background = false }) => {
   return (
     <>
-      <Navbar />
-      <div className={`${background && 'gradientBackground'} animate-gradient h-screen flex justify-center items-center py-3 px-4 tablet:px-8 mt-[60px] tablet:mt-8 overflow-hidden`}>
+      <div className={`${background && 'gradientBackground'} animate-gradient h-screen flex justify-center items-center py-3 px-4 tablet:px-8`}>
         {children}
       </div>
     </>
