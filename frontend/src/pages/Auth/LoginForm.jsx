@@ -21,14 +21,14 @@ const LoginForm = () => {
       className="flex flex-col items-center gap-4"
     >
       <CustomInput
-        id="email"
-        name="email"
-        type="email"
-        label={t('auth.form.emailLabel')}
+        id="username"
+        name="username"
+        type="username"
+        label={t('auth.form.usernameLabel')}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        value={formik.values.email}
-        errorMessage={formik.touched?.email && formik.errors?.email}
+        value={formik.values.username}
+        errorMessage={formik.touched?.username && formik.errors?.username}
       />
       <CustomInput
         id="password"

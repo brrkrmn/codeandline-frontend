@@ -5,6 +5,10 @@ export const emailValidation = yup
   .email("Invalid email address")
   .required("This field is required")
 
+export const usernameValidation = yup
+  .string()
+  .required("This field is required")
+
 export const passwordValidation = yup
   .string()
   .required("This field is required")

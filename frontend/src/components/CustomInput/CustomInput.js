@@ -41,10 +41,10 @@ function CustomInput ({ id, name, type, label, onChange, onBlur, value, errorMes
         ],
         inputWrapper: [
           'rounded-lg',
-          'border-2',
+          'border-1',
           'border-border',
-          'group-data-[hover=true]:border-primary-dark',
-          'group-data-[focus=true]:border-primary-dark',
+          'group-data-[hover=true]:border-primary-light',
+          'group-data-[focus=true]:border-primary-light',
           '!cursor-text'
         ],
       }}

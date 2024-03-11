@@ -21,6 +21,16 @@ const SignupForm = () => {
       className="flex flex-col items-center gap-4"
     >
       <CustomInput
+        id="username"
+        name="username"
+        type="text"
+        label={t('auth.form.usernameLabel')}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.username}
+        errorMessage={formik.touched?.username && formik.errors?.username}
+      />
+      <CustomInput
         id="email"
         name="email"
         type="email"

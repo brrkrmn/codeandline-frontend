@@ -8,6 +8,7 @@
 
     "form": {
       "emailLabel": "Email",
+      "usernameLabel": "Username",
       "passwordLabel": "Password",
       "confirmPasswordLabel": "Confirm Password",
       "submitLabel": {

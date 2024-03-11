@@ -20,10 +20,6 @@ function App () {
 
   const currentUser = useSelector((state) => state.user)
 
-  // useEffect(() => {
-  //   currentUser && navigate('/')
-  // }, [currentUser])
-
   return (
     <NextUIProvider navigate={navigate}>
       <main className='dark text-foreground bg-background min-h-screen'>
