@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ProfileMenu from '../ProfileMenu/ProfileMenu';
@@ -14,14 +13,14 @@ const Navbar = () => {
       setTab(linkProps.create.name)
     } else if (location.pathname === linkProps.explore.path) {
       setTab(linkProps.explore.name)
-    } else {
+    } else if (location.pathname === linkProps.home.path) {
       setTab(linkProps.home.name)
     }
   }, [location.pathname])
 
   return (
-    <div className="sticky top-0 h-[88px] px-6 tablet:px-8 backdrop-blur-lg border-b-1 border-border flex items-center justify-center">
-      <p className="mr-auto">{t('navBar.brand')}</p>
+    <div className="sticky z-20 top-0 h-[88px] px-6 tablet:px-8 backdrop-blur-lg border-b-1 border-border flex items-center justify-center">
+      <Link to="/" className="mr-auto border-1 border-primary-light shadow-medium rounded-md h-10 w-10 bg-background p-2 text-background hover:drop-shadow-md">{'</>'}</Link>
       <div className="absolute top-20 tablet:top-auto bg-background border-1 border-border tablet:rounded-full w-full tablet:w-96 h-10 px-6 tablet:px-8 flex justify-center items-center">
         {navLinks.map(link => (
           <div className={`

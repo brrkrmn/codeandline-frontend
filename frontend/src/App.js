@@ -32,6 +32,8 @@ function App () {
             </>
           ): (
             <>
+              <Route path="/login" element={<Navigate to="/" />} />
+              <Route path="/signup" element={<Navigate to="/" />} />
               <Route path="/" element={<AuthenticatedPageWrapper><Dashboard /></AuthenticatedPageWrapper>}/>
               <Route path="/dashboard" element={<AuthenticatedPageWrapper><Dashboard /></AuthenticatedPageWrapper>}/>
               <Route path="/explore" element={<AuthenticatedPageWrapper>explore page</AuthenticatedPageWrapper>} />
@@ -40,7 +42,6 @@ function App () {
               <Route path="/help" element={<AuthenticatedPageWrapper>help page</AuthenticatedPageWrapper>} />
             </>
           )}
-          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Toast />
       </main>
