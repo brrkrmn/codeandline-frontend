@@ -1,12 +1,23 @@
-import { ScrollShadow } from "@nextui-org/react";
+import { BreadcrumbItem, Breadcrumbs, ScrollShadow } from "@nextui-org/react";
 import icons from "../../assets/icons";
 import CodeEditor from "../../components/CodeEditor/CodeEditor";
 import CustomButton from "../../components/CustomButton";
 import { P } from "../../components/Typography/Typography";
 
-const Dashboard = () => {
+const Note = () => {
   return (
     <div className="w-full flex justify-center items-center gap-4">
+      <Breadcrumbs
+        underline="hover"
+        size="lg"
+        className="absolute top-[100px] left-16"
+        itemClasses={{
+          item: "data-[current=true]:text-primary-light"
+        }}
+      >
+        <BreadcrumbItem>Notes</BreadcrumbItem>
+        <BreadcrumbItem>Data Structures</BreadcrumbItem>
+      </Breadcrumbs>
       <div className="mr-auto w-full">
         <CodeEditor />
       </div>
@@ -27,4 +38,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default Note;

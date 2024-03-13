@@ -7,7 +7,8 @@ import AuthenticatedPageWrapper from './layouts/AuthenticatedPageWrapper';
 import PageWrapper from './layouts/PageWrapper';
 import Auth from './pages/Auth/Auth';
 import Dashboard from './pages/Dashboard/Dashboard';
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
+import Note from './pages/Note/Note';
 import Profile from './pages/Profile/Profile';
 import { initializeLogin } from './reducers/userReducer';
 
@@ -41,6 +42,7 @@ function App () {
               <Route path="/create" element={<AuthenticatedPageWrapper>create page</AuthenticatedPageWrapper>} />
               <Route path="/profile" element={<AuthenticatedPageWrapper><Profile /></AuthenticatedPageWrapper>} />
               <Route path="/help" element={<AuthenticatedPageWrapper>help page</AuthenticatedPageWrapper>} />
+              <Route path="/note" element={<AuthenticatedPageWrapper><Note /></AuthenticatedPageWrapper>} />
             </>
           )}
         </Routes>

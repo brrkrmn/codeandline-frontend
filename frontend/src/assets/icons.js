@@ -1,4 +1,5 @@
 import { FaRegUser } from "react-icons/fa";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa6";
 import { HiOutlineHome } from "react-icons/hi";
 import { MdAddCircleOutline, MdLogout, MdOutlineAddPhotoAlternate, MdOutlineExplore } from "react-icons/md";
 import { TbEye, TbEyeClosed } from "react-icons/tb";
@@ -11,7 +12,9 @@ const icons = {
   create: <MdAddCircleOutline className="text-3xl" />,
   logout: <MdLogout className="text-lg" />,
   user: <FaRegUser className="text-xl text-primary-light" />,
-  addPhoto: <MdOutlineAddPhotoAlternate className="text-4xl text-primary-light" />
+  addPhoto: <MdOutlineAddPhotoAlternate className="text-4xl text-primary-light" />,
+  arrowDown: <FaArrowDown className="text-xl text-primary-light" />,
+  arrowUp: <FaArrowUp className="text-xl text-primary-light" />
 }
 
 export default icons;
