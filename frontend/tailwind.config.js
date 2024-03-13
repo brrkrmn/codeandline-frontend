@@ -35,7 +35,8 @@ module.exports = {
     screens: {
       'mobile': '425px',
       'tablet': '640px',
-      'laptop': '1024px'
+      'laptop': '1024px',
+      'wide': '1500px'
     }
   },
   darkMode: "class",

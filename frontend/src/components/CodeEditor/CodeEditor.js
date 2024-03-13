@@ -10,12 +10,13 @@ const CodeEditor = () => {
   }, []);
 
   return (
-    <div className="border-1 text-[16px] border-divider bg-content1 rounded-lg p-2 transition hover:shadow-small hover:drop-shadow-sm">
+    <div className="border-1 text-[12px] tablet:text-[16px] w-full laptop:w-[600px] overflow-hidden wide:w-[760px] border-divider bg-content1 rounded-lg p-2 transition hover:shadow-small hover:drop-shadow-sm">
       <CodeMirror
         value={value}
         placeholder={"Paste your code here!"}
         height="auto"
-        maxWidth='630px'
+        minWidth='630px'
+        maxWidth='760px'
         maxHeight='600px'
         minHeight='300px'
         onChange={onChange}
