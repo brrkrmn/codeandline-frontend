@@ -8,6 +8,7 @@ import PageWrapper from './layouts/PageWrapper';
 import Auth from './pages/Auth/Auth';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Home from './pages/Home';
+import Profile from './pages/Profile/Profile';
 import { initializeLogin } from './reducers/userReducer';
 
 function App () {
@@ -38,7 +39,7 @@ function App () {
               <Route path="/dashboard" element={<AuthenticatedPageWrapper><Dashboard /></AuthenticatedPageWrapper>}/>
               <Route path="/explore" element={<AuthenticatedPageWrapper>explore page</AuthenticatedPageWrapper>} />
               <Route path="/create" element={<AuthenticatedPageWrapper>create page</AuthenticatedPageWrapper>} />
-              <Route path="/profile" element={<AuthenticatedPageWrapper>profile page</AuthenticatedPageWrapper>} />
+              <Route path="/profile" element={<AuthenticatedPageWrapper><Profile /></AuthenticatedPageWrapper>} />
               <Route path="/help" element={<AuthenticatedPageWrapper>help page</AuthenticatedPageWrapper>} />
             </>
           )}

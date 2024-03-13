@@ -1,6 +1,6 @@
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger, User } from '@nextui-org/react';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import icons from '../../assets/icons';
 import { logoutUser } from '../../reducers/userReducer';
@@ -9,6 +9,7 @@ import { buttonStyles } from '../CustomButton/constants';
 const ProfileMenu = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const user = useSelector((state) => state.user);
 
   const handleLogout = () => {
     dispatch(logoutUser());
@@ -43,12 +44,12 @@ const ProfileMenu = () => {
         <DropdownSection aria-label='Profile & Actions' showDivider>
           <DropdownItem href="/profile" key="profile" className="h-14 gap-2">
             <User
-              name="Berra Karaman"
-              description="@brrkrmn"
+              name={`@${user.username}`}
+              description={user.email}
               className="group"
               classNames={{
                 name: "text-foreground-primary group-hover:text-primary-light",
-                description: "text-foreground-dark"
+                description: "text-foreground-dark max-w-32 truncate"
               }}
               avatarProps={{
                 size: "sm",
