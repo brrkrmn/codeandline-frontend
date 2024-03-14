@@ -26,7 +26,7 @@ const Note = () => {
           {icons.arrowUp}
         </CustomButton>
         <ScrollShadow size={80} >
-          <P variant="big" className="max-h-[600px] text-lg tablet:text-2xl">
+          <P variant="big" className="max-h-[600px] mb-2 text-lg tablet:text-2xl">
           There will be notes m ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typefatextce without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.
           </P>
         </ScrollShadow>
