@@ -1,11 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import icons from "../../assets/icons";
+import { P } from '../Typography';
 
 const NoteCard = ({ note }) => {
   return (
-    <div className="border-1 border-primary-light w-full laptop:basis-1/2 wide:basis-1/3 aspect-[5/3]">
-      {note.title}
-      {note.date}
-    </div>
+    <Link className="flex flex-col p-2 grow-0 shrink-0 w-[280px] h-[314px] rounded-xl border-1 border-border shadow-small transition hover:drop-shadow-sm">
+      <div className="bg-primary-dark rounded-xl w-full h-[180px]">
+        a
+      </div>
+      <div className="flex flex-col justify-start pl-2 pt-2">
+        <P className="text-primary-light line-clamp-1">{note.title}</P>
+        <P variant="small" className="line-clamp-2">{note.description}</P>
+      </div>
+      <div className="flex items-end justify-end mt-auto gap-2 pr-2">
+        <P variant="tiny" className="text-primary-light ">{note.date}</P>
+        <span>{note.public ? icons.public : icons.private}</span>
+      </div>
+    </Link>
   )
 }
 
