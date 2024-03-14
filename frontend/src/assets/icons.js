@@ -17,8 +17,8 @@ const icons = {
   addPhoto: <MdOutlineAddPhotoAlternate className="text-4xl text-primary-light" />,
   arrowDown: <FaArrowDown className="text-xl text-primary-light" />,
   arrowUp: <FaArrowUp className="text-xl text-primary-light" />,
-  arrowDownRight: <PiArrowBendDownRight className="text-foreground-dark text-xl" />,
-  dot: <GoDotFill className="text-foreground-dark text-sm" />,
+  arrowDownRight: <PiArrowBendDownRight className="text-foreground-dark min-w-6 min-h-6" />,
+  dot: <GoDotFill className="text-foreground-dark min-w-4 min-h-4" />,
 }
 
 export default icons;
