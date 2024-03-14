@@ -3,7 +3,7 @@ import { FaArrowDown, FaArrowUp } from "react-icons/fa6";
 import { GoDotFill } from "react-icons/go";
 import { HiOutlineHome } from "react-icons/hi";
 import { MdAddCircleOutline, MdLogout, MdOutlineAddPhotoAlternate, MdOutlineExplore, MdOutlinePublic, MdOutlinePublicOff } from "react-icons/md";
-import { PiArrowBendDownRight } from "react-icons/pi";
+import { PiArrowBendDownRight, PiNotepad } from "react-icons/pi";
 import { TbEye, TbEyeClosed } from "react-icons/tb";
 
 const icons = {
@@ -19,8 +19,9 @@ const icons = {
   arrowUp: <FaArrowUp className="text-xl text-primary-light" />,
   arrowDownRight: <PiArrowBendDownRight className="text-foreground-dark min-w-6 min-h-6" />,
   dot: <GoDotFill className="text-foreground-dark min-w-4 min-h-4" />,
-  public: <MdOutlinePublic className="text-primary-light text-2xl" />,
-  private: <MdOutlinePublicOff className="text-primary-light text-2xl" />
+  public: <MdOutlinePublic className="text-primary-dark text-2xl" />,
+  private: <MdOutlinePublicOff className="text-primary-dark text-2xl" />,
+  note: <PiNotepad className="text-primary-dark text-xl"/>
 }
 
 export default icons;

@@ -6,7 +6,7 @@ import { H5 } from '../Typography/Typography';
 
 const LatestNotes = () => {
   return (
-    <div className="w-full overflow-hidden">
+    <div>
       <H5 className="text-foreground-primary font-thin mb-4">Latest</H5>
       <ScrollShadow
         orientation="horizontal"

@@ -1,4 +1,5 @@
 import { Spacer } from "@nextui-org/react"
+import Folders from "../../components/Folders/Folders"
 import LatestNotes from "../../components/LatestNotes/LatestNotes"
 import MenuList from "../../components/MenuList/MenuList"
 
@@ -9,7 +10,10 @@ const Dashboard = () => {
       <Spacer
         className="tablet:w-[300px] tablet:min-w-[300px]"
       />
-      <LatestNotes />
+      <div className="w-full overflow-hidden flex flex-col gap-10">
+        <LatestNotes />
+        <Folders />
+      </div>
     </div>
   )
 }

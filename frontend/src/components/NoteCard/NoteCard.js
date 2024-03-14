@@ -11,10 +11,10 @@ const NoteCard = ({ note }) => {
       </div>
       <div className="flex flex-col justify-start pl-2 pt-2">
         <P className="text-primary-light line-clamp-1">{note.title}</P>
-        <P variant="small" className="line-clamp-2">{note.description}</P>
+        <P variant="small" className="line-clamp-2 text-[16px]">{note.description}</P>
       </div>
       <div className="flex items-end justify-end mt-auto gap-2 pr-2">
-        <P variant="tiny" className="text-primary-light ">{note.date}</P>
+        <P variant="tiny" className="font-medium text-foreground-dark ">{note.date}</P>
         <span>{note.public ? icons.public : icons.private}</span>
       </div>
     </Link>
