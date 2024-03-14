@@ -1,28 +1,15 @@
-import { ScrollShadow } from "@nextui-org/react";
-import icons from "../../assets/icons";
-import CodeEditor from "../../components/CodeEditor/CodeEditor";
-import CustomButton from "../../components/CustomButton";
-import { P } from "../../components/Typography/Typography";
+import { Spacer } from "@nextui-org/react"
+import LatestNotes from "../../components/LatestNotes/LatestNotes"
+import MenuList from "../../components/MenuList/MenuList"
 
 const Dashboard = () => {
   return (
-    <div className="w-full flex justify-center items-center gap-4">
-      <div className="mr-auto w-full">
-        <CodeEditor />
-      </div>
-      <div className="ml-auto px-4 w-full flex flex-col h-[600px] justify-between items-center gap-4">
-        <CustomButton className="max-h-10">
-          {icons.arrowUp}
-        </CustomButton>
-        <ScrollShadow size={80} className="">
-          <P variant="big" className="max-h-[600px]">
-          There will be notes m ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typefatextce without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.
-          </P>
-        </ScrollShadow>
-        <CustomButton className="max-h-10">
-          {icons.arrowDown}
-        </CustomButton>
-      </div>
+    <div className="w-full laptop:px-20 flex flex-col tablet:flex-row justify-start items-start gap-4">
+      <MenuList />
+      <Spacer
+        className="tablet:w-[400px]"
+      />
+      <LatestNotes />
     </div>
   )
 }
