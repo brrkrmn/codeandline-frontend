@@ -1,6 +1,7 @@
 import { BreadcrumbItem, Breadcrumbs, ScrollShadow } from "@nextui-org/react";
 import icons from "../../assets/icons";
 import CodeEditor from "../../components/CodeEditor/CodeEditor";
+import { editorSize } from "../../components/CodeEditor/constants";
 import CustomButton from "../../components/CustomButton";
 import { P } from "../../components/Typography/Typography";
 
@@ -18,10 +19,10 @@ const Note = () => {
         <BreadcrumbItem>Notes</BreadcrumbItem>
         <BreadcrumbItem>Data Structures</BreadcrumbItem>
       </Breadcrumbs>
-      <div className="mr-auto w-full">
-        <CodeEditor />
+      <div className="w-full overflow-hidden basis-1/2">
+        <CodeEditor size={editorSize.screen} />
       </div>
-      <div className="ml-auto px-4 w-full flex flex-col h-[600px] justify-between items-center gap-4">
+      <div className="basis-1/2 px-4 w-full flex flex-col h-[600px] justify-between items-center gap-4">
         <CustomButton className="max-h-10">
           {icons.arrowUp}
         </CustomButton>

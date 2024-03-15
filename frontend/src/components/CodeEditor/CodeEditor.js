@@ -2,23 +2,21 @@ import { javascript } from '@codemirror/lang-javascript';
 import { tokyoNightInit } from '@uiw/codemirror-theme-tokyo-night';
 import CodeMirror from '@uiw/react-codemirror';
 import React from 'react';
+import { editorStyles } from './constants';
 
-const CodeEditor = () => {
+const CodeEditor = ({ size, editable = false }) => {
   const [value, setValue] = React.useState("");
   const onChange = React.useCallback((val, viewUpdate) => {
     setValue(val);
   }, []);
 
   return (
-    <div className="border-1 text-[12px] tablet:text-[16px] w-full laptop:w-[600px] overflow-hidden wide:w-[760px] border-divider bg-content1 rounded-lg p-2 transition hover:shadow-small hover:drop-shadow-sm">
+    <div className={`${editorStyles[size]} border-1 border-divider text-[12px] w-full h-full bg-content1 rounded-lg p-2`}>
       <CodeMirror
         value={value}
+        minHeight={size === "screen" ? '300px' : 'auto'}
+        maxHeight={size === "screen" ? '80vh' : 'auto'}
         placeholder={"Paste your code here!"}
-        height="auto"
-        minWidth='630px'
-        maxWidth='760px'
-        maxHeight='600px'
-        minHeight='300px'
         onChange={onChange}
         extensions={[javascript({ jsx: true })]}
         theme={tokyoNightInit({
@@ -29,7 +27,7 @@ const CodeEditor = () => {
             selection: '#7947c970'
           },
         })}
-        // editable={false}
+        editable={editable}
         basicSetup={{
           drawSelection: false,
           highlightActiveLine: false,

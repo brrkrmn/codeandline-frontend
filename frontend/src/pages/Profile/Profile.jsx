@@ -27,7 +27,6 @@ const Profile = () => {
         <H5 className="mt-6 mb-1">@{user.username}</H5>
         <P variant="tiny">{user.email}</P>
         <CustomButton className="my-6 h-10">Edit Profile</CustomButton>
-
       </div>
       <Divider orientation="vertical" />
       <div className="w-full">
