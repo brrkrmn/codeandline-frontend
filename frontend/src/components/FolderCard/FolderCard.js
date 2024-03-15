@@ -6,12 +6,12 @@ import { P } from '../Typography';
 
 const FolderCard = ({ folder }) => {
   return (
-    <Link className="flex flex-col w-[350px] h-[160px] p-4 grow-0 shrink-0 border-1 rounded-xl border-1 border-border shadow-small transition hover:drop-shadow-sm">
+    <Link className="flex flex-col w-[350px] h-[140px] p-4 grow-0 shrink-0 border-1 rounded-xl border-1 border-border shadow-small transition hover:drop-shadow-sm">
       <P className="text-primary-light line-clamp-1">{folder.title}</P>
-      <Divider className="my-2" />
-      <P variant="small" className="line-clamp-2 text-[16px]">{folder.description}</P>
+      <Divider className="my-1" />
+      <P variant="small" className="line-clamp-1 text-[16px] font-light">{folder.description}</P>
       <div className="flex items-end justify-between mt-auto gap-2">
-        <P variant="tiny" className="text-primary-dark flex items-center justify-center text-lg font-medium border-1 border-divider rounded-lg h-10 w-10 shadow-small">
+        <P variant="tiny" className="text-primary-dark flex items-center mt-auto justify-center text-lg font-medium border-1 border-divider rounded-lg h-8 w-10 shadow-small">
           {folder.notes.length}
           {icons.note}
         </P>

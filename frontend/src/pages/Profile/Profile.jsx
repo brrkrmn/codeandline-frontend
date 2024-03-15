@@ -2,7 +2,9 @@ import { Avatar, Divider, Tooltip } from "@nextui-org/react"
 import { useSelector } from "react-redux"
 import icons from "../../assets/icons"
 import CustomButton from "../../components/CustomButton/CustomButton"
-import { H2, H5, P } from "../../components/Typography/Typography"
+import Folders from "../../components/Folders/Folders"
+import Notes from "../../components/Notes"
+import { H5, P } from "../../components/Typography/Typography"
 
 const Profile = () => {
   const user = useSelector((state) => state.user)
@@ -29,9 +31,9 @@ const Profile = () => {
       </div>
       <Divider orientation="vertical" />
       <div className="w-full">
-        <H2>Latest</H2>
+        <Notes />
         <Divider className="my-8"/>
-        <H2>Notes</H2>
+        <Folders />
       </div>
     </div>
   )

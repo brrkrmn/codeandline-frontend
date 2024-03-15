@@ -1,7 +1,7 @@
 import { Spacer } from "@nextui-org/react"
 import Folders from "../../components/Folders/Folders"
-import LatestNotes from "../../components/LatestNotes/LatestNotes"
 import MenuList from "../../components/MenuList/MenuList"
+import Notes from "../../components/Notes"
 
 const Dashboard = () => {
   return (
@@ -11,7 +11,7 @@ const Dashboard = () => {
         className="tablet:w-[300px] tablet:min-w-[300px]"
       />
       <div className="w-full overflow-hidden flex flex-col gap-10">
-        <LatestNotes />
+        <Notes title="Latest" />
         <Folders />
       </div>
     </div>
