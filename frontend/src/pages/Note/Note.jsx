@@ -5,12 +5,14 @@ import CodeEditor from "../../components/CodeEditor/CodeEditor";
 import { editorSize } from "../../components/CodeEditor/constants";
 import CustomButton from "../../components/CustomButton";
 import { P } from "../../components/Typography/Typography";
+import { noteList } from "../../constants/notes";
 import useNoteTracker from "../../hooks/useNoteTracker";
 
-const Note = ({ notes }) => {
+const Note = () => {
   const id = useParams().id;
+  const notes = noteList;
   const note = notes.find(n => n.id === id)
-  const { currentNote, handleNextNote, handlePrevNote } = useNoteTracker(note.notes.length - 1);
+  const { currentNote, handleNextNote, handlePrevNote } = useNoteTracker(note.notes?.length - 1);
 
   return (
     <div className="w-full flex flex-col laptop:flex-row justify-center items-center gap-4">
@@ -26,7 +28,7 @@ const Note = ({ notes }) => {
         <BreadcrumbItem>Data Structures</BreadcrumbItem>
       </Breadcrumbs>
       <div className="w-full overflow-hidden basis-1/2">
-        <CodeEditor size={editorSize.screen} code={note.code} highlightedLine={note.notes[currentNote]?.line} />
+        <CodeEditor size={editorSize.screen} code={note.code} highlightedLine={note.notes[currentNote].line} />
       </div>
       <div className="basis-1/2 px-4 w-full flex flex-col h-[600px] justify-between items-center gap-4">
         <CustomButton

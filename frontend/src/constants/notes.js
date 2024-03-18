@@ -8,58 +8,6 @@ export const getRandomDate = () => {
   return last;
 }
 
-export const folderList = [
-  {
-    date: getRandomDate(),
-    title: "Parentfdfdfsdfgfdf Note2",
-    description: "this is the description of the folder",
-    public: true,
-    notes: [
-      {
-        title: "Random title",
-        description: "Here's a description of this first note.",
-        date: getRandomDate(),
-        public: false,
-        folder: null,
-      },
-      {
-        title: "okayokayokayokay okayokayokay",
-        description: "",
-        date: getRandomDate(),
-        public: true,
-        folder: null,
-      },
-    ],
-  },
-  {
-    date: getRandomDate(),
-    title: "Second folder",
-    description: "",
-    public: false,
-    notes: [
-      {
-        title: "this one's a very very very very long titleeeeeeeeeeeeeee",
-        description: "this should be okay",
-        date: getRandomDate(),
-        public: true,
-        folder: null,
-      },  {
-        title: "heyo what up",
-        description: "here's a longgggggggggggggggn description because it takes long to describe this note yeah",
-        date: getRandomDate(),
-        public: true,
-        folder: null,
-      },  {
-        title: "Let's go with blabla",
-        description: "Here's a description of the last note.",
-        date: getRandomDate(),
-        public: false,
-        folder: null,
-      },
-    ]
-  }
-]
-
 export const codeExample = `import { javascript } from '@codemirror/lang-javascript';
 import { classname } from '@uiw/codemirror-extensions-classname';
 import { tokyoNightInit } from '@uiw/codemirror-theme-tokyo-night';
@@ -80,6 +28,81 @@ const CodeEditor = ({ size, editable = false }) => {
     },
     });
 `
+
+export const folderList = [
+  {
+    date: getRandomDate(),
+    title: "Parentfdfdfsdfgfdf Note2",
+    description: "this is the description of the folder",
+    public: true,
+    notes: [
+      {
+        id: 'third',
+        title: "not so random",
+        description: "this one description but not one title",
+        date: getRandomDate(),
+        public: false,
+        folder: null,
+        code: codeExample,
+        notes: [
+          {
+            line: 2,
+            note: 'This note is for line 2'
+          },
+          {
+            line: 4,
+            note: 'This is for line 4'
+          }
+        ]
+      },
+    ],
+  },
+  {
+    date: getRandomDate(),
+    title: "Second folder",
+    description: "",
+    public: false,
+    notes: [
+      {
+        id: 'fifth',
+        title: "heyo what up",
+        description: "here's a longgggggggggggggggn description because it takes long to describe this note yeah",
+        date: getRandomDate(),
+        public: true,
+        folder: "null",
+        code: codeExample,
+        notes: [
+          {
+            line: 1,
+            note: 'This note is for line 1'
+          },
+        ]
+      }, {
+        id: 'last',
+        title: "Let's go with blabla",
+        description: "Here's a description of the last note.",
+        date: getRandomDate(),
+        public: false,
+        folder: "null",
+        code: codeExample,
+        notes: [
+          {
+            line: 7,
+            note: 'This note is for line 7'
+          },
+          {
+            line: 6,
+            note: 'This is for line 6'
+          },
+          {
+            line: 8,
+            note: 'This is for line 8'
+          }
+        ]
+      },
+    ]
+  }
+]
 
 export const noteList = [
   {
@@ -108,6 +131,17 @@ export const noteList = [
     date: getRandomDate(),
     public: true,
     folder: "null",
+    code: codeExample,
+    notes: [
+      {
+        line: 2,
+        note: 'This note is for line 2'
+      },
+      {
+        line: 4,
+        note: 'This is for line 4'
+      }
+    ]
   },  {
     id: 'third',
     title: "not so random",
@@ -115,6 +149,17 @@ export const noteList = [
     date: getRandomDate(),
     public: false,
     folder: null,
+    code: codeExample,
+    notes: [
+      {
+        line: 2,
+        note: 'This note is for line 2'
+      },
+      {
+        line: 4,
+        note: 'This is for line 4'
+      }
+    ]
   }, {
     id: 'fourth',
     title: "this one's a very very very very long titleeeeeeeeeeeeeee",
@@ -122,6 +167,17 @@ export const noteList = [
     date: getRandomDate(),
     public: true,
     folder: "null",
+    code: codeExample,
+    notes: [
+      {
+        line: 3,
+        note: 'This note is for line 3'
+      },
+      {
+        line: 3,
+        note: 'This is for line 3'
+      }
+    ]
   }, {
     id: 'fifth',
     title: "heyo what up",
@@ -129,6 +185,13 @@ export const noteList = [
     date: getRandomDate(),
     public: true,
     folder: "null",
+    code: codeExample,
+    notes: [
+      {
+        line: 1,
+        note: 'This note is for line 1'
+      },
+    ]
   }, {
     id: 'last',
     title: "Let's go with blabla",
@@ -136,5 +199,20 @@ export const noteList = [
     date: getRandomDate(),
     public: false,
     folder: "null",
+    code: codeExample,
+    notes: [
+      {
+        line: 7,
+        note: 'This note is for line 7'
+      },
+      {
+        line: 6,
+        note: 'This is for line 6'
+      },
+      {
+        line: 8,
+        note: 'This is for line 8'
+      }
+    ]
   },
 ]
