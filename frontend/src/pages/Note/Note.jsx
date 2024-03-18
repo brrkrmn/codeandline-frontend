@@ -30,6 +30,7 @@ const Note = ({ notes }) => {
       </div>
       <div className="basis-1/2 px-4 w-full flex flex-col h-[600px] justify-between items-center gap-4">
         <CustomButton
+          disabled={currentNote === 0 ? true : false}
           onPress={handlePrevNote}
           className="max-h-10"
         >
@@ -41,6 +42,7 @@ const Note = ({ notes }) => {
           </P>
         </ScrollShadow>
         <CustomButton
+          disabled={currentNote === note.notes.length -1 ? true : false}
           onPress={handleNextNote}
           className="max-h-10"
         >
