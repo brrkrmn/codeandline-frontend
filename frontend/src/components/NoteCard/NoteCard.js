@@ -7,9 +7,9 @@ import { P } from '../Typography';
 
 const NoteCard = ({ note }) => {
   return (
-    <Link className="flex flex-col p-2 grow-0 shrink-0 w-[240px] wide:w-[280px] h-[314px] rounded-xl border-1 border-border shadow-small transition hover:drop-shadow-sm">
+    <Link to={`note/${note.id}`} className="flex flex-col p-2 grow-0 shrink-0 w-[240px] wide:w-[280px] h-[314px] rounded-xl border-1 border-border shadow-small transition hover:drop-shadow-sm">
       <div className="bg-primary-dark rounded-xl w-full h-[180px]">
-        <CodeEditor size={editorSize.card} />
+        <CodeEditor size={editorSize.card} code={note.code} />
       </div>
       <div className="flex flex-col justify-start pl-2 pt-2">
         <P className="text-primary-light line-clamp-1">{note.title}</P>

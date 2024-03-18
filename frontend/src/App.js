@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import Toast from './components/Toast/Toast';
+import { noteList } from './constants/notes';
 import AuthenticatedPageWrapper from './layouts/AuthenticatedPageWrapper';
 import PageWrapper from './layouts/PageWrapper';
 import Auth from './pages/Auth/Auth';
@@ -42,7 +43,7 @@ function App () {
               <Route path="/create" element={<AuthenticatedPageWrapper>create page</AuthenticatedPageWrapper>} />
               <Route path="/profile" element={<AuthenticatedPageWrapper><Profile /></AuthenticatedPageWrapper>} />
               <Route path="/help" element={<AuthenticatedPageWrapper>help page</AuthenticatedPageWrapper>} />
-              <Route path="/note" element={<AuthenticatedPageWrapper><Note /></AuthenticatedPageWrapper>} />
+              <Route path="/note/:id" element={<AuthenticatedPageWrapper><Note notes={noteList} /></AuthenticatedPageWrapper>} />
             </>
           )}
         </Routes>
