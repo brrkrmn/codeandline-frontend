@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 require('express-async-errors')
 const loginRouter = require('./controllers/login');
 const signupRouter = require('./controllers/signup');
+const notesRouter = require('./controllers/notes')
 const middleware = require('./utils/middleware')
 
 mongoose.set('strictQuery', false);
@@ -27,6 +28,7 @@ app.use(middleware.requestLogger)
 
 app.use('/api/signup', signupRouter)
 app.use('/api/login', loginRouter)
+app.use('/api/notes', middleware.tokenExtractor, notesRouter)
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)

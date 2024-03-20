@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import toast from 'react-hot-toast';
 import loginService from '../services/login';
 import signupService from '../services/signup';
+import { setToken } from '../utils/token';
 
 export const userSlice = createSlice({
   name: 'user',
@@ -20,17 +21,19 @@ export const initializeLogin = () => {
   return async dispatch => {
     const currentUser = window.localStorage.getItem("currentUser");
     if (currentUser) {
-      dispatch(login(JSON.parse(currentUser)));
+      const user = dispatch(login(JSON.parse(currentUser)));
+      setToken(user.token)
     }
   }
 }
 
-export const loginUser = (user) => {
+export const loginUser = (credentials) => {
   return async dispatch => {
     try {
-      const userToLogin = await loginService.login(user)
-      dispatch(login(userToLogin));
-      window.localStorage.setItem("currentUser", JSON.stringify(userToLogin))
+      const user = await loginService.login(credentials)
+      dispatch(login(user));
+      window.localStorage.setItem("currentUser", JSON.stringify(user))
+      setToken(user.token)
     } catch (error) {
       toast.error(error.response.data)
     }
