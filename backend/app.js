@@ -28,7 +28,7 @@ app.use(middleware.requestLogger)
 
 app.use('/api/signup', signupRouter)
 app.use('/api/login', loginRouter)
-app.use('/api/notes', middleware.tokenExtractor, notesRouter)
+app.use('/api/notes', middleware.tokenExtractor, middleware.userExtractor, notesRouter)
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
