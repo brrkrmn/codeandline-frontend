@@ -1,5 +1,15 @@
 const mongoose = require('mongoose')
 
+const entrySchema = new mongoose.Schema({
+  lineNumbers: {
+    type: Array,
+  },
+  content: {
+    type: String,
+    required: true,
+  }
+})
+
 const noteSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -16,17 +26,17 @@ const noteSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
-  folder: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Folder'
-  },
   code: {
     type: String,
     required: true,
   },
-  content: {
+  entries: {
+    type: [entrySchema]
+  },
+  folder: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'NoteContent'
+    ref: 'Folder',
+    default: null,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,

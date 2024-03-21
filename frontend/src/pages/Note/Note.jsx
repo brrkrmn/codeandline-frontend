@@ -12,7 +12,7 @@ const Note = () => {
   const id = useParams().id;
   const notes = noteList;
   const note = notes.find(n => n.id === id)
-  const { currentNote, handleNextNote, handlePrevNote } = useNoteTracker(note.notes?.length - 1);
+  const { currentNote, handleNextNote, handlePrevNote } = useNoteTracker(note.entries?.length - 1);
 
   return (
     <div className="w-full flex flex-col laptop:flex-row justify-center items-center gap-4">
@@ -28,7 +28,7 @@ const Note = () => {
         <BreadcrumbItem>Data Structures</BreadcrumbItem>
       </Breadcrumbs>
       <div className="w-full overflow-hidden basis-1/2">
-        <CodeEditor size={editorSize.screen} code={note.code} highlightedLine={note.notes[currentNote].line} />
+        <CodeEditor size={editorSize.screen} code={note.code} highlightedLine={note.entries[currentNote].lineNumbers} />
       </div>
       <div className="basis-1/2 px-4 w-full flex flex-col h-[600px] justify-between items-center gap-4">
         <CustomButton
@@ -40,11 +40,11 @@ const Note = () => {
         </CustomButton>
         <ScrollShadow size={80} >
           <P variant="big" className="max-h-[600px] mb-2 text-lg tablet:text-2xl">
-            {note.notes[currentNote]?.note}
+            {note.entries[currentNote]?.content}
           </P>
         </ScrollShadow>
         <CustomButton
-          disabled={currentNote === note.notes.length -1 ? true : false}
+          disabled={currentNote === note.entries.length -1 ? true : false}
           onPress={handleNextNote}
           className="max-h-10"
         >

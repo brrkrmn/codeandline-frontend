@@ -40,9 +40,9 @@ notesRouter.post('/', async (request, response) => {
   const note = new Note({
     title: body.title,
     description: body.description,
-    // folder: body.folder || null,
+    folder: body.folder,
     code: body.code,
-    // content: body.content,
+    entries: body.entries,
     user: user._id
   })
 

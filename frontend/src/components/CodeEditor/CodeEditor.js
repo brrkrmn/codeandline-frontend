@@ -20,7 +20,7 @@ const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
 
   const classNameExt = classname({
     add: (lineNumber) => {
-      if (lineNumber === highlightedLine) {
+      if (highlightedLine.includes(lineNumber)) {
         return 'highlighted';
       }
     }

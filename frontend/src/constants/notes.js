@@ -37,71 +37,26 @@ export const folderList = [
     public: true,
     notes: [
       {
-        id: 'third',
-        title: "not so random",
-        description: "this one description but not one title",
+        id: 'first',
+        title: "Random title",
+        description: "Here's a description of this first note.",
         date: getRandomDate(),
         public: false,
         folder: null,
         code: codeExample,
-        notes: [
+        entries: [
           {
-            line: 2,
-            note: 'This note is for line 2'
+            lineNumbers: [2, 3, 4],
+            content: 'This note is for line 2,3,4'
           },
           {
-            line: 4,
-            note: 'This is for line 4'
+            lineNumbers: [4, 9, 14],
+            content: 'This is for line 4, 9, 14'
           }
         ]
       },
     ],
   },
-  {
-    date: getRandomDate(),
-    title: "Second folder",
-    description: "",
-    public: false,
-    notes: [
-      {
-        id: 'fifth',
-        title: "heyo what up",
-        description: "here's a longgggggggggggggggn description because it takes long to describe this note yeah",
-        date: getRandomDate(),
-        public: true,
-        folder: "null",
-        code: codeExample,
-        notes: [
-          {
-            line: 1,
-            note: 'This note is for line 1'
-          },
-        ]
-      }, {
-        id: 'last',
-        title: "Let's go with blabla",
-        description: "Here's a description of the last note.",
-        date: getRandomDate(),
-        public: false,
-        folder: "null",
-        code: codeExample,
-        notes: [
-          {
-            line: 7,
-            note: 'This note is for line 7'
-          },
-          {
-            line: 6,
-            note: 'This is for line 6'
-          },
-          {
-            line: 8,
-            note: 'This is for line 8'
-          }
-        ]
-      },
-    ]
-  }
 ]
 
 export const noteList = [
@@ -113,105 +68,14 @@ export const noteList = [
     public: false,
     folder: null,
     code: codeExample,
-    notes: [
+    entries: [
       {
-        line: 2,
-        note: 'This note is for line 2'
+        lineNumbers: [2, 3, 4],
+        content: 'This note is for line 2,3,4'
       },
       {
-        line: 4,
-        note: 'This is for line 4'
-      }
-    ]
-  },
-  {
-    id: 'second',
-    title: "okayokayokayokay okayokayokay",
-    description: "",
-    date: getRandomDate(),
-    public: true,
-    folder: "null",
-    code: codeExample,
-    notes: [
-      {
-        line: 2,
-        note: 'This note is for line 2'
-      },
-      {
-        line: 4,
-        note: 'This is for line 4'
-      }
-    ]
-  },  {
-    id: 'third',
-    title: "not so random",
-    description: "this one description but not one title",
-    date: getRandomDate(),
-    public: false,
-    folder: null,
-    code: codeExample,
-    notes: [
-      {
-        line: 2,
-        note: 'This note is for line 2'
-      },
-      {
-        line: 4,
-        note: 'This is for line 4'
-      }
-    ]
-  }, {
-    id: 'fourth',
-    title: "this one's a very very very very long titleeeeeeeeeeeeeee",
-    description: "this should be okay",
-    date: getRandomDate(),
-    public: true,
-    folder: "null",
-    code: codeExample,
-    notes: [
-      {
-        line: 3,
-        note: 'This note is for line 3'
-      },
-      {
-        line: 3,
-        note: 'This is for line 3'
-      }
-    ]
-  }, {
-    id: 'fifth',
-    title: "heyo what up",
-    description: "here's a longgggggggggggggggn description because it takes long to describe this note yeah",
-    date: getRandomDate(),
-    public: true,
-    folder: "null",
-    code: codeExample,
-    notes: [
-      {
-        line: 1,
-        note: 'This note is for line 1'
-      },
-    ]
-  }, {
-    id: 'last',
-    title: "Let's go with blabla",
-    description: "Here's a description of the last note.",
-    date: getRandomDate(),
-    public: false,
-    folder: "null",
-    code: codeExample,
-    notes: [
-      {
-        line: 7,
-        note: 'This note is for line 7'
-      },
-      {
-        line: 6,
-        note: 'This is for line 6'
-      },
-      {
-        line: 8,
-        note: 'This is for line 8'
+        lineNumbers: [4, 9, 14],
+        content: 'This is for line 4, 9, 14'
       }
     ]
   },
