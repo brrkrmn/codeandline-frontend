@@ -2,15 +2,18 @@ const notesRouter = require('express').Router()
 const Note = require('../models/note')
 
 notesRouter.get('/', async (request, response) => {
-  const notes = await Note
-    .find({}).populate('user', { username: 1, email: 1 })
+  const user = request.user
+  const userNotes = await Note
+    .find({ user: user._id }).populate('user')
 
-  response.json(notes)
+  response.json(userNotes)
 })
 
 notesRouter.get('/:id', async (request, response) => {
-  const note = await Note.findById(request.params.id)
-  if (note) {
+  const note = await Note.findById(request.params.id).populate('user')
+  const user = request.user
+
+  if (note.user.id === user.id) {
     response.json(note)
   } else {
     response.status(404).end()
