@@ -42,7 +42,10 @@ const Note = () => {
           <BreadcrumbItem>{note.title}</BreadcrumbItem>
         </Breadcrumbs>
         <div className="w-full overflow-hidden basis-1/2">
-          <CodeEditor size={editorSize.screen} code={note.code} highlightedLine={note.entries[currentNote].lineNumbers} />
+          <CodeEditor
+            size={editorSize.screen}
+            code={note.code}
+            highlightedLine={note.entries[currentNote]?.lineNumbers} />
         </div>
         <div className="basis-1/2 px-4 w-full flex flex-col h-[600px] justify-between items-center gap-4">
           <CustomButton

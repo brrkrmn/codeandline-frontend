@@ -2,8 +2,37 @@ import { ScrollShadow } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import icons from "../../assets/icons";
 import { H5 } from "../../components/Typography/Typography";
+import { menuItemStyles } from "./constants";
 
 const MenuList = ({ notes, folders }) => {
+  const noteItem = (note) => {
+    return (
+      <Link
+        to={`/notes/${note.id}`}
+        className={menuItemStyles}
+      >
+        {icons.arrowDownRight}
+        <span className="truncate">{note.title}</span>
+      </Link>
+    )
+  }
+
+  const folderItem = (folder) => {
+    return (
+      <>
+        <Link
+          to={`/folders/${folder.id}`}
+          className={menuItemStyles}>
+          {icons.dot}
+          <span className="truncate">{folder.title}</span>
+        </Link>
+        <div className="flex flex-col gap-2 ml-6">
+          {folder.notes?.map(note => noteItem(note))}
+        </div>
+      </>
+    )
+  }
+
   return (
     <ScrollShadow
       hideScrollBar
@@ -11,30 +40,12 @@ const MenuList = ({ notes, folders }) => {
     >
       <H5 className="text-foreground-primary font-thin mb-4">My Notes</H5>
       <div className="flex flex-col gap-2 mb-4 w-[250px] text-foreground-dark">
-        {notes.filter(note => note.folder === null).map(note => (
-          <Link to={`/notes/${note.id}`} className="flex items-center gap-2 *:hover:text-primary-light hover:text-primary-light">
-            {icons.arrowDownRight}
-            <span className="truncate">{note.title}</span>
-          </Link>
-        ))}
+        {notes
+          .filter(note => note.folder === null)
+          .map(note => noteItem(note))}
       </div>
-      <div className="w-[250px] text-foreground-dark flex flex-col gap-2 border-t-2 border-divider pt-4">
-        {folders.map(folder => (
-          <>
-            <Link className="flex items-center gap-2 *:hover:text-primary-light hover:text-primary-light">
-              {icons.dot}
-              <span className="truncate">{folder.title}</span>
-            </Link>
-            <div className="flex flex-col gap-2">
-              {folder.notes?.map(note => (
-                <Link to={`/notes/${note.id}`} className="ml-6 flex items-center gap-2 *:hover:text-primary-light hover:text-primary-light">
-                  {icons.arrowDownRight}
-                  <span className="truncate">{note.title}</span>
-                </Link>
-              ))}
-            </div>
-          </>
-        ))}
+      <div className="w-[250px] text-foreground-dark flex flex-col gap-2 border-t-1 border-divider pt-4">
+        {folders.map(folder => folderItem(folder))}
       </div>
     </ScrollShadow>
   )
