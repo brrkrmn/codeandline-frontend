@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import icons from "../../assets/icons";
+import formatDate from '../../utils/formatDate';
 import CodeEditor from '../CodeEditor/CodeEditor';
 import { editorSize } from '../CodeEditor/constants';
 import { P } from '../Typography';
@@ -16,7 +17,7 @@ const NoteCard = ({ note }) => {
         <P variant="small" className="line-clamp-2 text-[16px] font-light">{note.description}</P>
       </div>
       <div className="flex items-end justify-end mt-auto gap-2 pr-2">
-        <P variant="tiny" className="font-medium text-foreground-dark">{note.date}</P>
+        <P variant="tiny" className="font-medium text-foreground-dark">{formatDate(note.date)}</P>
         <span>{note.public ? icons.public : icons.private}</span>
       </div>
     </Link>

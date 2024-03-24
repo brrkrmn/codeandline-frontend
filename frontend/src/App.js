@@ -7,7 +7,6 @@ import AuthenticatedPageWrapper from './layouts/AuthenticatedPageWrapper';
 import PageWrapper from './layouts/PageWrapper';
 import Auth from './pages/Auth/Auth';
 import Dashboard from './pages/Dashboard/Dashboard';
-import Folder from './pages/Folder/Folder';
 import Home from './pages/Home/Home';
 import Note from './pages/Note/Note';
 import Profile from './pages/Profile/Profile';
@@ -44,7 +43,7 @@ function App () {
               <Route path="/profile" element={<AuthenticatedPageWrapper><Profile /></AuthenticatedPageWrapper>} />
               <Route path="/help" element={<AuthenticatedPageWrapper>help page</AuthenticatedPageWrapper>} />
               <Route path="/notes/:id" element={<AuthenticatedPageWrapper><Note /></AuthenticatedPageWrapper>} />
-              <Route path="/folders/:id" element={<AuthenticatedPageWrapper><Folder /> </AuthenticatedPageWrapper>} />
+              <Route path="/folder/:id" element={<AuthenticatedPageWrapper><Dashboard /> </AuthenticatedPageWrapper>} />
             </>
           )}
         </Routes>

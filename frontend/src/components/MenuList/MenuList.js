@@ -25,7 +25,7 @@ const MenuList = () => {
     return (
       <>
         <Link
-          to={`/folders/${folder.id}`}
+          to={`/folder/${folder.id}`}
           className={menuItemStyles}>
           {icons.dot}
           <span className="truncate">{folder.title}</span>
