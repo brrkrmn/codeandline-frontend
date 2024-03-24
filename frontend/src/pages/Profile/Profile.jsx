@@ -2,8 +2,6 @@ import { Avatar, Divider, Tooltip } from "@nextui-org/react"
 import { useSelector } from "react-redux"
 import icons from "../../assets/icons"
 import CustomButton from "../../components/CustomButton/CustomButton"
-import Folders from "../../components/Folders/Folders"
-import Notes from "../../components/Notes"
 import { H5, P } from "../../components/Typography/Typography"
 
 const Profile = () => {
@@ -29,11 +27,6 @@ const Profile = () => {
         <CustomButton className="my-6 h-10">Edit Profile</CustomButton>
       </div>
       <Divider className="w-full h-divider laptop:h-full laptop:w-divider" />
-      <div className="w-full">
-        <Notes />
-        <Divider className="my-8"/>
-        <Folders />
-      </div>
     </div>
   )
 }

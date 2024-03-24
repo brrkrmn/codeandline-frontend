@@ -1,10 +1,14 @@
 import { ScrollShadow } from "@nextui-org/react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import icons from "../../assets/icons";
 import { H5 } from "../../components/Typography/Typography";
 import { menuItemStyles } from "./constants";
 
-const MenuList = ({ notes, folders }) => {
+const MenuList = () => {
+  const notes = useSelector((state) => state.notes)
+  const folders = useSelector((state) => state.folders)
+
   const noteItem = (note) => {
     return (
       <Link

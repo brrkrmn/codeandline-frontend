@@ -42,7 +42,7 @@ const ProfileMenu = () => {
         }}
       >
         <DropdownSection aria-label='Profile & Actions' showDivider>
-          <DropdownItem href="/profile" key="profile" className="h-14 gap-2">
+          <DropdownItem key="profile" className="h-14 gap-2">
             <User
               name={`@${user.username}`}
               description={user.email}
