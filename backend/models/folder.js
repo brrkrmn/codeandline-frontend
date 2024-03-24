@@ -16,9 +16,13 @@ const folderSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
-  notes: {
+  notes: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Note'
+  }],
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
   }
 })
 

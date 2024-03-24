@@ -38,8 +38,8 @@ const Note = () => {
             item: "data-[current=true]:text-primary-light"
           }}
         >
-          <BreadcrumbItem>Notes</BreadcrumbItem>
-          <BreadcrumbItem>Data Structures</BreadcrumbItem>
+          <BreadcrumbItem href="/">Notes</BreadcrumbItem>
+          <BreadcrumbItem>{note.title}</BreadcrumbItem>
         </Breadcrumbs>
         <div className="w-full overflow-hidden basis-1/2">
           <CodeEditor size={editorSize.screen} code={note.code} highlightedLine={note.entries[currentNote].lineNumbers} />

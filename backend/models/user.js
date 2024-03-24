@@ -16,12 +16,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  notes: [
-    {
+  notes: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Note'
-    }
-  ]
+  }],
+  folders: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Folder'
+  }]
 })
 
 userSchema.plugin(uniqueValidator)
