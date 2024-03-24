@@ -4,13 +4,13 @@ const Folder = require('../models/folder')
 foldersRouter.get('/', async (request, response) => {
   const user = request.user
   const userFolders = await Folder
-    .find({ user: user._id }).populate('user')
+    .find({ user: user._id }).populate('user').populate('notes')
 
   response.json(userFolders)
 })
 
 foldersRouter.get('/:id', async (request, response) => {
-  const folder = await Folder.findById(request.params.id).populate('user')
+  const folder = await Folder.findById(request.params.id).populate('user').populate('notes')
   const user = request.user
 
   if (folder.user.id === user.id) {

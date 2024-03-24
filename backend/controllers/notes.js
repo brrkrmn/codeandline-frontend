@@ -1,16 +1,17 @@
 const notesRouter = require('express').Router()
 const Note = require('../models/note')
+const { folderExtractor } = require('../utils/middleware')
 
 notesRouter.get('/', async (request, response) => {
   const user = request.user
   const userNotes = await Note
-    .find({ user: user._id }).populate('user')
+    .find({ user: user._id }).populate('user').populate('folder')
 
   response.json(userNotes)
 })
 
 notesRouter.get('/:id', async (request, response) => {
-  const note = await Note.findById(request.params.id).populate('user')
+  const note = await Note.findById(request.params.id).populate('user').populate('folder')
   const user = request.user
 
   if (note.user.id === user.id) {
@@ -20,9 +21,10 @@ notesRouter.get('/:id', async (request, response) => {
   }
 })
 
-notesRouter.post('/', async (request, response) => {
+notesRouter.post('/', folderExtractor, async (request, response) => {
   const body = request.body
   const user = request.user
+  const folder = request.folder
 
   const note = new Note({
     title: body.title,
@@ -35,8 +37,12 @@ notesRouter.post('/', async (request, response) => {
   })
 
   const savedNote = await note.save()
+
   user.notes = user.notes.concat(savedNote._id)
   await user.save()
+
+  folder.notes = folder.notes.concat(savedNote._id)
+  await folder.save()
 
   response.status(201).json(savedNote)
 })

@@ -1,4 +1,5 @@
 const User = require('../models/user')
+const Folder = require('../models/folder')
 const jwt = require('jsonwebtoken')
 
 const requestLogger = (request, response, next) => {
@@ -54,10 +55,21 @@ const userExtractor = async (request, response, next) => {
   next()
 }
 
+const folderExtractor = async (request, response, next) => {
+  const folderId = request.body.folder
+
+  if (folderId) {
+    const folder = await Folder.findById(folderId)
+    request.folder = folder
+  }
+  next()
+}
+
 module.exports = {
   requestLogger,
   unknownEndpoint,
   errorHandler,
   tokenExtractor,
   userExtractor,
+  folderExtractor,
 }
