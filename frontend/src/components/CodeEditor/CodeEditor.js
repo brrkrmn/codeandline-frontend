@@ -2,11 +2,16 @@ import { javascript } from '@codemirror/lang-javascript';
 import { classname } from '@uiw/codemirror-extensions-classname';
 import { tokyoNightInit } from '@uiw/codemirror-theme-tokyo-night';
 import CodeMirror, { EditorView } from '@uiw/react-codemirror';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { editorStyles } from './constants';
 
 const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
   const [value, setValue] = React.useState(code);
+
+  useEffect(() => {
+    setValue(code)
+  }, [code])
+
   const onChange = React.useCallback((val, viewUpdate) => {
     setValue(val);
   }, []);
@@ -20,7 +25,7 @@ const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
 
   const classNameExt = classname({
     add: (lineNumber) => {
-      if (highlightedLine.includes(lineNumber)) {
+      if (highlightedLine?.includes(lineNumber)) {
         return 'highlighted';
       }
     }

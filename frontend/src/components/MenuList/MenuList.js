@@ -13,7 +13,7 @@ const MenuList = () => {
   const noteItem = (note) => {
     return (
       <Link
-        to={`/notes/${note.id}`}
+        to={`/note-overview/${note.id}`}
         className={`${menuItemStyles} ${note.id === id && selectedItemStyle}`}
       >
         {icons.arrowDownRight}
@@ -26,7 +26,7 @@ const MenuList = () => {
     return (
       <>
         <Link
-          to={`/folder/${folder.id}`}
+          to={`/folder-overview/${folder.id}`}
           className={`${menuItemStyles} ${folder.id === id && selectedItemStyle}`}>
           {icons.dot}
           <span className="truncate">{folder.title}</span>

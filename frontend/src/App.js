@@ -43,7 +43,8 @@ function App () {
               <Route path="/profile" element={<AuthenticatedPageWrapper><Profile /></AuthenticatedPageWrapper>} />
               <Route path="/help" element={<AuthenticatedPageWrapper>help page</AuthenticatedPageWrapper>} />
               <Route path="/notes/:id" element={<AuthenticatedPageWrapper><Note /></AuthenticatedPageWrapper>} />
-              <Route path="/folder/:id" element={<AuthenticatedPageWrapper><Dashboard /> </AuthenticatedPageWrapper>} />
+              <Route path="/folder-overview/:id" element={<AuthenticatedPageWrapper><Dashboard /> </AuthenticatedPageWrapper>} />
+              <Route path="/note-overview/:id" element={<AuthenticatedPageWrapper><Dashboard /> </AuthenticatedPageWrapper>} />
             </>
           )}
         </Routes>

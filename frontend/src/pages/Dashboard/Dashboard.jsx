@@ -7,6 +7,7 @@ import FolderOverview from "../../components/FolderOverview/FolderOverview"
 import MenuList from "../../components/MenuList/MenuList"
 import { getUserFolders } from "../../reducers/foldersReducer"
 import { getUserNotes } from "../../reducers/notesReducer"
+import NoteOverview from "../../components/NoteOverview/NoteOverview"
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -24,9 +25,11 @@ const Dashboard = () => {
         className="tablet:w-[300px] tablet:min-w-[300px]"
       />
       <div className="w-full overflow-hidden flex flex-col gap-10">
-        {path === 'folder' ? (
+        {path === 'folder-overview' ? (
             <FolderOverview />
-          ): (
+        ) : path === 'note-overview' ? (
+          <NoteOverview />
+          ) : (
             <>
               <CardSection type={cardSectionTypes.NOTES} />
               <CardSection type={cardSectionTypes.FOLDERS} />

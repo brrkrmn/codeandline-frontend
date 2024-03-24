@@ -1,4 +1,4 @@
-import { FaRegUser } from "react-icons/fa";
+import { FaFolder, FaRegUser } from "react-icons/fa";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa6";
 import { GoDotFill } from "react-icons/go";
 import { HiOutlineHome } from "react-icons/hi";
@@ -21,7 +21,8 @@ const icons = {
   dot: <GoDotFill className="text-foreground-dark min-w-4 min-h-4" />,
   public: <MdOutlinePublic className="text-primary-dark text-2xl" />,
   private: <MdOutlinePublicOff className="text-primary-dark text-2xl" />,
-  note: <PiNotepad className="text-primary-dark text-xl"/>
+  note: <PiNotepad className="text-primary-dark text-xl" />,
+  folder: <FaFolder className="text-primary-light text-xl" />
 }
 
 export default icons;
