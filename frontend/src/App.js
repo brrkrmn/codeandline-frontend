@@ -43,7 +43,7 @@ function App () {
               <Route path="/create" element={<AuthenticatedPageWrapper>create page</AuthenticatedPageWrapper>} />
               <Route path="/profile" element={<AuthenticatedPageWrapper><Profile /></AuthenticatedPageWrapper>} />
               <Route path="/help" element={<AuthenticatedPageWrapper>help page</AuthenticatedPageWrapper>} />
-              <Route path="/note/:id" element={<AuthenticatedPageWrapper><Note notes={noteList} /></AuthenticatedPageWrapper>} />
+              <Route path="/notes/:id" element={<AuthenticatedPageWrapper><Note notes={noteList} /></AuthenticatedPageWrapper>} />
             </>
           )}
         </Routes>

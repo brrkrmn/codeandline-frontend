@@ -21,7 +21,8 @@ export const initializeLogin = () => {
   return async dispatch => {
     const currentUser = window.localStorage.getItem("currentUser");
     if (currentUser) {
-      const user = dispatch(login(JSON.parse(currentUser)));
+      const user = JSON.parse(currentUser)
+      dispatch(login(user))
       setToken(user.token)
     }
   }

@@ -2,9 +2,9 @@ import { ScrollShadow } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import icons from "../../assets/icons";
 import { H5 } from "../../components/Typography/Typography";
-import { folderList, noteList } from "../../constants/notes";
+import { folderList } from "../../constants/notes";
 
-const MenuList = () => {
+const MenuList = ({ notes }) => {
   return (
     <ScrollShadow
       hideScrollBar
@@ -12,8 +12,8 @@ const MenuList = () => {
     >
       <H5 className="text-foreground-primary font-thin mb-4">My Notes</H5>
       <div className="flex flex-col gap-2 mb-4 w-[250px] text-foreground-dark">
-        {noteList.filter(note => note.folder === null).map(note => (
-          <Link to={`/note/${note.id}`} className="flex items-center gap-2 *:hover:text-primary-light hover:text-primary-light">
+        {notes.filter(note => note.folder === null).map(note => (
+          <Link to={`/notes/${note.id}`} className="flex items-center gap-2 *:hover:text-primary-light hover:text-primary-light">
             {icons.arrowDownRight}
             <span className="truncate">{note.title}</span>
           </Link>
@@ -28,7 +28,7 @@ const MenuList = () => {
             </Link>
             <div className="flex flex-col gap-2">
               {folder.notes.map(note => (
-                <Link to={`/note/${note.id}`} className="ml-6 flex items-center gap-2 *:hover:text-primary-light hover:text-primary-light">
+                <Link to={`/notes/${note.id}`} className="ml-6 flex items-center gap-2 *:hover:text-primary-light hover:text-primary-light">
                   {icons.arrowDownRight}
                   <span className="truncate">{note.title}</span>
                 </Link>

@@ -7,12 +7,16 @@ const baseUrl =
     : '/api/notes';
 
 const noteService = {
-  getNotes: async () => {
+  getUserNotes: async () => {
     const response = await axios.get(baseUrl, config)
     return response.data
   },
-  create: async (newNote) => {
-    const response = await axios.post(baseUrl, newNote, config)
+  getNote: async (id) => {
+    const response = await axios.get(`${baseUrl}/${id}`, config)
+    return response.data
+  },
+  createNote: async (note) => {
+    const response = await axios.post(baseUrl, note, config)
     return response.data
   }
 }
