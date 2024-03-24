@@ -1,11 +1,12 @@
 import { ScrollShadow } from "@nextui-org/react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import icons from "../../assets/icons";
 import { H5 } from "../../components/Typography/Typography";
-import { menuItemStyles } from "./constants";
+import { menuItemStyles, selectedItemStyle } from "./constants";
 
 const MenuList = () => {
+  const id = useParams().id
   const notes = useSelector((state) => state.notes)
   const folders = useSelector((state) => state.folders)
 
@@ -13,7 +14,7 @@ const MenuList = () => {
     return (
       <Link
         to={`/notes/${note.id}`}
-        className={menuItemStyles}
+        className={`${menuItemStyles} ${note.id === id && selectedItemStyle}`}
       >
         {icons.arrowDownRight}
         <span className="truncate">{note.title}</span>
@@ -26,7 +27,7 @@ const MenuList = () => {
       <>
         <Link
           to={`/folder/${folder.id}`}
-          className={menuItemStyles}>
+          className={`${menuItemStyles} ${folder.id === id && selectedItemStyle}`}>
           {icons.dot}
           <span className="truncate">{folder.title}</span>
         </Link>

@@ -1,1 +1,2 @@
 export const menuItemStyles = "flex items-center gap-2 transition *:hover:text-primary-light hover:text-primary-light hover:translate-x-1"
+export const selectedItemStyle = "*:text-primary-light text-primary-light"
