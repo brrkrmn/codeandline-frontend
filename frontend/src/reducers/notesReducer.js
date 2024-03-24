@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import noteService from "../services/note";
+import formatDate from "../utils/formatDate";
 
 export const notesSlice = createSlice({
   name: 'notes',
@@ -24,7 +25,7 @@ export const getUserNotes = () => {
         id: note.id,
         title: note.title,
         description: note.description,
-        date: note.date,
+        date: formatDate(note.date),
         public: note.public,
         code: note.code,
         entries: note.entries,

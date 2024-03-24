@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import folderService from "../services/folder";
+import formatDate from "../utils/formatDate";
 
 export const foldersSlice = createSlice({
   name: 'folders',
@@ -23,7 +24,7 @@ export const getUserFolders = () => {
         id: folder.id,
         title: folder.title,
         description: folder.description,
-        date: folder.date,
+        date: formatDate(folder.date),
         public: folder.public,
         notes: folder.notes,
         user: folder.user,
