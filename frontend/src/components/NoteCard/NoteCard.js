@@ -17,7 +17,7 @@ const NoteCard = ({ note }) => {
         <P variant="small" className="line-clamp-2 text-[16px] font-light">{note.description}</P>
       </div>
       <div className="flex items-end justify-end mt-auto gap-2 pr-2">
-        <P variant="tiny" className="font-medium text-foreground-dark">{formatDate(note.date)}</P>
+        <P variant="tiny" className="font-normal text-primary-light">{formatDate(note.date)}</P>
         <span>{note.public ? icons.public : icons.private}</span>
       </div>
     </Link>

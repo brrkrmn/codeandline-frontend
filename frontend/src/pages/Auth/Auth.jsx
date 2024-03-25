@@ -32,7 +32,7 @@ const Auth = () => {
   return (
     <Card
       isBlurred
-      className={`rounded-2xl py-6 px-4 md:px-7 shadow-small bg-gradient-to-br from-background via-transparent to-background border-1 border-border max-w-[500px] w-full`}
+      className={`rounded-2xl py-6 px-4 md:px-7 shadow-small bg-gradient-to-br from-background via-transparent to-background border-1 border-border max-w-[500px] w-full min-h-[466px] h-[466px]`}
     >
       <CardHeader className="flex justify-center">
         <Tabs
@@ -66,7 +66,7 @@ const Auth = () => {
             {t('auth.links.signup1')}
             <Link
               href="/signup"
-              className="text-primary-light ml-1">
+              className="text-primary-light ml-2 font-normal">
               {t('auth.links.signup2')}
             </Link>
           </P>
@@ -75,12 +75,11 @@ const Auth = () => {
             {t('auth.links.login1')}
               <Link
                 href="/login"
-                className="text-primary-light ml-1">
+                className="text-primary-light ml-2 font-normal">
               {t('auth.links.login2')}
             </Link>
           </P>
-        )
-        }
+        )}
       </CardFooter>
     </Card>
   );

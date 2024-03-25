@@ -31,7 +31,7 @@ const Navbar = () => {
             ${link === linkProps.home.name && "absolute"}
             text-primary-light rounded-full p-3 transition hover:drop-shadow-md
           `}>
-            <Link className={`${tab !== linkProps[link].name && "transition p-2 rounded-full hover:drop-shadow-lg"}`} to={linkProps[link].path}>
+            <Link className={`${tab !== linkProps[link].name && "font-medium transition p-2 rounded-full hover:drop-shadow-lg"}`} to={linkProps[link].path}>
               {tab === linkProps[link].name ? (
                 linkProps[link].icon
               ) : (

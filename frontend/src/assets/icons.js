@@ -19,10 +19,10 @@ const icons = {
   arrowUp: <FaArrowUp className="text-xl text-primary-light" />,
   arrowDownRight: <PiArrowBendDownRight className="text-foreground-dark min-w-6 min-h-6" />,
   dot: <GoDotFill className="text-foreground-dark min-w-4 min-h-4" />,
-  public: <MdOutlinePublic className="text-primary-dark text-2xl" />,
-  private: <MdOutlinePublicOff className="text-primary-dark text-2xl" />,
-  note: <PiNotepad className="text-primary-dark text-xl" />,
-  folder: <FaFolder className="text-primary-light text-xl" />
+  public: <MdOutlinePublic className="text-primary-light text-2xl" />,
+  private: <MdOutlinePublicOff className="text-primary-light text-2xl" />,
+  note: <PiNotepad className="text-primary-light text-xl" />,
+  folder: <FaFolder className="text-primary-dark text-xl transition" />
 }
 
 export default icons;

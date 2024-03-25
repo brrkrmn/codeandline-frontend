@@ -27,8 +27,9 @@ const MenuList = () => {
       <>
         <Link
           to={`/folder-overview/${folder.id}`}
-          className={`${menuItemStyles} ${folder.id === id && selectedItemStyle}`}>
-          {icons.dot}
+          className={`${menuItemStyles} ${folder.id === id && selectedItemStyle}`}
+        >
+          {icons.folder}
           <span className="truncate">{folder.title}</span>
         </Link>
         <div className="flex flex-col gap-2 ml-6">

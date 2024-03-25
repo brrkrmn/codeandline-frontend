@@ -1,10 +1,11 @@
-import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger, User } from '@nextui-org/react';
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger } from '@nextui-org/react';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import icons from '../../assets/icons';
 import { logoutUser } from '../../reducers/userReducer';
 import { buttonStyles } from '../CustomButton/constants';
+import { P } from '../Typography/Typography';
 
 const ProfileMenu = () => {
   const dispatch = useDispatch();
@@ -42,20 +43,9 @@ const ProfileMenu = () => {
         }}
       >
         <DropdownSection aria-label='Profile & Actions' showDivider>
-          <DropdownItem key="profile" className="h-14 gap-2">
-            <User
-              name={`@${user.username}`}
-              description={user.email}
-              className="group"
-              classNames={{
-                name: "text-foreground-primary group-hover:text-primary-light",
-                description: "text-foreground-dark max-w-32 truncate"
-              }}
-              avatarProps={{
-                size: "sm",
-                src: "https://avatars.githubusercontent.com/u/30373425?v=4"
-              }}
-            />
+          <DropdownItem key="profile" className="h-14 gap-2 group">
+            <P variant="small" className="text-foreground-primary group-hover:text-primary-light">@{user.username}</P>
+            <P variant="small" className="text-sm">{user.email}</P>
           </DropdownItem>
         </DropdownSection>
         <DropdownSection aria-label="Help & Feedback">

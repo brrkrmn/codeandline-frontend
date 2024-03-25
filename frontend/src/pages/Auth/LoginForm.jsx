@@ -18,9 +18,10 @@ const LoginForm = () => {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="flex flex-col items-center gap-4"
+      className="flex flex-col items-center justify-center gap-4 h-full"
     >
       <CustomInput
+        className="mt-auto"
         id="username"
         name="username"
         type="username"
@@ -42,7 +43,7 @@ const LoginForm = () => {
       />
       <CustomButton
         type="submit"
-        className="w-52 mt-2"
+        className="w-52 mt-auto"
       >
         {t('auth.form.submitLabel.login')}
       </CustomButton>
