@@ -49,6 +49,7 @@ module.exports = {
             primary: '#cecdd1',
             secondary: '#efedfdb3',
             dark: '#efedfd99',
+            placeholder: '#8f8ca199'
           },
           divider: '#ffffff1a',
           border: '#ffffff14',

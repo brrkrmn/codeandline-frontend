@@ -23,7 +23,7 @@ const NoteOverview = () => {
     }
     fetchNote(id);
   }, [id])
-  console.log(note?.code.split('\n')[0])
+
   if (note) {
     return (
       <div>
