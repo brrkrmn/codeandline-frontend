@@ -6,6 +6,9 @@ import Toast from './components/Toast/Toast';
 import AuthenticatedPageWrapper from './layouts/AuthenticatedPageWrapper';
 import PageWrapper from './layouts/PageWrapper';
 import Auth from './pages/Auth/Auth';
+import Create from './pages/Create/Create';
+import CreateFolder from './pages/Create/CreateFolder';
+import CreateNote from './pages/Create/CreateNote';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Home from './pages/Home/Home';
 import Note from './pages/Note/Note';
@@ -32,20 +35,25 @@ function App () {
               <Route path="/login" element={<PageWrapper background={true}><Auth /></PageWrapper>} />
               <Route path="/signup" element={<PageWrapper background={true}><Auth /></PageWrapper>} />
             </>
-          ): (
-            <>
-              <Route path="/login" element={<Navigate to="/" />} />
-              <Route path="/signup" element={<Navigate to="/" />} />
-              <Route path="/" element={<AuthenticatedPageWrapper><Dashboard /></AuthenticatedPageWrapper>}/>
-              <Route path="/dashboard" element={<AuthenticatedPageWrapper><Dashboard /></AuthenticatedPageWrapper>}/>
-              <Route path="/explore" element={<AuthenticatedPageWrapper>explore page</AuthenticatedPageWrapper>} />
-              <Route path="/create" element={<AuthenticatedPageWrapper>create page</AuthenticatedPageWrapper>} />
-              <Route path="/profile" element={<AuthenticatedPageWrapper><Profile /></AuthenticatedPageWrapper>} />
-              <Route path="/help" element={<AuthenticatedPageWrapper>help page</AuthenticatedPageWrapper>} />
-              <Route path="/notes/:id" element={<AuthenticatedPageWrapper><Note /></AuthenticatedPageWrapper>} />
-              <Route path="/folder-overview/:id" element={<AuthenticatedPageWrapper><Dashboard /> </AuthenticatedPageWrapper>} />
-              <Route path="/note-overview/:id" element={<AuthenticatedPageWrapper><Dashboard /> </AuthenticatedPageWrapper>} />
-            </>
+          ) : (
+              <>
+                <Route path="/login" element={<Navigate to="/" />} />
+                <Route path="/signup" element={<Navigate to="/" />} />
+
+                <Route path="/" element={<AuthenticatedPageWrapper><Dashboard /></AuthenticatedPageWrapper>}/>
+                <Route path="/dashboard" element={<AuthenticatedPageWrapper><Dashboard /></AuthenticatedPageWrapper>}/>
+                <Route path="/notes/:id" element={<AuthenticatedPageWrapper><Note /></AuthenticatedPageWrapper>} />
+                <Route path="/folder-overview/:id" element={<AuthenticatedPageWrapper><Dashboard /> </AuthenticatedPageWrapper>} />
+                <Route path="/note-overview/:id" element={<AuthenticatedPageWrapper><Dashboard /> </AuthenticatedPageWrapper>} />
+
+                <Route path="/create" element={<AuthenticatedPageWrapper><Create /></AuthenticatedPageWrapper>} />
+                <Route path="/create/note" element={<AuthenticatedPageWrapper><CreateNote /></AuthenticatedPageWrapper>} />
+                <Route path="/create/folder" element={<AuthenticatedPageWrapper><CreateFolder /></AuthenticatedPageWrapper>} />
+
+                <Route path="/explore" element={<AuthenticatedPageWrapper>explore page</AuthenticatedPageWrapper>} />
+                <Route path="/profile" element={<AuthenticatedPageWrapper><Profile /></AuthenticatedPageWrapper>} />
+                <Route path="/help" element={<AuthenticatedPageWrapper>help page</AuthenticatedPageWrapper>} />
+              </>
           )}
         </Routes>
         <Toast />
