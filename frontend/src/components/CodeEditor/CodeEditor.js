@@ -12,8 +12,8 @@ const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
     setValue(code)
   }, [code])
 
-  const onChange = React.useCallback((val, viewUpdate) => {
-    setValue(val);
+  const onChange = React.useCallback((value, viewUpdate) => {
+    setValue(value);
   }, []);
 
   const themeDemo = EditorView.baseTheme({
@@ -21,6 +21,9 @@ const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
       backgroundColor: '#6d4da6',
       mixBlendMode: 'multiply',
     },
+    '&dark .cm-activeLineGutter': {
+      color: '#030014',
+    }
     });
 
   const classNameExt = classname({
@@ -50,13 +53,15 @@ const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
             gutterBackground: '#100d1e',
             gutterForeground: '#bf97ff70',
             selection: '#ffffff1a',
-            selectionMatch: '#ffffff1a'
+            selectionMatch: '#ffffff1a',
+            lineHighlight: '#6d4da6'
           },
         })}
         editable={editable}
         basicSetup={{
           drawSelection: false,
           highlightActiveLine: false,
+          highlightActiveLineGutter: false,
           foldGutter: false,
         }}
       />

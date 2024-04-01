@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import icons from '../../assets/icons';
 import { getUserFolders } from '../../reducers/foldersReducer';
 
-const FoldersSelect = ({ type }) => {
+const FoldersSelect = ({ id, name, onChange, onBlur, value }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,10 +15,16 @@ const FoldersSelect = ({ type }) => {
 
   return (
     <Select
+      id={id}
+      name={name}
+      defaultSelectedKeys={["none"]}
+      disallowEmptySelection={true}
+      onChange={onChange}
+      onBlur={onBlur}
       variant="bordered"
-      size='xs'
+      size='md'
       radius='sm'
-      placeholder='Link to a folder'
+      label='Folder'
       className="w-[14%] ml-3 text-foreground-dark"
       startContent={icons.folder}
       classNames={{
@@ -30,8 +36,11 @@ const FoldersSelect = ({ type }) => {
           "data-[focus=true]:border-primary-light",
           "data-[hover=true]:hover:drop-shadow-sm"
         ],
+        label: [
+          "font-thin"
+        ],
         value: [
-          "text-foreground-dark"
+          "text-primary-light"
         ],
       }}
       listboxProps={{
@@ -52,18 +61,18 @@ const FoldersSelect = ({ type }) => {
       }}
     >
       <SelectSection showDivider>
-        <SelectItem>
-          None
-        </SelectItem>
+        <SelectItem
+          key={"none"}
+          value={"none"}
+          title="None"
+        />
       </SelectSection>
       {userFolders?.map(item => (
         <SelectItem
           key={item.id}
-          value={item.title}
-          startContent={item.startContent}
-        >
-          {item.title}
-        </SelectItem>
+          value={item.id}
+          title={item.title}
+        />
       ))}
     </Select>
   )

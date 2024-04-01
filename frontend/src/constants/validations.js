@@ -18,3 +18,12 @@ export const confirmPasswordValidation = yup
   .string()
   .required("This field is required")
   .oneOf([yup.ref("password"), null], "Passwords do not match");
+
+export const noteTitleValidation = yup
+  .string()
+
+export const noteDescriptionValidation = yup
+  .string()
+
+export const noteFolderValidation = yup
+  .string()

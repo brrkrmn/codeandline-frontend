@@ -2,7 +2,7 @@ import { Input } from '@nextui-org/react';
 import React from 'react';
 import { inputProps } from './constants';
 
-function TextInput ({ type, id, name, onChange, onBlur, value, errorMessage, className }) {
+function TextInput ({ type, id, name, onChange, onBlur, value, className }) {
   return (
     <Input
       id={id}
@@ -22,6 +22,7 @@ function TextInput ({ type, id, name, onChange, onBlur, value, errorMessage, cla
           'placeholder:text-foreground-placeholder',
         ],
         inputWrapper: [
+          'h-fit',
           'border-none',
           '!cursor-text'
         ],
