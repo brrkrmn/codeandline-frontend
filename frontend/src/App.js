@@ -1,5 +1,5 @@
 import { NextUIProvider } from '@nextui-org/react';
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import Toast from './components/Toast/Toast';
@@ -14,10 +14,19 @@ import Home from './pages/Home/Home';
 import Note from './pages/Note/Note';
 import Profile from './pages/Profile/Profile';
 import { initializeLogin } from './reducers/userReducer';
+import EditorContext from './utils/EditorContext';
 
 function App () {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [editor, setEditor] = useState({
+    lineNumber: Number,
+    content: [],
+  })
+
+  const editorValue = useMemo(() => {
+    return { editor, setEditor };
+  }, [editor])
 
   useEffect(() => {
     dispatch(initializeLogin())
@@ -27,37 +36,39 @@ function App () {
 
   return (
     <NextUIProvider navigate={navigate}>
-      <main className='dark text-foreground bg-background min-h-screen'>
-        <Routes>
-          {!currentUser ? (
-            <>
-              <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
-              <Route path="/login" element={<PageWrapper background={true}><Auth /></PageWrapper>} />
-              <Route path="/signup" element={<PageWrapper background={true}><Auth /></PageWrapper>} />
-            </>
-          ) : (
+      <EditorContext.Provider value={editorValue}>
+        <main className='dark text-foreground bg-background min-h-screen'>
+          <Routes>
+            {!currentUser ? (
               <>
-                <Route path="/login" element={<Navigate to="/" />} />
-                <Route path="/signup" element={<Navigate to="/" />} />
-
-                <Route path="/" element={<AuthenticatedPageWrapper><Dashboard /></AuthenticatedPageWrapper>}/>
-                <Route path="/dashboard" element={<AuthenticatedPageWrapper><Dashboard /></AuthenticatedPageWrapper>}/>
-                <Route path="/notes/:id" element={<AuthenticatedPageWrapper><Note /></AuthenticatedPageWrapper>} />
-                <Route path="/folder-overview/:id" element={<AuthenticatedPageWrapper><Dashboard /> </AuthenticatedPageWrapper>} />
-                <Route path="/note-overview/:id" element={<AuthenticatedPageWrapper><Dashboard /> </AuthenticatedPageWrapper>} />
-
-                <Route path="/create" element={<AuthenticatedPageWrapper><Create /></AuthenticatedPageWrapper>} />
-                <Route path="/create/note" element={<AuthenticatedPageWrapper><CreateNote /></AuthenticatedPageWrapper>} />
-                <Route path="/create/folder" element={<AuthenticatedPageWrapper><CreateFolder /></AuthenticatedPageWrapper>} />
-
-                <Route path="/explore" element={<AuthenticatedPageWrapper>explore page</AuthenticatedPageWrapper>} />
-                <Route path="/profile" element={<AuthenticatedPageWrapper><Profile /></AuthenticatedPageWrapper>} />
-                <Route path="/help" element={<AuthenticatedPageWrapper>help page</AuthenticatedPageWrapper>} />
+                <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
+                <Route path="/login" element={<PageWrapper background={true}><Auth /></PageWrapper>} />
+                <Route path="/signup" element={<PageWrapper background={true}><Auth /></PageWrapper>} />
               </>
-          )}
-        </Routes>
-        <Toast />
-      </main>
+            ) : (
+                <>
+                  <Route path="/login" element={<Navigate to="/" />} />
+                  <Route path="/signup" element={<Navigate to="/" />} />
+
+                  <Route path="/" element={<AuthenticatedPageWrapper><Dashboard /></AuthenticatedPageWrapper>}/>
+                  <Route path="/dashboard" element={<AuthenticatedPageWrapper><Dashboard /></AuthenticatedPageWrapper>}/>
+                  <Route path="/notes/:id" element={<AuthenticatedPageWrapper><Note /></AuthenticatedPageWrapper>} />
+                  <Route path="/folder-overview/:id" element={<AuthenticatedPageWrapper><Dashboard /> </AuthenticatedPageWrapper>} />
+                  <Route path="/note-overview/:id" element={<AuthenticatedPageWrapper><Dashboard /> </AuthenticatedPageWrapper>} />
+
+                  <Route path="/create" element={<AuthenticatedPageWrapper><Create /></AuthenticatedPageWrapper>} />
+                  <Route path="/create/note" element={<AuthenticatedPageWrapper><CreateNote /></AuthenticatedPageWrapper>} />
+                  <Route path="/create/folder" element={<AuthenticatedPageWrapper><CreateFolder /></AuthenticatedPageWrapper>} />
+
+                  <Route path="/explore" element={<AuthenticatedPageWrapper>explore page</AuthenticatedPageWrapper>} />
+                  <Route path="/profile" element={<AuthenticatedPageWrapper><Profile /></AuthenticatedPageWrapper>} />
+                  <Route path="/help" element={<AuthenticatedPageWrapper>help page</AuthenticatedPageWrapper>} />
+                </>
+            )}
+          </Routes>
+          <Toast />
+        </main>
+      </EditorContext.Provider>
     </NextUIProvider>
   );
 }

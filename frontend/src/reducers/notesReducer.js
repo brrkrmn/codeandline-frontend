@@ -39,6 +39,7 @@ export const getUserNotes = () => {
 }
 
 export const createNote = (data) => {
+  console.log(data)
   return async dispatch => {
     const note = await noteService.createNote(data);
     dispatch(addNote(note));

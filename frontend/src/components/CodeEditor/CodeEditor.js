@@ -2,11 +2,13 @@ import { javascript } from '@codemirror/lang-javascript';
 import { classname } from '@uiw/codemirror-extensions-classname';
 import { tokyoNightInit } from '@uiw/codemirror-theme-tokyo-night';
 import CodeMirror, { EditorView } from '@uiw/react-codemirror';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
+import EditorContext from '../../utils/EditorContext';
 import { editorStyles } from './constants';
 
 const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
   const [value, setValue] = React.useState(code);
+  const { setEditor } = useContext(EditorContext);
 
   useEffect(() => {
     setValue(code)
@@ -14,6 +16,10 @@ const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
 
   const onChange = React.useCallback((value, viewUpdate) => {
     setValue(value);
+    setEditor({
+      lineNumber: viewUpdate.state.doc.lines,
+      content: value,
+    })
   }, []);
 
   const themeDemo = EditorView.baseTheme({

@@ -6,15 +6,29 @@ import CustomButton from '../../components/CustomButton/CustomButton';
 import FoldersSelect from '../../components/FoldersSelect/FoldersSelect';
 import TextInput from '../../components/TextInput/TextInput';
 import { textInputTypes } from '../../components/TextInput/constants';
+// import { H5 } from '../../components/Typography';
+import { useContext, useEffect } from 'react';
+import AddNoteInput from '../../components/AddNoteInput/AddNoteInput';
+import EditorContext from '../../utils/EditorContext';
 import { createNoteInitialValues, createNoteSchema } from './Create.constants';
 
 const CreateNote = () => {
   const dispatch = useDispatch();
+  const { editor } = useContext(EditorContext);
   const formik = useFormik({
     initialValues: createNoteInitialValues,
     validationSchema: createNoteSchema,
-    onSubmit: values => {console.log(values)}
+    onSubmit: values => {
+      console.log(values)
+    }
   })
+
+  useEffect(() => {
+    const onEditorChange = async () => {
+      await formik.setFieldValue("code", editor.content)
+    }
+    onEditorChange()
+  }, [editor])
 
   return (
     <form
@@ -56,6 +70,8 @@ const CreateNote = () => {
           />
         </div>
         <div className="basis-1/2">
+          {/* <H5>Add Notes</H5> */}
+          <AddNoteInput />
         </div>
       </div>
       <div className="mt-10 flex items-center justify-center">

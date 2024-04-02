@@ -27,3 +27,6 @@ export const noteDescriptionValidation = yup
 
 export const noteFolderValidation = yup
   .string()
+
+export const noteCodeValidation = yup
+  .string()
