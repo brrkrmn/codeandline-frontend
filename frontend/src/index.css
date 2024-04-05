@@ -42,6 +42,9 @@ p, h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(333deg, rgba(33,17,137,1) 0%, rgba(0,0,0,1) 31%, rgba(0,0,0,1) 63%, rgba(70,34,101,1) 89%);
 }
 
+
+/* React Quill Styles */
+
 .quill > .ql-container > .ql-editor {
   font-size: 20px;
   color: #cecdd1
@@ -58,4 +61,11 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .quill > .ql-container > .ql-editor a::before {
   top: 30px;
+}
+
+
+/* NextUI Styles */
+
+.next-accordion-item section {
+  overflow-y: visible !important
 }

@@ -1,4 +1,4 @@
-import { Divider } from '@nextui-org/react';
+import { Accordion, AccordionItem, Divider } from '@nextui-org/react';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useContext, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -81,15 +81,36 @@ const CreateNote = () => {
                       Add Entries {icons.create}
                     </CustomButton>
                   </div>
-                  {formik.values.entries.map((entry, index) => (
-                    <div key={index} className="flex flex-col gap-2 w-full overflow-visible	">
-                      <TextEditor
-                        name={`entries[${index}].content`}
-                        value={formik.values.entries[index].content}
-                        onChange={value => formik.setFieldValue(`entries[${index}].content`, value)}
+                  <Accordion
+                    selectionMode='single'
+                    variant="splitted"
+                  >
+                    {formik.values.entries.map((entry, index) => (
+                      <AccordionItem
+                        key={index}
+                        aria-label={`Entry ${index + 1}`}
+                        title={`Entry ${index + 1}`}
+                        subtitle="Selected lines: 1,3,5"
+                        className="next-accordion-item transition"
+                        classNames={{
+                          base: [
+                            "group-[.is-splitted]:shadow-none",
+                            "group-[.is-splitted]:bg-bg",
+                            "border-1",
+                            "border-border",
+                            "transiton",
+                            "hover:bg-content1",
+                          ],
+                        }}
+                      >
+                        <TextEditor
+                          name={`entries[${index}].content`}
+                          value={formik.values.entries[index].content}
+                          onChange={value => formik.setFieldValue(`entries[${index}].content`, value)}
                         />
-                    </div>
-                  ))}
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
                 </div>
               )}
             />
