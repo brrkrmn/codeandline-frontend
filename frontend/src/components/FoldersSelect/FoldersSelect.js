@@ -25,7 +25,7 @@ const FoldersSelect = ({ id, name, onChange, onBlur, value }) => {
       size='md'
       radius='sm'
       label='Folder'
-      className="w-[14%] ml-3 text-foreground-dark"
+      className="w-[14%] ml-3 mt-4 text-foreground-dark"
       startContent={icons.folder}
       classNames={{
         trigger: [

@@ -41,3 +41,21 @@ p, h1, h2, h3, h4, h5, h6 {
 .gradientBackground {
   background: linear-gradient(333deg, rgba(33,17,137,1) 0%, rgba(0,0,0,1) 31%, rgba(0,0,0,1) 63%, rgba(70,34,101,1) 89%);
 }
+
+.quill > .ql-container > .ql-editor {
+  font-size: 20px;
+  color: #cecdd1
+}
+
+.quill > .ql-container > .ql-editor > h1 {
+  font-size: 36px;
+}
+
+.quill > .ql-container > .ql-editor.ql-blank::before {
+  font-size: 20px;
+  color: #8f8ca199;
+}
+
+.quill > .ql-container > .ql-editor a::before {
+  top: 30px;
+}

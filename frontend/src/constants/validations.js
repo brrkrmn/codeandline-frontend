@@ -30,3 +30,12 @@ export const noteFolderValidation = yup
 
 export const noteCodeValidation = yup
   .string()
+
+export const noteEntriesValidation = yup
+  .array()
+  .of(
+    yup.object().shape({
+      lineNumbers: yup.array().of(yup.number()),
+      content: yup.string()
+    })
+  )

@@ -8,7 +8,7 @@ import { editorStyles } from './constants';
 
 const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
   const [value, setValue] = React.useState(code);
-  const { setEditor } = useContext(EditorContext);
+  const { editor, setEditor } = useContext(EditorContext);
 
   useEffect(() => {
     setValue(code)
@@ -29,6 +29,24 @@ const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
     },
     '&dark .cm-activeLineGutter': {
       color: '#030014',
+    },
+    '&dark .cm-lineSelectGutter': {
+      paddingLeft: '10px',
+    },
+    '&dark .cm-gutters': {
+      display: 'flex',
+      flexDirection: 'row-reverse',
+      paddingRight: '10px'
+    },
+    '&dark .selectableLine:hover': {
+      backgroundColor: '#6d4da6',
+      cursor: 'pointer',
+      borderRadius: '8px'
+    },
+    '&dark .selectedLine': {
+      backgroundColor: '#6d4da6',
+      cursor: 'pointer',
+      borderRadius: '8px'
     }
     });
 

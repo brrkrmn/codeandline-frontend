@@ -1,11 +1,12 @@
 import * as yup from "yup";
-import { noteCodeValidation, noteDescriptionValidation, noteFolderValidation, noteTitleValidation } from "../../constants/validations";
+import { noteCodeValidation, noteDescriptionValidation, noteEntriesValidation, noteFolderValidation, noteTitleValidation } from "../../constants/validations";
 
 export const createNoteSchema = yup.object().shape({
   title: noteTitleValidation,
   description: noteDescriptionValidation,
   folder: noteFolderValidation,
   code: noteCodeValidation,
+  entries: noteEntriesValidation,
 })
 
 export const createNoteInitialValues = {
@@ -13,4 +14,5 @@ export const createNoteInitialValues = {
   description: '',
   folder: '',
   code: '',
+  entries: [],
 }
