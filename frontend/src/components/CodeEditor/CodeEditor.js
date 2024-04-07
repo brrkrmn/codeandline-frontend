@@ -9,10 +9,19 @@ import { editorStyles } from './constants';
 const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
   const [value, setValue] = React.useState(code);
   const { editor, setEditor } = useContext(EditorContext);
+  const [isEditable, setIsEditable] = React.useState(editable)
 
   useEffect(() => {
     setValue(code)
   }, [code])
+
+  useEffect(() => {
+    if (editor.selectableLines) {
+      setIsEditable(false)
+    } else {
+      setIsEditable(true)
+    }
+  }, [editor.selectableLines])
 
   const onChange = React.useCallback((value, viewUpdate) => {
     setValue(value);
@@ -23,6 +32,9 @@ const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
   }, []);
 
   const themeDemo = EditorView.baseTheme({
+    '&dark .cm-line': {
+      borderRadius: '8px'
+    },
     '&dark .highlighted': {
       backgroundColor: '#6d4da6',
       mixBlendMode: 'multiply',
@@ -41,12 +53,10 @@ const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
     '&dark .selectableLine:hover': {
       backgroundColor: '#6d4da6',
       cursor: 'pointer',
-      borderRadius: '8px'
     },
     '&dark .selectedLine': {
       backgroundColor: '#6d4da6',
       cursor: 'pointer',
-      borderRadius: '8px'
     }
     });
 
@@ -55,8 +65,18 @@ const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
       if (highlightedLine?.includes(lineNumber)) {
         return 'highlighted';
       }
+      if (editor.selectableLines) {
+        return 'selectableLine';
+      }
     }
   })
+
+  const onStatistics = (data) => {
+    if (editor.selectableLines) {
+      console.log(data.line.number)
+
+    }
+  }
 
   return (
     <div className={`${editorStyles[size]} border-1 border-divider text-[12px] w-full h-full bg-content1 rounded-lg p-2`}>
@@ -66,6 +86,7 @@ const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
         maxHeight={size === "screen" ? '80vh' : 'auto'}
         placeholder={"Paste your code here!"}
         onChange={onChange}
+        onStatistics={onStatistics}
         extensions={[
           javascript({ jsx: true }),
           classNameExt,
@@ -81,7 +102,7 @@ const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
             lineHighlight: '#6d4da6'
           },
         })}
-        editable={editable}
+        editable={isEditable}
         basicSetup={{
           drawSelection: false,
           highlightActiveLine: false,

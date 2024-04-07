@@ -1,7 +1,6 @@
 import { Accordion, AccordionItem, Divider } from '@nextui-org/react';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
-import { useContext, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useContext, useEffect, useState } from 'react';
 import icons from '../../assets/icons';
 import CodeEditor from '../../components/CodeEditor';
 import CustomButton from '../../components/CustomButton/CustomButton';
@@ -14,7 +13,7 @@ import EditorContext from '../../utils/EditorContext';
 import { createNoteInitialValues, createNoteSchema } from './Create.constants';
 
 const CreateNote = () => {
-  const dispatch = useDispatch();
+  const [selectedEntry, setSelectedEntry] = useState('')
   const { editor, setEditor } = useContext(EditorContext);
   const formik = useFormik({
     initialValues: createNoteInitialValues,
@@ -30,6 +29,18 @@ const CreateNote = () => {
     }
     onEditorChange()
   }, [editor])
+
+  useEffect(() => {
+    if (selectedEntry.size === 1) {
+      setEditor({
+        selectableLines: true
+      })
+    } else {
+      setEditor({
+        selectableLines: false
+      })
+    }
+  }, [selectedEntry])
 
   return (
     <FormikProvider value={formik}>
@@ -67,6 +78,7 @@ const CreateNote = () => {
             {/* <H5>Code</H5>
             <Divider className="my-6" /> */}
             <CodeEditor
+              // highlightedLine={[1]}
               editable={true}
               size='screen'
             />
@@ -80,7 +92,7 @@ const CreateNote = () => {
                     <H5>Entries</H5>
                     <CustomButton
                       type="button"
-                      onPress={() => arrayHelpers.push({ content: '' })}
+                      onPress={() => arrayHelpers.push({ lineNumbers: [], content: '' })}
                       className="min-w-fit px-3"
                     >
                       {icons.create}
@@ -88,15 +100,17 @@ const CreateNote = () => {
                   </div>
                   <Divider />
                   <Accordion
+                    selectedKeys={selectedEntry}
+                    onSelectionChange={setSelectedEntry}
                     selectionMode='single'
                     variant="splitted"
                   >
                     {formik.values.entries.map((entry, index) => (
                       <AccordionItem
-                        key={index}
+                        key={index + 1}
                         aria-label={`Entry ${index + 1}`}
                         title={`Entry ${index + 1}`}
-                        subtitle="Selected lines: 1,3,5"
+                        subtitle={`Selected lines: ${formik.values.entries[index].lineNumbers}`}
                         className="next-accordion-item transition hover:border-primary-light"
                         classNames={{
                           base: [

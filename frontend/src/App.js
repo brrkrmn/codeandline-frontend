@@ -22,7 +22,7 @@ function App () {
   const [editor, setEditor] = useState({
     lineNumber: Number,
     content: [],
-    selectableLines: true,
+    selectableLines: false,
     selectedLines: []
   })
 
