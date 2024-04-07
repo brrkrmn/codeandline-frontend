@@ -9,6 +9,7 @@ import FoldersSelect from '../../components/FoldersSelect/FoldersSelect';
 import TextEditor from '../../components/TextEditor/TextEditor';
 import TextInput from '../../components/TextInput/TextInput';
 import { textInputTypes } from '../../components/TextInput/constants';
+import { H5 } from '../../components/Typography';
 import EditorContext from '../../utils/EditorContext';
 import { createNoteInitialValues, createNoteSchema } from './Create.constants';
 
@@ -63,6 +64,8 @@ const CreateNote = () => {
         <Divider className="my-6" />
         <div className="flex flex-col laptop:flex-row items-start justify-center gap-10 px-2">
           <div className="w-full overflow-hidden basis-1/2">
+            {/* <H5>Code</H5>
+            <Divider className="my-6" /> */}
             <CodeEditor
               editable={true}
               size='screen'
@@ -73,14 +76,17 @@ const CreateNote = () => {
               name="entries"
               render={(arrayHelpers) => (
                 <div className="flex flex-col items-center gap-4">
-                  <div>
+                  <div className="w-full flex items-center gap-4">
+                    <H5>Entries</H5>
                     <CustomButton
                       type="button"
                       onPress={() => arrayHelpers.push({ content: '' })}
+                      className="min-w-fit px-3"
                     >
-                      Add Entries {icons.create}
+                      {icons.create}
                     </CustomButton>
                   </div>
+                  <Divider />
                   <Accordion
                     selectionMode='single'
                     variant="splitted"
@@ -91,15 +97,14 @@ const CreateNote = () => {
                         aria-label={`Entry ${index + 1}`}
                         title={`Entry ${index + 1}`}
                         subtitle="Selected lines: 1,3,5"
-                        className="next-accordion-item transition"
+                        className="next-accordion-item transition hover:border-primary-light"
                         classNames={{
                           base: [
                             "group-[.is-splitted]:shadow-none",
-                            "group-[.is-splitted]:bg-bg",
-                            "border-1",
-                            "border-border",
-                            "transiton",
-                            "hover:bg-content1",
+                            "group-[.is-splitted]:bg-background",
+                            "border-[.1px]",
+                            "border-divider",
+                            "transition"
                           ],
                         }}
                       >
@@ -116,7 +121,6 @@ const CreateNote = () => {
             />
           </div>
         </div>
-        <Divider className="my-6" />
         <div className="mt-10 flex items-center justify-end">
           <CustomButton type="submit" className="border-primary-dark">
             Create Note

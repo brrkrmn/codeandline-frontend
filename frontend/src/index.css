@@ -47,11 +47,15 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .quill > .ql-container > .ql-editor {
   font-size: 20px;
-  color: #cecdd1
+  color: #efedfdb3
 }
 
 .quill > .ql-container > .ql-editor > h1 {
-  font-size: 36px;
+  font-size: 34px;
+}
+
+.quill > .ql-container > .ql-editor > h2 {
+  font-size: 28px;
 }
 
 .quill > .ql-container > .ql-editor.ql-blank::before {
