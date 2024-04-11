@@ -118,7 +118,18 @@ const CreateNote = () => {
                         key={index}
                         aria-label={`Entry ${index + 1}`}
                         title={`Entry ${index + 1}`}
-                        subtitle={`Selected lines: ${formik.values.entries[index].lineNumbers}`}
+                        subtitle={
+                          <div className="flex items-center gap-2">
+                            Selected lines:
+                            <div className="flex items-center gap-2">
+                              {formik.values.entries[index].lineNumbers.map(number => (
+                                <div className="border-1 border-divider w-8 text-lg font-light flex items-center justify-center rounded-md text-primary-light border-primary-dark">
+                                  {number}
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        }
                         className="next-accordion-item transition hover:border-primary-light"
                         classNames={{
                           base: [
