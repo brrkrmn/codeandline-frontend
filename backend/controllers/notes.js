@@ -29,7 +29,7 @@ notesRouter.post('/', folderExtractor, async (request, response) => {
   const note = new Note({
     title: body.title,
     description: body.description,
-    folder: body.folder,
+    folder: body.folder || null,
     code: body.code,
     entries: body.entries,
     public: body.public,
@@ -41,8 +41,10 @@ notesRouter.post('/', folderExtractor, async (request, response) => {
   user.notes = user.notes.concat(savedNote._id)
   await user.save()
 
-  folder.notes = folder.notes.concat(savedNote._id)
-  await folder.save()
+  if (folder) {
+    folder.notes = folder.notes.concat(savedNote._id)
+    await folder.save()
+  }
 
   response.status(201).json(savedNote)
 })

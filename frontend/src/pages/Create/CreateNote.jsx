@@ -1,6 +1,7 @@
 import { Accordion, AccordionItem, Divider } from '@nextui-org/react';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useContext, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import icons from '../../assets/icons';
 import CodeEditor from '../../components/CodeEditor';
 import CustomButton from '../../components/CustomButton/CustomButton';
@@ -9,17 +10,19 @@ import TextEditor from '../../components/TextEditor/TextEditor';
 import TextInput from '../../components/TextInput/TextInput';
 import { textInputTypes } from '../../components/TextInput/constants';
 import { H5 } from '../../components/Typography';
+import { createNote } from '../../reducers/notesReducer';
 import EditorContext from '../../utils/EditorContext';
 import { createNoteInitialValues, createNoteSchema } from './Create.constants';
 
 const CreateNote = () => {
+  const dispatch = useDispatch();
   const [selectedEntry, setSelectedEntry] = useState('')
   const { editor, setEditor } = useContext(EditorContext);
   const formik = useFormik({
     initialValues: createNoteInitialValues,
     validationSchema: createNoteSchema,
     onSubmit: values => {
-      console.log(values)
+      dispatch(createNote(values))
     }
   })
 
