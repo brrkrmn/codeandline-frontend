@@ -28,15 +28,24 @@ const CreateNote = () => {
       await formik.setFieldValue("code", editor.content)
     }
     onEditorChange()
-  }, [editor])
+  }, [editor.content])
+
+  useEffect(() => {
+    const onSelectedLineChange = async () => {
+      await formik.setFieldValue(`entries[${selectedEntry.currentKey}].lineNumbers`, editor.selectedLines)
+    }
+    onSelectedLineChange()
+  }, [editor.selectedLines])
 
   useEffect(() => {
     if (selectedEntry.size === 1) {
       setEditor({
+        ...editor,
         selectableLines: true
       })
     } else {
       setEditor({
+        ...editor,
         selectableLines: false
       })
     }
@@ -75,10 +84,8 @@ const CreateNote = () => {
         <Divider className="my-6" />
         <div className="flex flex-col laptop:flex-row items-start justify-center gap-10 px-2">
           <div className="w-full overflow-hidden basis-1/2">
-            {/* <H5>Code</H5>
-            <Divider className="my-6" /> */}
             <CodeEditor
-              // highlightedLine={[1]}
+              highlightedLine={editor.selectedLines}
               editable={true}
               size='screen'
             />
@@ -107,7 +114,7 @@ const CreateNote = () => {
                   >
                     {formik.values.entries.map((entry, index) => (
                       <AccordionItem
-                        key={index + 1}
+                        key={index}
                         aria-label={`Entry ${index + 1}`}
                         title={`Entry ${index + 1}`}
                         subtitle={`Selected lines: ${formik.values.entries[index].lineNumbers}`}

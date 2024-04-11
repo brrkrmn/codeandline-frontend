@@ -1,5 +1,6 @@
 import { javascript } from '@codemirror/lang-javascript';
 import { classname } from '@uiw/codemirror-extensions-classname';
+import * as events from '@uiw/codemirror-extensions-events';
 import { tokyoNightInit } from '@uiw/codemirror-theme-tokyo-night';
 import CodeMirror, { EditorView } from '@uiw/react-codemirror';
 import React, { useContext, useEffect } from 'react';
@@ -26,7 +27,7 @@ const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
   const onChange = React.useCallback((value, viewUpdate) => {
     setValue(value);
     setEditor({
-      lineNumber: viewUpdate.state.doc.lines,
+      ...editor,
       content: value,
     })
   }, []);
@@ -38,6 +39,7 @@ const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
     '&dark .highlighted': {
       backgroundColor: '#6d4da6',
       mixBlendMode: 'multiply',
+      cursor: 'pointer',
     },
     '&dark .cm-activeLineGutter': {
       color: '#030014',
@@ -54,29 +56,49 @@ const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
       backgroundColor: '#6d4da6',
       cursor: 'pointer',
     },
-    '&dark .selectedLine': {
-      backgroundColor: '#6d4da6',
-      cursor: 'pointer',
-    }
     });
 
   const classNameExt = classname({
     add: (lineNumber) => {
+      const numberClass = `lineNumber-${lineNumber}`
+      if (editor.selectableLines && highlightedLine?.includes(lineNumber)) {
+        return `${numberClass} selectableLine highlighted`;
+      }
       if (highlightedLine?.includes(lineNumber)) {
-        return 'highlighted';
+        return `${numberClass} highlighted`;
       }
       if (editor.selectableLines) {
-        return 'selectableLine';
+        return `${numberClass} selectableLine`;
       }
     }
   })
 
-  const onStatistics = (data) => {
-    if (editor.selectableLines) {
-      console.log(data.line.number)
-
-    }
-  }
+  const eventExt = events.dom({
+    click: (evn) => {
+      let clickedLine
+      if (evn.target.classList.contains('selectableLine')) {
+        clickedLine = evn.target
+      }
+      else if (evn.target.cmView.parent?.dom.classList.contains('selectableLine')) {
+        clickedLine = evn.target.cmView.parent.dom
+      }
+      const clickedLineNumber = Number(clickedLine?.classList[0].split('-')[1])
+      if (clickedLineNumber) {
+        if (editor.selectedLines.includes(clickedLineNumber)) {
+          const numbers = editor.selectedLines.filter(line => line !== clickedLineNumber)
+          setEditor({
+            ...editor,
+            selectedLines: numbers
+          })
+        } else {
+          setEditor({
+            ...editor,
+            selectedLines: [...editor.selectedLines, clickedLineNumber]
+          })
+        }
+      }
+    },
+  });
 
   return (
     <div className={`${editorStyles[size]} border-1 border-divider text-[12px] w-full h-full bg-content1 rounded-lg p-2`}>
@@ -86,11 +108,11 @@ const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
         maxHeight={size === "screen" ? '80vh' : 'auto'}
         placeholder={"Paste your code here!"}
         onChange={onChange}
-        onStatistics={onStatistics}
         extensions={[
           javascript({ jsx: true }),
           classNameExt,
-          themeDemo
+          themeDemo,
+          eventExt,
         ]}
         theme={tokyoNightInit({
           settings: {

@@ -20,7 +20,6 @@ function App () {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [editor, setEditor] = useState({
-    lineNumber: Number,
     content: [],
     selectableLines: false,
     selectedLines: []
