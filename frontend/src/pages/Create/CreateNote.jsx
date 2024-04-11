@@ -41,7 +41,8 @@ const CreateNote = () => {
     if (selectedEntry.size === 1) {
       setEditor({
         ...editor,
-        selectableLines: true
+        selectableLines: true,
+        selectedLines: formik.values.entries[selectedEntry.currentKey].lineNumbers
       })
     } else {
       setEditor({
