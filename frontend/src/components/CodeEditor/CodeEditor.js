@@ -4,23 +4,29 @@ import * as events from '@uiw/codemirror-extensions-events';
 import { tokyoNightInit } from '@uiw/codemirror-theme-tokyo-night';
 import CodeMirror, { EditorView } from '@uiw/react-codemirror';
 import React, { useContext, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import EditorContext from '../../utils/EditorContext';
-import { editorStyles } from './constants';
+import { editorSize, editorStyles } from './constants';
 
-const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
+const CodeEditor = ({ size, code, highlightedLine }) => {
   const [value, setValue] = React.useState(code);
   const { editor, setEditor } = useContext(EditorContext);
-  const [isEditable, setIsEditable] = React.useState(editable)
+  const [isEditable, setIsEditable] = React.useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     setValue(code)
   }, [code])
 
   useEffect(() => {
-    if (editor.selectableLines) {
-      setIsEditable(false)
+    if (location.pathname === '/create/note') {
+      if (editor.selectableLines) {
+        setIsEditable(false)
+      } else {
+        setIsEditable(true)
+      }
     } else {
-      setIsEditable(true)
+      setIsEditable(false)
     }
   }, [editor.selectableLines])
 
@@ -32,7 +38,7 @@ const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
     })
   }, []);
 
-  const themeDemo = EditorView.baseTheme({
+  const themeExt = EditorView.baseTheme({
     '&dark .cm-line': {
       borderRadius: '8px'
     },
@@ -75,26 +81,31 @@ const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
 
   const eventExt = events.dom({
     click: (evn) => {
-      let clickedLine
-      if (evn.target.classList.contains('selectableLine')) {
-        clickedLine = evn.target
-      }
-      else if (evn.target.cmView.parent?.dom.classList.contains('selectableLine')) {
-        clickedLine = evn.target.cmView.parent.dom
-      }
-      const clickedLineNumber = Number(clickedLine?.classList[0].split('-')[1])
-      if (clickedLineNumber) {
-        if (editor.selectedLines.includes(clickedLineNumber)) {
-          const numbers = editor.selectedLines.filter(line => line !== clickedLineNumber)
-          setEditor({
-            ...editor,
-            selectedLines: numbers
-          })
-        } else {
-          setEditor({
-            ...editor,
-            selectedLines: [...editor.selectedLines, clickedLineNumber]
-          })
+      if (location.pathname === '/create/note' && editor.selectableLines) {
+        let clickedLine
+
+        if (evn.target.classList.contains('selectableLine')) {
+          clickedLine = evn.target
+        }
+        else if (evn.target.cmView?.parent.dom.classList.contains('selectableLine')) {
+          clickedLine = evn.target.cmView.parent.dom
+        }
+
+        const clickedLineNumber = Number(clickedLine?.classList[0].split('-')[1])
+
+        if (clickedLineNumber) {
+          if (editor.selectedLines.includes(clickedLineNumber)) {
+            const numbers = editor.selectedLines.filter(line => line !== clickedLineNumber)
+            setEditor({
+              ...editor,
+              selectedLines: numbers
+            })
+          } else {
+            setEditor({
+              ...editor,
+              selectedLines: [...editor.selectedLines, clickedLineNumber]
+            })
+          }
         }
       }
     },
@@ -104,14 +115,14 @@ const CodeEditor = ({ size, code, highlightedLine, editable = false }) => {
     <div className={`${editorStyles[size]} border-1 border-divider text-[12px] w-full h-full bg-content1 rounded-lg p-2`}>
       <CodeMirror
         value={value}
-        minHeight={size === "screen" ? '300px' : 'auto'}
-        maxHeight={size === "screen" ? '80vh' : 'auto'}
+        minHeight={size === editorSize.screen ? '300px' : 'auto'}
+        maxHeight={size === editorSize.screen ? '80vh' : 'auto'}
         placeholder={"Paste your code here!"}
         onChange={onChange}
         extensions={[
           javascript({ jsx: true }),
           classNameExt,
-          themeDemo,
+          themeExt,
           eventExt,
         ]}
         theme={tokyoNightInit({

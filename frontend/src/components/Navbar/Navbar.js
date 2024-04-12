@@ -9,7 +9,7 @@ const Navbar = () => {
   const [tab, setTab] = useState('');
 
   useEffect(() => {
-    if (location.pathname === linkProps.create.path) {
+    if (location.pathname.includes(linkProps.create.path)) {
       setTab(linkProps.create.name)
     } else if (location.pathname === linkProps.explore.path) {
       setTab(linkProps.explore.name)
