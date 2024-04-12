@@ -90,7 +90,6 @@ const CreateNote = () => {
           <div className="w-full overflow-hidden basis-1/2">
             <CodeEditor
               highlightedLine={editor.selectedLines}
-              editable={true}
               size='screen'
             />
           </div>
