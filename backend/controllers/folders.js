@@ -27,6 +27,7 @@ foldersRouter.post('/', async (request, response) => {
   const folder = new Folder({
     title: body.title,
     description: body.description,
+    notes: body.notes || null,
     public: body.public,
     user: user._id
   })

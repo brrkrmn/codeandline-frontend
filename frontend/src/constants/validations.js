@@ -39,3 +39,12 @@ export const noteEntriesValidation = yup
       content: yup.string()
     })
   )
+
+export const folderTitleValidation = yup
+  .string()
+
+export const folderDescriptionValidation = yup
+  .string()
+
+export const folderNotesValidation = yup
+  .array()

@@ -3,7 +3,6 @@ import React from 'react';
 import { H2, P } from '../Typography';
 
 const EntryList = ({ entries, code }) => {
-  console.log(entries)
   return (
     <div>
       <H2 className="font-thin mb-6 text-primary-light">Notes</H2>

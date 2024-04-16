@@ -1,6 +1,7 @@
 export const textInputTypes = {
   title: 'title',
-  description: 'description',
+  noteDescription: 'noteDescription',
+  folderDescription: 'folderDescription',
 }
 
 export const inputProps = {
@@ -8,8 +9,12 @@ export const inputProps = {
     placeholder: 'Untitled',
     styles: 'text-[44px] font-bold',
   },
-  description: {
+  noteDescription: {
     placeholder: 'Describe your note!',
+    styles: 'text-lg',
+  },
+  folderDescription: {
+    placeholder: 'Describe your folder!',
     styles: 'text-lg',
   }
 }

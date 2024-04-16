@@ -2,6 +2,7 @@ import { Accordion, AccordionItem, Divider } from '@nextui-org/react';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useContext, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import icons from '../../assets/icons';
 import CodeEditor from '../../components/CodeEditor';
 import CustomButton from '../../components/CustomButton/CustomButton';
@@ -16,15 +17,21 @@ import { createNoteInitialValues, createNoteSchema } from './Create.constants';
 
 const CreateNote = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [selectedEntry, setSelectedEntry] = useState('')
   const { editor, setEditor } = useContext(EditorContext);
   const formik = useFormik({
     initialValues: createNoteInitialValues,
     validationSchema: createNoteSchema,
     onSubmit: values => {
-      dispatch(createNote(values))
+      onSubmit(values)
     }
   })
+
+  const onSubmit = (values) => {
+    dispatch(createNote(values))
+    navigate('/')
+  }
 
   useEffect(() => {
     const onEditorChange = async () => {
@@ -72,7 +79,7 @@ const CreateNote = () => {
         <TextInput
           id="description"
           name="description"
-          type={textInputTypes.description}
+          type={textInputTypes.noteDescription}
           className="line-clamp-2"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
