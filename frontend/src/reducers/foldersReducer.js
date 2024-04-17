@@ -11,6 +11,10 @@ export const foldersSlice = createSlice({
     },
     addFolder: (state, action) => {
       state.push(action.payload)
+    },
+    removeFolder: (state, action) => {
+      const id = action.payload
+      return state.filter(folder => folder.id !== id)
     }
   }
 })
@@ -42,5 +46,12 @@ export const createFolder = (data) => {
   }
 }
 
-export const { setFolders, addFolder } = foldersSlice.actions;
+export const deleteFolder = (id) => {
+  return async dispatch => {
+    await folderService.deleteFolder(id)
+    dispatch(removeFolder(id))
+  }
+}
+
+export const { setFolders, addFolder, removeFolder } = foldersSlice.actions;
 export default foldersSlice.reducer;

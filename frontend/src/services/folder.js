@@ -18,6 +18,10 @@ const folderService = {
   createFolder: async (folder) => {
     const response = await axios.post(baseUrl, folder, config)
     return response.data
+  },
+  deleteFolder: async (id) => {
+    const response = await axios.delete(`${baseUrl}/${id}`, config)
+    return response.data
   }
 }
 

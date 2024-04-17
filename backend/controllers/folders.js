@@ -39,4 +39,16 @@ foldersRouter.post('/', async (request, response) => {
   response.status(201).json(savedFolder)
 })
 
+foldersRouter.delete('/:id', async (request, response) => {
+  const user = request.user
+  const folder = await Folder.findById(request.params.id).populate('user')
+
+  if (folder.user.id !== user.id) {
+    return response.status(403).json({ error: 'Unauthorized' })
+  }
+
+  await Folder.findByIdAndRemove(request.params.id)
+  response.status(204).end()
+})
+
 module.exports = foldersRouter

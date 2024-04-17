@@ -58,7 +58,7 @@ module.exports = {
             light: '#bf97ff',
             background: '#f3eeff0f'
           },
-          danger: '#ff5530',
+          danger: '#f31260',
           content1: '#100d1e'
         },
         layout: {
