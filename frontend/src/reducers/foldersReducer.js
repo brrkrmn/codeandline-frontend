@@ -49,7 +49,7 @@ export const createFolder = (data) => {
 export const deleteFolder = (id) => {
   return async dispatch => {
     await folderService.deleteFolder(id)
-    dispatch(removeFolder(id))
+      .then(dispatch(removeFolder(id)))
   }
 }
 

@@ -18,6 +18,10 @@ const noteService = {
   createNote: async (note) => {
     const response = await axios.post(baseUrl, note, config)
     return response.data
+  },
+  deleteNote: async (id) => {
+    const response = await axios.delete(`${baseUrl}/${id}`, config)
+    return response.data
   }
 }
 

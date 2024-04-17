@@ -12,7 +12,10 @@ export const notesSlice = createSlice({
     addNote: (state, action) => {
       state.push(action.payload)
     },
-
+    removeNote: (state, action) => {
+      const id = action.payload
+      return state.filter(note => note.id !== id)
+    }
   }
 })
 
@@ -45,5 +48,12 @@ export const createNote = (data) => {
   }
 }
 
-export const { setNotes, addNote } = notesSlice.actions;
+export const deleteNote = (id) => {
+  return async dispatch => {
+    await noteService.deleteNote(id)
+      .then(dispatch(removeNote(id)))
+  }
+}
+
+export const { setNotes, addNote, removeNote } = notesSlice.actions;
 export default notesSlice.reducer;

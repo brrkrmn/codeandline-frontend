@@ -6,6 +6,7 @@ import noteService from '../../services/note';
 import formatDate from '../../utils/formatDate';
 import CodeEditor from '../CodeEditor';
 import EntryList from '../EntryList/EntryList';
+import NoteDropdown from '../NoteDropdown/NoteDropdown';
 import { H1, P } from '../Typography';
 
 const NoteOverview = () => {
@@ -27,7 +28,10 @@ const NoteOverview = () => {
   if (note) {
     return (
       <div>
-        <H1 className="text-primary-light font-thin mb-4">{note.title}</H1>
+        <div className="flex justify-between">
+          <H1 className="text-primary-light font-thin mb-4">{note.title}</H1>
+          <NoteDropdown />
+        </div>
         <P
           className="my-4"
           variant="big"
