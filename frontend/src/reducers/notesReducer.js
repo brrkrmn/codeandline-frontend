@@ -15,6 +15,10 @@ export const notesSlice = createSlice({
     removeNote: (state, action) => {
       const id = action.payload
       return state.filter(note => note.id !== id)
+    },
+    updateNote: (state, action) => {
+      const id = action.payload.id
+      return state.map(note => note.id !== id ? note : action.payload)
     }
   }
 })
@@ -55,5 +59,12 @@ export const deleteNote = (id) => {
   }
 }
 
-export const { setNotes, addNote, removeNote } = notesSlice.actions;
+export const editNote = (id, note) => {
+  return async dispatch => {
+    const updatedNote = await noteService.updateNote(id, note)
+    dispatch(updateNote(updatedNote))
+  }
+}
+
+export const { setNotes, addNote, removeNote, updateNote } = notesSlice.actions;
 export default notesSlice.reducer;

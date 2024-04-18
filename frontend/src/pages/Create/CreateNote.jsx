@@ -11,7 +11,7 @@ import TextEditor from '../../components/TextEditor/TextEditor';
 import TextInput from '../../components/TextInput/TextInput';
 import { textInputTypes } from '../../components/TextInput/constants';
 import { H5 } from '../../components/Typography';
-import { createNote } from '../../reducers/notesReducer';
+import { createNote, editNote } from '../../reducers/notesReducer';
 import noteService from '../../services/note';
 import EditorContext from '../../utils/EditorContext';
 import { createNoteInitialValues, createNoteSchema } from './Create.constants';
@@ -33,7 +33,8 @@ const CreateNote = () => {
       dispatch(createNote(values))
       navigate('/')
     } else if (window.location.pathname.split('/')[1] === 'edit-note') {
-      console.log(values)
+      dispatch(editNote(id, values))
+      navigate(`/note-overview/${id}`)
     }
   }
 

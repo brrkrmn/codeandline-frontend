@@ -92,7 +92,7 @@ const CodeEditor = ({ size, code, highlightedLine }) => {
 
   const eventExt = events.dom({
     click: (evn) => {
-      if (location.pathname === '/create/note' && editor.selectableLines) {
+      if ((location.pathname === '/create/note' && editor.selectableLines) || (location.pathname.split('/')[1] === 'edit-note' && editor.selectableLines)) {
         let clickedLine
 
         if (evn.target.classList.contains('selectableLine')) {

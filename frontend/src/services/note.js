@@ -22,6 +22,10 @@ const noteService = {
   deleteNote: async (id) => {
     const response = await axios.delete(`${baseUrl}/${id}`, config)
     return response.data
+  },
+  updateNote: async (id, note) => {
+    const response = await axios.put(`${baseUrl}/${id}`, note, config)
+    return response.data
   }
 }
 
