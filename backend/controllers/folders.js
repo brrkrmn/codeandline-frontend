@@ -51,4 +51,22 @@ foldersRouter.delete('/:id', async (request, response) => {
   response.status(204).end()
 })
 
+foldersRouter.put('/:id', async (request, response) => {
+  const body = request.body
+  const user = request.user
+  const folder = await Folder.findById(request.params.id).populate('user')
+
+  if (folder.user.id !== user.id) {
+    return response.status(403).json({ error: 'Unauthorized' })
+  }
+
+  const newFolder = {
+    title: body.title,
+    description: body.description
+  }
+
+  const updatedFolder = await Folder.findByIdAndUpdate(request.params.id, newFolder, { new: true })
+  response.json(updatedFolder)
+})
+
 module.exports = foldersRouter
