@@ -12,6 +12,7 @@ const NoteDropdown = () => {
   const navigate = useNavigate();
 
   const onEdit = () => {
+    navigate(`/edit-note/${id}`);
   }
 
   const onDelete = () => {

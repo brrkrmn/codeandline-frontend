@@ -2,7 +2,7 @@ import { Accordion, AccordionItem, Divider } from '@nextui-org/react';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useContext, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import icons from '../../assets/icons';
 import CodeEditor from '../../components/CodeEditor';
 import CustomButton from '../../components/CustomButton/CustomButton';
@@ -12,26 +12,57 @@ import TextInput from '../../components/TextInput/TextInput';
 import { textInputTypes } from '../../components/TextInput/constants';
 import { H5 } from '../../components/Typography';
 import { createNote } from '../../reducers/notesReducer';
+import noteService from '../../services/note';
 import EditorContext from '../../utils/EditorContext';
 import { createNoteInitialValues, createNoteSchema } from './Create.constants';
 
 const CreateNote = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const id = useParams().id;
   const [selectedEntry, setSelectedEntry] = useState('')
   const { editor, setEditor } = useContext(EditorContext);
   const formik = useFormik({
     initialValues: createNoteInitialValues,
     validationSchema: createNoteSchema,
-    onSubmit: values => {
-      onSubmit(values)
-    }
+    onSubmit: values => {onSubmit(values)}
   })
 
   const onSubmit = (values) => {
-    dispatch(createNote(values))
-    navigate('/')
+    if (window.location.pathname === '/create/note') {
+      dispatch(createNote(values))
+      navigate('/')
+    } else if (window.location.pathname.split('/')[1] === 'edit-note') {
+      console.log(values)
+    }
   }
+
+  useEffect(() => {
+    if (window.location.pathname.split('/')[1] === 'edit-note') {
+      const fetchNote = async (id) => {
+        try {
+          const note = await noteService.getNote(id);
+          await formik.setValues(note)
+          setEditor({
+            ...editor,
+            content: note.code
+          })
+        } catch (error) {
+          return error
+        }
+      }
+      fetchNote(id);
+    } else {
+      const resetEditor = async () => {
+        await formik.setFieldValue("code", '')
+        setEditor({
+          ...editor,
+          content: '',
+        })
+      }
+      resetEditor();
+    }
+  }, [id])
 
   useEffect(() => {
     const onEditorChange = async () => {
@@ -98,6 +129,7 @@ const CreateNote = () => {
             <CodeEditor
               highlightedLine={editor.selectedLines}
               size='screen'
+              code={formik.values.code}
             />
           </div>
           <div className="w-full h-full basis-1/2 justify-between">
@@ -165,7 +197,7 @@ const CreateNote = () => {
         </div>
         <div className="mt-10 flex items-center justify-end">
           <CustomButton type="submit" className="border-primary-dark">
-            Create Note
+            {window.location.pathname === '/create/note' ? 'Create Note' : 'Save Changes'}
           </CustomButton>
         </div>
       </form>

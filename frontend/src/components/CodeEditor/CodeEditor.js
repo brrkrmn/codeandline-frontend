@@ -15,11 +15,22 @@ const CodeEditor = ({ size, code, highlightedLine }) => {
   const location = useLocation();
 
   useEffect(() => {
+    const resetEditor = async () => {
+      await setEditor({
+        content: '',
+        selectableLines: false,
+        selectedLines: [],
+      })
+    }
+    resetEditor()
+  }, [location])
+
+  useEffect(() => {
     setValue(code)
   }, [code])
 
   useEffect(() => {
-    if (location.pathname === '/create/note') {
+    if (location.pathname === '/create/note' || location.pathname.split('/')[1] === 'edit-note') {
       if (editor.selectableLines) {
         setIsEditable(false)
       } else {

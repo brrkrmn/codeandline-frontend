@@ -20,7 +20,7 @@ function App () {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [editor, setEditor] = useState({
-    content: [],
+    content: '',
     selectableLines: false,
     selectedLines: []
   })
@@ -61,6 +61,7 @@ function App () {
                   <Route path="/create/note" element={<AuthenticatedPageWrapper><CreateNote /></AuthenticatedPageWrapper>} />
                   <Route path="/create/folder" element={<AuthenticatedPageWrapper><CreateFolder /></AuthenticatedPageWrapper>} />
 
+                  <Route path="/edit-note/:id" element={<AuthenticatedPageWrapper><CreateNote /></AuthenticatedPageWrapper>} />
                   <Route path="/edit-folder/:id" element={<AuthenticatedPageWrapper><CreateFolder /></AuthenticatedPageWrapper>} />
 
                   <Route path="/explore" element={<AuthenticatedPageWrapper>explore page</AuthenticatedPageWrapper>} />
