@@ -61,4 +61,32 @@ notesRouter.delete('/:id', async (request, response) => {
   response.status(204).end()
 })
 
+notesRouter.put('/:id', folderExtractor, async (request, response) => {
+  const body = request.body
+  const user = request.user
+  const folder = request.folder
+  const note = await Note.findById(request.params.id).populate('user')
+
+  if (note.user.id !== user.id) {
+    return response.status(403).json({ error: 'Unauthorized' })
+  }
+
+  const newNote = {
+    title: body.title,
+    description: body.description,
+    folder: body.folder,
+    code: body.code,
+    entries: body.entries,
+  }
+
+  const updatedNote = await Note.findByIdAndUpdate(request.params.id, newNote, { new: true })
+
+  if (folder) {
+    folder.notes = folder.notes.concat(updatedNote._id)
+    await folder.save()
+  }
+
+  response.json(updatedNote)
+})
+
 module.exports = notesRouter
