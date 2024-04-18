@@ -12,6 +12,7 @@ const FolderDropdown = () => {
   const navigate = useNavigate();
 
   const onEdit = () => {
+    navigate(`/edit-folder/${id}`)
   }
 
   const onDelete = () => {

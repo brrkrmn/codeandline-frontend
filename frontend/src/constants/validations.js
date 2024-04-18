@@ -45,6 +45,3 @@ export const folderTitleValidation = yup
 
 export const folderDescriptionValidation = yup
   .string()
-
-export const folderNotesValidation = yup
-  .array()

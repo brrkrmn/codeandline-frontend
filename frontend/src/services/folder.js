@@ -22,6 +22,10 @@ const folderService = {
   deleteFolder: async (id) => {
     const response = await axios.delete(`${baseUrl}/${id}`, config)
     return response.data
+  },
+  updateFolder: async (id, folder) => {
+    const response = await axios.put(`${baseUrl}/${id}`, folder, config)
+    return response.data
   }
 }
 
