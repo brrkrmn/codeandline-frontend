@@ -39,7 +39,7 @@ const FolderOverview = () => {
         </P>
         <div className="flex items-center justify-between mt-auto gap-2">
           <P variant="small" className="*:text-primary-light flex text-primary-light items-center mt-auto justify-center text-lg font-medium border-1 border-primary-dark rounded-lg h-8 w-10 shadow-small">
-          {folder.notes.length}
+          {folder.notes?.length}
           {icons.note}
           </P>
           <P variant="small" className="font-medium text-primary-light ml-auto">{formatDate(folder.date)}</P>
@@ -49,7 +49,7 @@ const FolderOverview = () => {
         <div>
           <H5 className="font-thin mb-6 text-primary-light">Notes</H5>
           <div className="flex gap-4 flex-wrap">
-            {folder.notes.map(note => (
+            {folder.notes?.map(note => (
               <NoteCard note={note} />
             ))}
           </div>
