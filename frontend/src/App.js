@@ -51,11 +51,11 @@ function App () {
                   <Route path="/login" element={<Navigate to="/" />} />
                   <Route path="/signup" element={<Navigate to="/" />} />
 
-                  <Route path="/" element={<AuthenticatedPageWrapper><Dashboard /></AuthenticatedPageWrapper>}/>
-                  <Route path="/dashboard" element={<AuthenticatedPageWrapper><Dashboard /></AuthenticatedPageWrapper>}/>
+                  <Route path="/" element={<AuthenticatedPageWrapper><Dashboard key={window.location.pathname} /></AuthenticatedPageWrapper>}/>
+                  <Route path="/dashboard" element={<AuthenticatedPageWrapper><Dashboard key={window.location.pathname} /></AuthenticatedPageWrapper>}/>
                   <Route path="/notes/:id" element={<AuthenticatedPageWrapper><Note /></AuthenticatedPageWrapper>} />
-                  <Route path="/folder-overview/:id" element={<AuthenticatedPageWrapper><Dashboard /> </AuthenticatedPageWrapper>} />
-                  <Route path="/note-overview/:id" element={<AuthenticatedPageWrapper><Dashboard /> </AuthenticatedPageWrapper>} />
+                  <Route path="/folder-overview/:id" element={<AuthenticatedPageWrapper><Dashboard key={window.location.pathname} /> </AuthenticatedPageWrapper>} />
+                  <Route path="/note-overview/:id" element={<AuthenticatedPageWrapper><Dashboard key={window.location.pathname} /> </AuthenticatedPageWrapper>} />
 
                   <Route path="/create" element={<AuthenticatedPageWrapper><Create /></AuthenticatedPageWrapper>} />
                   <Route path="/create/note" element={<AuthenticatedPageWrapper><CreateNote /></AuthenticatedPageWrapper>} />
