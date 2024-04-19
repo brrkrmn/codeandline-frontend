@@ -48,6 +48,10 @@ foldersRouter.delete('/:id', async (request, response) => {
   }
 
   await Folder.findByIdAndRemove(request.params.id)
+
+  user.folders = user.folders.pull(folder.id)
+  await user.save()
+
   response.status(204).end()
 })
 

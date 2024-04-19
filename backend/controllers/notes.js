@@ -58,6 +58,10 @@ notesRouter.delete('/:id', async (request, response) => {
   }
 
   await Note.findByIdAndRemove(request.params.id)
+
+  user.notes = user.notes.pull(note.id)
+  await user.save()
+
   response.status(204).end()
 })
 
