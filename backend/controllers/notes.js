@@ -1,6 +1,7 @@
 const notesRouter = require('express').Router()
 const Note = require('../models/note')
 const { folderExtractor } = require('../utils/middleware')
+const Folder = require('../models/folder')
 
 notesRouter.get('/', async (request, response) => {
   const user = request.user
@@ -51,7 +52,7 @@ notesRouter.post('/', folderExtractor, async (request, response) => {
 
 notesRouter.delete('/:id', async (request, response) => {
   const user = request.user
-  const note = await Note.findById(request.params.id).populate('user')
+  const note = await Note.findById(request.params.id).populate('user').populate('folder')
 
   if (note.user.id !== user.id) {
     return response.status(403).json({ error: 'Unauthorized' })
@@ -61,6 +62,12 @@ notesRouter.delete('/:id', async (request, response) => {
 
   user.notes = user.notes.pull(note.id)
   await user.save()
+
+  if (note.folder) {
+    const folder = await Folder.findById(note.folder.id)
+    folder.notes = folder.notes.pull(note.id)
+    await folder.save()
+  }
 
   response.status(204).end()
 })
