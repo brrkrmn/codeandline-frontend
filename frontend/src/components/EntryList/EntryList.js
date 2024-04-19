@@ -14,7 +14,7 @@ const EntryList = ({ entries, code }) => {
                 <P>{index + 1}.</P>
                 <div className="flex flex-col gap-2 overflow-hidden">
                   {entry.lineNumbers.map(lineNumber => (
-                    <Code className="overflow-hidden text-ellipsis border-1 border-border">{code.split('\n')[lineNumber]}</Code>
+                    <Code className="overflow-hidden text-ellipsis border-1 border-border">{code.split('\n')[lineNumber - 1]}</Code>
                   ))}
                 </div>
               </div>
