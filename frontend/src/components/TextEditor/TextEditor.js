@@ -2,13 +2,14 @@ import React from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css';
 
-const TextEditor = ({ name, value, onChange }) => {
+const TextEditor = ({ name, value, onChange, readOnly = false }) => {
   return (
     <ReactQuill
       theme='bubble'
       name={name}
       value={value}
       onChange={onChange}
+      readOnly={readOnly}
       placeholder='Write something ... Select text to access to the toolbar.'
       className="max-h-[70vh] rounded-lg"
       modules={{

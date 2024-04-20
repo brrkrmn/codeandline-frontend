@@ -5,7 +5,7 @@ import icons from "../../assets/icons";
 import CodeEditor from "../../components/CodeEditor/CodeEditor";
 import { editorSize } from "../../components/CodeEditor/constants";
 import CustomButton from "../../components/CustomButton";
-import { P } from "../../components/Typography/Typography";
+import TextEditor from '../../components/TextEditor';
 import useNoteTracker from "../../hooks/useNoteTracker";
 import noteService from "../../services/note";
 
@@ -56,9 +56,7 @@ const Note = () => {
             {icons.arrowUp}
           </CustomButton>
           <ScrollShadow size={80} >
-            <P variant="big" className="max-h-[600px] mb-2 text-lg tablet:text-2xl">
-              {note.entries[currentNote]?.content}
-            </P>
+            <TextEditor readOnly={true} value={note.entries[currentNote]?.content} />
           </ScrollShadow>
           <CustomButton
             disabled={currentNote === note.entries.length - 1 ? true : false}

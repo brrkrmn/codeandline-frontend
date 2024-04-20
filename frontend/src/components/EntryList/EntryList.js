@@ -18,7 +18,7 @@ const EntryList = ({ entries, code }) => {
                   ))}
                 </div>
               </div>
-              <P className="basis-1/2 overflow-hidden text-ellipsis">{entry.content}</P>
+              <P className="basis-1/2 overflow-hidden text-ellipsis">{entry.content.replace(/(<([^>]+)>)/gi, "")}</P>
             </div>
             <Divider className="my-6" />
           </div>
