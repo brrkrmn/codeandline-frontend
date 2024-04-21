@@ -122,7 +122,7 @@ const CreateNote = () => {
           name="folder"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.selectFolder}
+          value={formik.values.folder}
         />
         <Divider className="my-6" />
         <div className="flex flex-col laptop:flex-row items-start justify-center gap-10 px-2">
