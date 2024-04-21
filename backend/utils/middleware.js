@@ -61,6 +61,8 @@ const folderExtractor = async (request, response, next) => {
   if (folderId) {
     const folder = await Folder.findById(folderId)
     request.folder = folder
+  } else {
+    request.folder = null
   }
   next()
 }

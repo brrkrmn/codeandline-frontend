@@ -17,7 +17,7 @@ const FoldersSelect = ({ id, name, onChange, onBlur, value }) => {
     <Select
       id={id}
       name={name}
-      defaultSelectedKeys={["none"]}
+      defaultSelectedKeys={[""]}
       disallowEmptySelection={true}
       onChange={onChange}
       onBlur={onBlur}
@@ -62,8 +62,8 @@ const FoldersSelect = ({ id, name, onChange, onBlur, value }) => {
     >
       <SelectSection showDivider>
         <SelectItem
-          key={"none"}
-          value={"none"}
+          key={""}
+          value={""}
           title="None"
         />
       </SelectSection>
