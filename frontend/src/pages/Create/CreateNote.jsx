@@ -126,7 +126,7 @@ const CreateNote = () => {
         />
         <Divider className="my-6" />
         <div className="flex flex-col laptop:flex-row items-start justify-center gap-10 px-2">
-          <div className="w-full overflow-hidden basis-1/2">
+          <div className="w-full overflow-hidden basis-1/2 sticky top-24">
             <CodeEditor
               highlightedLine={editor.selectedLines}
               size='screen'
@@ -172,7 +172,7 @@ const CreateNote = () => {
                             </div>
                           </div>
                         }
-                        className="next-accordion-item transition hover:border-primary-light"
+                        className="next-accordion-item transition hover:border-primary-light overflow-auto"
                         classNames={{
                           base: [
                             "group-[.is-splitted]:shadow-none",
