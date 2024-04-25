@@ -5,9 +5,9 @@ import CardSection from "../../components/CardSection/CardSection"
 import { cardSectionTypes } from "../../components/CardSection/constants"
 import FolderOverview from "../../components/FolderOverview/FolderOverview"
 import MenuList from "../../components/MenuList/MenuList"
+import NoteOverview from "../../components/NoteOverview/NoteOverview"
 import { getUserFolders } from "../../reducers/foldersReducer"
 import { getUserNotes } from "../../reducers/notesReducer"
-import NoteOverview from "../../components/NoteOverview/NoteOverview"
 
 const Dashboard = () => {
   const dispatch = useDispatch();

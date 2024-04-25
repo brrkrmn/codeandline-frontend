@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import noteService from "../services/note";
 import formatDate from "../utils/formatDate";
+import { getUserFolders } from "./foldersReducer";
 
 export const notesSlice = createSlice({
   name: 'notes',
@@ -47,22 +48,25 @@ export const getUserNotes = () => {
 
 export const createNote = (data) => {
   return async dispatch => {
-    const note = await noteService.createNote(data);
-    dispatch(addNote(note));
+    await noteService.createNote(data);
+    dispatch(getUserNotes())
+    dispatch(getUserFolders())
   }
 }
 
 export const deleteNote = (id) => {
   return async dispatch => {
     await noteService.deleteNote(id)
-      .then(dispatch(removeNote(id)))
+    dispatch(getUserNotes())
+    dispatch(getUserFolders())
   }
 }
 
 export const editNote = (id, note) => {
   return async dispatch => {
-    const updatedNote = await noteService.updateNote(id, note)
-    dispatch(updateNote(updatedNote))
+    await noteService.updateNote(id, note)
+    dispatch(getUserNotes())
+    dispatch(getUserFolders())
   }
 }
 
