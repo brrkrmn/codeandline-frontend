@@ -1,5 +1,6 @@
 import { FaEdit, FaFolder, FaRegUser, FaTrash } from "react-icons/fa";
 import { FaArrowDown, FaArrowUp, FaEllipsisVertical } from "react-icons/fa6";
+import { FiPlay } from "react-icons/fi";
 import { GoDotFill } from "react-icons/go";
 import { HiOutlineHome } from "react-icons/hi";
 import { MdAddCircleOutline, MdLogout, MdOutlineAddPhotoAlternate, MdOutlineExplore, MdOutlinePublic, MdOutlinePublicOff } from "react-icons/md";
@@ -25,7 +26,8 @@ const icons = {
   folder: <FaFolder className="text-primary-dark text-xl transition" />,
   menu: <FaEllipsisVertical className="text-2xl text-primary-light" />,
   trash: <FaTrash className="text-lg text-foreground-dark" />,
-  edit: <FaEdit className="text-xl text-foreground-dark" />
+  edit: <FaEdit className="text-xl text-foreground-dark" />,
+  play: <FiPlay className="text-2xl text-primary-light" />
 }
 
 export default icons;
