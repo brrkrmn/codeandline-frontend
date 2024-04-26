@@ -187,6 +187,7 @@ const CreateNote = () => {
                           name={`entries[${index}].content`}
                           value={formik.values.entries[index].content}
                           onChange={value => formik.setFieldValue(`entries[${index}].content`, value)}
+                          className='max-h-[70vh]'
                         />
                       </AccordionItem>
                     ))}
