@@ -48,13 +48,19 @@ const Note = () => {
             code={note.code}
             highlightedLine={note.entries[currentNote]?.lineNumbers} />
         </div>
-        <div className="basis-1/2 pt-4 px-4 flex w-full h-full">
-          <ScrollShadow size={80} className="flex flex-col overscroll-none">
-            {note.entries.map((entry) => (
-              <TextEditor readOnly={true} value={entry.content} />
-            ))}
-          </ScrollShadow>
-        </div>
+        <ScrollShadow
+          size={80}
+          className="basis-1/2 mt-8 px-4 w-full max-h-[80vh] flex flex-col overscroll-none snap-y snap-mandatory"
+        >
+          {note.entries.map((entry, index) => (
+            <TextEditor
+              key={entry.id}
+              readOnly={true}
+              value={entry.content}
+              className="h-full mb-[70vh] py-10 snap-always snap-start"
+            />
+          ))}
+        </ScrollShadow>
       </div>
     )
   }
