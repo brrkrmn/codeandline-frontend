@@ -66,7 +66,7 @@ const Note = () => {
         </div>
         <ScrollShadow
           size={80}
-          className="basis-1/2 mt-8 px-4 w-full max-h-[80vh] flex flex-col overscroll-none snap-y snap-mandatory"
+          className="basis-1/2 mt-8 px-4 w-full max-h-[80vh] flex flex-col overscroll-none snap-y snap-mandatory hidden-scrollbar"
         >
           {note.entries.map((entry, index) => (
             <InView
