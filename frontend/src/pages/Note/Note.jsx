@@ -39,7 +39,7 @@ const Note = () => {
           value={((currentNote + 1)/ note.entries?.length) * 100}
           size="sm"
           radius="none"
-          className="absolute top-[88px]"
+          className="fixed top-[88px] z-30"
           classNames={{
             indicator: "bg-gradient-to-r from-background to-[#6d4da6] to-[40%] rounded-xl"
           }}
