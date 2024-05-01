@@ -51,7 +51,8 @@ const CodeEditor = ({ size, code, highlightedLine }) => {
 
   const themeExt = EditorView.baseTheme({
     '&dark .cm-line': {
-      borderRadius: '8px'
+      borderRadius: '8px',
+      transition: 'all 300ms ease'
     },
     '&dark .cm-scroller': {
       overscrollBehavior: 'none'
