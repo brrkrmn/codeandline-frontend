@@ -42,6 +42,10 @@ p, h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(333deg, rgba(33,17,137,1) 0%, rgba(0,0,0,1) 31%, rgba(0,0,0,1) 63%, rgba(70,34,101,1) 89%);
 }
 
+.gradientBackground2 {
+  background: linear-gradient(333deg, rgba(33,17,137,1) 0%, rgba(3, 0, 20, 1) 50%, rgba(3, 0, 20, 1) 50%, rgba(70,34,101,1) 90%);
+}
+
 
 /* React Quill Styles */
 

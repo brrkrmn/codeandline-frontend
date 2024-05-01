@@ -42,7 +42,7 @@ function App () {
           <Routes>
             {!currentUser ? (
               <>
-                <Route path="/" element={<PageWrapper footer={true}><Home /></PageWrapper>} />
+                <Route path="/" element={<PageWrapper footer={true} navbar={true}><Home /></PageWrapper>} />
                 <Route path="/login" element={<PageWrapper background={true}><Auth /></PageWrapper>} />
                 <Route path="/signup" element={<PageWrapper background={true}><Auth /></PageWrapper>} />
               </>
