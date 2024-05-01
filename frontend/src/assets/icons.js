@@ -1,9 +1,9 @@
-import { FaEdit, FaFolder, FaRegUser, FaTrash } from "react-icons/fa";
+import { FaEdit, FaFolder, FaGithub, FaRegUser, FaTrash, FaTwitter } from "react-icons/fa";
 import { FaArrowDown, FaArrowUp, FaEllipsisVertical } from "react-icons/fa6";
 import { FiPlay } from "react-icons/fi";
 import { GoDotFill } from "react-icons/go";
 import { HiOutlineHome } from "react-icons/hi";
-import { MdAddCircleOutline, MdLogout, MdOutlineAddPhotoAlternate, MdOutlineExplore, MdOutlinePublic, MdOutlinePublicOff } from "react-icons/md";
+import { MdAddCircleOutline, MdEmail, MdLogout, MdOutlineAddPhotoAlternate, MdOutlineExplore, MdOutlinePublic, MdOutlinePublicOff } from "react-icons/md";
 import { PiArrowBendDownRight, PiNotepad } from "react-icons/pi";
 import { TbEye, TbEyeClosed } from "react-icons/tb";
 
@@ -27,7 +27,10 @@ const icons = {
   menu: <FaEllipsisVertical className="text-2xl text-primary-light" />,
   trash: <FaTrash className="text-lg text-foreground-dark" />,
   edit: <FaEdit className="text-xl text-foreground-dark" />,
-  play: <FiPlay className="text-2xl text-primary-light" />
+  play: <FiPlay className="text-2xl text-primary-light" />,
+  github: <FaGithub className="text-xl text-foreground-dark" />,
+  twitter: <FaTwitter className="text-xl text-foreground-dark" />,
+  mail: <MdEmail className="text-xl text-foreground-dark" />
 }
 
 export default icons;
