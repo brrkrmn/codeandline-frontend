@@ -32,7 +32,7 @@ const Auth = () => {
   return (
     <Card
       isBlurred
-      className={`rounded-2xl py-6 px-4 md:px-7 shadow-small bg-gradient-to-br from-background via-transparent to-background border-1 border-border max-w-[500px] w-full min-h-[466px] h-[466px]`}
+      className={`my-auto rounded-2xl py-6 px-4 md:px-7 shadow-small bg-gradient-to-br from-background via-transparent to-background border-1 border-border max-w-[500px] w-full min-h-[466px] h-[466px]`}
     >
       <CardHeader className="flex justify-center">
         <Tabs

@@ -1,4 +1,4 @@
-import { FaEdit, FaFolder, FaGithub, FaRegUser, FaTrash, FaTwitter } from "react-icons/fa";
+import { FaChevronRight, FaEdit, FaFolder, FaGithub, FaRegUser, FaTrash, FaTwitter } from "react-icons/fa";
 import { FaArrowDown, FaArrowUp, FaEllipsisVertical } from "react-icons/fa6";
 import { FiPlay } from "react-icons/fi";
 import { GoDotFill } from "react-icons/go";
@@ -30,7 +30,8 @@ const icons = {
   play: <FiPlay className="text-2xl text-primary-light" />,
   github: <FaGithub className="text-xl text-foreground-dark" />,
   twitter: <FaTwitter className="text-xl text-foreground-dark" />,
-  mail: <MdEmail className="text-xl text-foreground-dark" />
+  mail: <MdEmail className="text-xl text-foreground-dark" />,
+  chevronRight: <FaChevronRight className="transition duration-1000 delay-100" />
 }
 
 export default icons;

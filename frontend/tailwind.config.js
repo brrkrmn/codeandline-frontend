@@ -12,17 +12,28 @@ module.exports = {
         'primary': ['DM Sans', 'ui-sans-serif', 'system-ui'],
       },
       animation: {
-        'gradient': 'gradient 10s ease infinite'
+        'gradient': 'gradient 10s ease infinite',
+        'slide': 'slideInFromTop 1s ease-in-out'
       },
       keyframes: {
         'gradient': {
           '0%, 100%': {
-            'background-size':'200% 200%',
-             'background-position': 'left center'
-         },
-         '50%': {
-            'background-size':'200% 200%',
-             'background-position': 'right center'
+            'background-size': '200% 200%',
+            'background-position': 'left center'
+          },
+          '50%': {
+            'background-size': '200% 200%',
+            'background-position': 'right center'
+          }
+        },
+        'slideInFromTop': {
+          '0%': {
+            'transform': 'translateY(-6%)',
+            'opacity': 0
+          },
+          '100%': {
+            'transform': 'translateY(0)',
+            'opacity': 1
           }
         }
       },

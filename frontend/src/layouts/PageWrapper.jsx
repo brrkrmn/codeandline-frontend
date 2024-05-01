@@ -5,7 +5,7 @@ const PageWrapper = ({ children, background = false, footer = false, navbar = fa
   return (
     <>
       {navbar && <Navbar />}
-      <div className={`${background && 'gradientBackground'} animate-gradient px-4 tablet:px-40 wide:px-96 h-screen flex justify-center items-center py-3 ${navbar && 'mt-24'} px-4 tablet:px-8`}>
+      <div className={`${background && 'gradientBackground'} animate-gradient px-4 tablet:px-40 wide:px-96 min-h-screen h-auto flex justify-center items-start py-3 ${navbar && 'mt-24'}`}>
         {children}
       </div>
       {footer && <Footer />}
