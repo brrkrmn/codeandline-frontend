@@ -8,11 +8,16 @@ const VideoPlayer = ({ src, enlargeOnView = false, className }) => {
   })
 
   useEffect(() => {
+    let timeoutId;
     if (inView) {
-      videoRef.current.play();
-    } else {
+      timeoutId = setTimeout(() => {
+        videoRef.current.play();
+      }, 100)
+    } else if (!inView) {
       videoRef.current.pause();
     }
+
+    return () => clearTimeout(timeoutId)
   }, [inView])
 
   return (
