@@ -6,27 +6,29 @@ import NoteCard from '../NoteCard';
 import { H2 } from '../Typography';
 import { cardSectionTitles, cardSectionTypes } from './constants';
 
-const CardSection = ({ type }) => {
+const CardSection = ({ type, noTitle = false }) => {
   const [items, setItems] = useState([]);
   const notes = useSelector((state) => state.notes)
   const folders = useSelector((state) => state.folders)
 
   useEffect(() => {
     if (type === cardSectionTypes.NOTES) {
-      setItems(notes)
+      setItems(notes.toReversed())
     } else if (type === cardSectionTypes.FOLDERS) {
-      setItems(folders)
+      setItems(folders.toReversed())
     }
   }, [type, folders, notes])
 
   return (
     <div>
-      <H2 className="text-foreground-primary font-thin mb-4">
-        {cardSectionTitles[type]}
-      </H2>
+      {!noTitle && (
+        <H2 className="text-foreground-primary font-thin mb-4">
+          {cardSectionTitles[type]}
+        </H2>
+      )}
       <ScrollShadow
         orientation='horizontal'
-        className="flex justify-start items-center gap-4"
+        className="flex justify-start items-center gap-4 hidden-scrollbar"
       >
         {items.map(item =>
           type === cardSectionTypes.NOTES ? (

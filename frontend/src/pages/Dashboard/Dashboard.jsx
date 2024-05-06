@@ -1,4 +1,4 @@
-import { Spacer } from "@nextui-org/react"
+import { Divider, Spacer } from "@nextui-org/react"
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import CardSection from "../../components/CardSection/CardSection"
@@ -32,7 +32,8 @@ const Dashboard = () => {
           ) : (
             <>
               <CardSection type={cardSectionTypes.NOTES} />
-              <CardSection type={cardSectionTypes.FOLDERS} />
+              <Divider />
+              <CardSection type={cardSectionTypes.FOLDERS} noTitle={true} />
             </>
           )
         }

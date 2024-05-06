@@ -4,6 +4,6 @@ export const cardSectionTypes = {
 }
 
 export const cardSectionTitles = {
-  notes: 'Notes',
+  notes: 'Recent',
   folders: 'Folders',
 }
