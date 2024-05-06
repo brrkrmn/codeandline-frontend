@@ -172,7 +172,7 @@ const CreateNote = () => {
                             </div>
                           </div>
                         }
-                        className="next-accordion-item transition hover:border-primary-light overflow-auto"
+                        className="next-accordion-item transition hover:border-primary-light"
                         classNames={{
                           base: [
                             "group-[.is-splitted]:shadow-none",
@@ -187,7 +187,6 @@ const CreateNote = () => {
                           name={`entries[${index}].content`}
                           value={formik.values.entries[index].content}
                           onChange={value => formik.setFieldValue(`entries[${index}].content`, value)}
-                          className='max-h-[70vh]'
                         />
                       </AccordionItem>
                     ))}
