@@ -71,6 +71,41 @@ p, h1, h2, h3, h4, h5, h6 {
   top: 30px;
 }
 
+.customQuill > .ql-toolbar {
+  border: 1px solid #ffffff1a;
+  border-radius: 8px;
+}
+
+.customQuill > .ql-toolbar > .ql-formats {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.customQuill > .ql-toolbar > .ql-formats > * {
+  width: 40px;
+  height: 40px;
+}
+
+.customQuill > .ql-container {
+  display: none;
+}
+
+.customQuill > .ql-toolbar .ql-stroke {
+  fill: none;
+  stroke: #bf97ff;
+}
+
+.customQuill > .ql-toolbar .ql-fill {
+  fill: #bf97ff;
+  stroke: none;
+}
+
+.customQuill > .ql-toolbar .ql-picker {
+  color: #bf97ff;
+}
 
 /* NextUI Styles */
 

@@ -26,7 +26,7 @@ const Navbar = () => {
   }, [location.pathname])
 
   return (
-    <div className="fixed w-full px-4 tablet:px-16 wide:px-60 z-20 top-0 h-[88px] backdrop-blur-lg border-b-1 border-border flex items-center justify-center">
+    <div className="fixed w-full px-4 tablet:px-16 wide:px-60 z-80 top-0 h-[88px] backdrop-blur-lg border-b-1 border-border flex items-center justify-center">
       <div className="flex items-center gap-4">
         <Link to="/" className="mr-auto border-1 border-primary-light shadow-medium rounded-md h-8 w-8 bg-background p-2 text-background hover:drop-shadow-md"></Link>
         <P variant="small" className="hidden laptop:block text-base font-medium text-foreground-primary">Code&Line</P>

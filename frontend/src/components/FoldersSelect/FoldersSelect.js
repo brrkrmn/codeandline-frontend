@@ -1,17 +1,28 @@
 import { Select, SelectItem, SelectSection } from '@nextui-org/react';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import icons from '../../assets/icons';
 import { getUserFolders } from '../../reducers/foldersReducer';
 
-const FoldersSelect = ({ id, name, onChange, onBlur, value }) => {
+const FoldersSelect = ({ id, name, onChange, onBlur, value, data }) => {
   const dispatch = useDispatch();
+  const [folders, setFolders] = useState();
 
   useEffect(() => {
-    dispatch(getUserFolders())
+    if (!data) {
+      dispatch(getUserFolders())
+    }
   }, [])
 
   const userFolders = useSelector((state) => state.folders)
+
+  useEffect(() => {
+    if (data) {
+      setFolders(data)
+    } else {
+      setFolders(userFolders)
+    }
+  }, [])
 
   return (
     <Select
@@ -67,7 +78,7 @@ const FoldersSelect = ({ id, name, onChange, onBlur, value }) => {
           title="None"
         />
       </SelectSection>
-      {userFolders?.map(item => (
+      {folders?.map(item => (
         <SelectItem
           key={item.id}
           value={item.id}

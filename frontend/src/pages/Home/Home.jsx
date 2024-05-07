@@ -5,6 +5,8 @@ import Video from '../../assets/videos/landing.mp4';
 import CustomButton from '../../components/CustomButton';
 import { H1, P } from '../../components/Typography';
 import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
+import FolderSection from './FolderSection';
+import ToolbarSection from './ToolbarSection';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -13,8 +15,10 @@ const Home = () => {
   })
 
   return (
-    <div className="w-full h-full flex flex-col justify-center items-start">
-      <div className="pt-[15vh] min-h-[350px] h-[70vh] flex flex-col items-center gap-4">
+    <div
+      className="w-full h-[100%] flex flex-col justify-center items-start"
+    >
+      <div className="z-30 pt-[15vh] min-h-[350px] h-[70vh] flex flex-col items-center gap-4">
         <H1 className="animate-slide text-7xl text-center text-transparent tracking-wide bg-clip-text bg-gradient-to-br from-foreground-dark to-[#F7F8F8]">
           Transform your Programming Notes with Code&Line
         </H1>
@@ -30,7 +34,7 @@ const Home = () => {
       </div>
       <div
         ref={videoRef}
-        className="flex flex-col items-center justify-center"
+        className="z-30 flex flex-col items-center justify-center"
       >
         <VideoPlayer
           src={Video}
@@ -41,9 +45,12 @@ const Home = () => {
           variant="big"
           className={`transition delay-700 duration-1000 pt-10 -translate-y-20 opacity-0 ${videoInView && 'translate-y-0 opacity-100'}`}
         >
-          Comprehensive and organized code documentation
+          Comprehensive and detailed code documentation
         </P>
       </div>
+      <FolderSection />
+      <ToolbarSection />
+      <div className="h-screen"></div>
     </div>
   )
 };

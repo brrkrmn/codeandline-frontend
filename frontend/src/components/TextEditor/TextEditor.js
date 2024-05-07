@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css';
+import 'react-quill/dist/quill.snow.css';
 
-const TextEditor = ({ name, value, onChange, readOnly = false, className }) => {
+const TextEditor = ({ name, value, onChange, readOnly = false, className, snow = false }) => {
   return (
     <ReactQuill
-      theme='bubble'
+      theme={snow ? 'snow' : 'bubble'}
       name={name}
       value={value}
       onChange={onChange}

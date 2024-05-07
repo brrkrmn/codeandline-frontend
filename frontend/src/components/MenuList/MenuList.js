@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import icons from "../../assets/icons";
 import { menuItemStyles, selectedItemStyle } from "./constants";
 
-const MenuList = () => {
+const MenuList = ({ data }) => {
   const id = useParams().id
   const notes = useSelector((state) => state.notes)
   const folders = useSelector((state) => state.folders)
@@ -12,7 +12,7 @@ const MenuList = () => {
   const noteItem = (note) => {
     return (
       <Link
-        to={`/note-overview/${note.id}`}
+        to={!data && `/note-overview/${note.id}`}
         className={`${menuItemStyles} ${note.id === id && selectedItemStyle}`}
       >
         {icons.arrowDownRight}
@@ -25,7 +25,7 @@ const MenuList = () => {
     return (
       <>
         <Link
-          to={`/folder-overview/${folder.id}`}
+          to={!data && `/folder-overview/${folder.id}`}
           className={`${menuItemStyles} ${folder.id === id && selectedItemStyle}`}
         >
           {icons.folder}
@@ -41,17 +41,22 @@ const MenuList = () => {
   return (
     <ScrollShadow
       hideScrollBar
-      className="tablet:fixed pl-6 tablet:pl-0 max-h-[600px] pb-14"
+      className={`${ data ? 'text-sm w-fit h-[300px]' : 'tablet:fixed pl-6 tablet:pl-0 max-h-[600px] pb-14'}`}
     >
       <p className="text-md text-foreground-dark mb-4 pt-4">Notes</p>
-      <div className="flex flex-col gap-2 mb-4 w-[250px] text-foreground-dark">
-        {notes
+      <div className={`flex flex-col gap-2 mb-4 ${data ? 'w-fit' : 'w-[250px]'} text-foreground-dark`}>
+        {data ? data.notes
+          .filter(note => note.folder === null)
+          .map(note => noteItem(note))
+          : notes
           .filter(note => note.folder === null)
           .map(note => noteItem(note))}
       </div>
       <p className="text-md text-foreground-dark mb-4 pt-4">Folders</p>
-      <div className="w-[250px] text-foreground-dark flex flex-col gap-2">
-        {folders.map(folder => folderItem(folder))}
+      <div className={`${data ? 'w-fit' : 'w-[250px]'} text-foreground-dark flex flex-col gap-2`}>
+        {data ? data.folders.map(folder => folderItem(folder))
+          : folders
+          .map(folder => folderItem(folder))}
       </div>
     </ScrollShadow>
   )
