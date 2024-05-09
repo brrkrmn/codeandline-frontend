@@ -128,3 +128,7 @@ p, h1, h2, h3, h4, h5, h6 {
 .logo {
   background-image: radial-gradient(circle, rgba(3,0,20,1) 10%, rgba(191,151,255,0.50) 20%, rgba(3,0,20,1) 40%, rgba(191,151,255,0.50) 50%, rgba(3,0,20,1) 60%, rgba(191,151,255,0.50) 70%, rgba(3,0,20,1) 90%)
 }
+
+.preventScroll .cm-scroller {
+  overflow-x: hidden !important
+}

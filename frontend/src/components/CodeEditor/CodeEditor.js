@@ -54,9 +54,6 @@ const CodeEditor = ({ size, code, highlightedLine }) => {
       borderRadius: '8px',
       transition: 'all 300ms ease'
     },
-    '&dark .cm-scroller': {
-      overscrollBehavior: 'none'
-    },
     '&dark .highlighted': {
       backgroundColor: '#6d4da6',
       mixBlendMode: 'multiply',
