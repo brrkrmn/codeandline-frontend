@@ -10,6 +10,7 @@ import Create from './pages/Create/Create';
 import CreateFolder from './pages/Create/CreateFolder';
 import CreateNote from './pages/Create/CreateNote';
 import Dashboard from './pages/Dashboard/Dashboard';
+import Explore from './pages/Explore/Explore';
 import Home from './pages/Home/Home';
 import Note from './pages/Note/Note';
 import Profile from './pages/Profile/Profile';
@@ -64,7 +65,7 @@ function App () {
                   <Route path="/edit-note/:id" element={<AuthenticatedPageWrapper><CreateNote /></AuthenticatedPageWrapper>} />
                   <Route path="/edit-folder/:id" element={<AuthenticatedPageWrapper><CreateFolder /></AuthenticatedPageWrapper>} />
 
-                  <Route path="/explore" element={<AuthenticatedPageWrapper>explore page</AuthenticatedPageWrapper>} />
+                  <Route path="/explore" element={<AuthenticatedPageWrapper><Explore /></AuthenticatedPageWrapper>} />
                   <Route path="/profile" element={<AuthenticatedPageWrapper><Profile /></AuthenticatedPageWrapper>} />
                   <Route path="/help" element={<AuthenticatedPageWrapper>help page</AuthenticatedPageWrapper>} />
                 </>
