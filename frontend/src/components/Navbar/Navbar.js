@@ -31,8 +31,8 @@ const Navbar = () => {
       {currentUser ? (
         <>
           <div className="absolute top-20 tablet:top-auto bg-background border-1 border-border tablet:rounded-full w-full tablet:w-96 h-10 px-6 tablet:px-8 flex justify-center items-center">
-            {navLinks.map(link => (
-              <div className={`
+            {navLinks.map((link, index) => (
+              <div key={index} className={`
                 ${pStyles.tiny}
                 ${tab === linkProps[link].name && "bg-background shadow-medium"}
                 ${link === linkProps.create.name && "mr-auto"}

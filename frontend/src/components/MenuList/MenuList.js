@@ -12,6 +12,7 @@ const MenuList = ({ data }) => {
   const noteItem = (note) => {
     return (
       <Link
+        key={note.id}
         to={!data && `/note-overview/${note.id}`}
         className={`${menuItemStyles} ${note.id === id && selectedItemStyle}`}
       >
@@ -23,7 +24,7 @@ const MenuList = ({ data }) => {
 
   const folderItem = (folder) => {
     return (
-      <>
+      <div key={folder.id}>
         <Link
           to={!data && `/folder-overview/${folder.id}`}
           className={`${menuItemStyles} ${folder.id === id && selectedItemStyle}`}
@@ -34,7 +35,7 @@ const MenuList = ({ data }) => {
         <div className="flex flex-col gap-2 ml-6">
           {folder.notes?.map(note => noteItem(note))}
         </div>
-      </>
+      </div>
     )
   }
 

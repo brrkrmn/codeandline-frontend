@@ -40,7 +40,7 @@ const FolderSection = () => {
           className="transition hover:!scale-[1.05] w-fit border-1 border-divider rounded-xl px-4 py-4 flex flex-col items-center justify-center gap-4 *:bg-background bg-gradient-to-b from-background to-border hover:to-divider bg-clip-padding"
         >
           {folderCardData.map(folder => (
-            <FolderCard folder={folder} />
+            <FolderCard key={folder.id} folder={folder} />
           ))}
         </motion.div>
         <div className="w-fit flex flex-col items-center justify-center gap-8">
