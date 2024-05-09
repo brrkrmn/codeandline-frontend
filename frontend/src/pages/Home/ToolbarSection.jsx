@@ -11,13 +11,13 @@ const ToolbarSection = () => {
   })
 
   const opacity = useTransform(scrollYProgress, [0, 0.5, 0.8], [1, 1, 0]);
-  const textEditorOpacity = useTransform(scrollYProgress, [0.5, 0.6], ["1", "0"])
+  const textEditorOpacity = useTransform(scrollYProgress, [0.5, 0.8], ["1", "0"])
   const scale = useTransform(scrollYProgress, [0, 0.5], [0.8, 1]);
   const scale2 = useTransform(scrollYProgress, [0, 0.5], [0.8, 1.1]);
   const yDown = useTransform(scrollYProgress, [0, 0.5], ["0%", "150%"]);
   const yDown2 = useTransform(scrollYProgress, [0, 0.5], ["0%", "50%"])
   const shadow = useTransform(scrollYProgress, [0, 0.5], ["0 0 1px #bf97ff70", "0 2px 20px #bf97ff"])
-  const transform = useTransform(scrollYProgress, [0.5, 0.7, 1], ["perspective(1000px) rotateX(0deg) translateY(-20%)", "perspective(-30px) rotateX(60deg) translateY(-90%)", "perspective(-20px) rotateX(80deg) translateY(-200%)"])
+  const transform = useTransform(scrollYProgress, [0, 0.5, 1], ["translateY(10%)", "translateY(0%)", "translateY(-90%)"])
 
   return (
     <motion.div
