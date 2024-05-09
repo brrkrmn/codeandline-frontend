@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import CustomButton from '../CustomButton';
+import Logo from '../Logo/Logo';
 import ProfileMenu from '../ProfileMenu/ProfileMenu';
-import { P } from '../Typography';
 import { pStyles } from '../Typography/constants';
 import { linkProps, navLinks } from './constants';
 
@@ -27,10 +27,7 @@ const Navbar = () => {
 
   return (
     <div className="fixed w-full px-4 tablet:px-16 wide:px-60 z-[100] top-0 h-[88px] backdrop-blur-lg border-b-1 border-border flex items-center justify-center">
-      <div className="flex items-center gap-4">
-        <Link to="/" className="mr-auto border-1 border-primary-light shadow-medium rounded-md h-8 w-8 bg-background p-2 text-background hover:drop-shadow-md"></Link>
-        <P variant="small" className="hidden laptop:block text-base font-medium text-foreground-primary">Code&Line</P>
-      </div>
+      <Logo />
       {currentUser ? (
         <>
           <div className="absolute top-20 tablet:top-auto bg-background border-1 border-border tablet:rounded-full w-full tablet:w-96 h-10 px-6 tablet:px-8 flex justify-center items-center">
