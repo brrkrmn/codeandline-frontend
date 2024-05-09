@@ -11,13 +11,13 @@ const ToolbarSection = () => {
   })
 
   const opacity = useTransform(scrollYProgress, [0, 0.5, 0.8], [1, 1, 0]);
-  const noteOpacity = useTransform(scrollYProgress, [0, 0.5], [0, 1])
+  const textEditorOpacity = useTransform(scrollYProgress, [0.5, 0.6], ["1", "0"])
   const scale = useTransform(scrollYProgress, [0, 0.5], [0.8, 1]);
   const scale2 = useTransform(scrollYProgress, [0, 0.5], [0.8, 1.1]);
   const yDown = useTransform(scrollYProgress, [0, 0.5], ["0%", "150%"]);
   const yDown2 = useTransform(scrollYProgress, [0, 0.5], ["0%", "50%"])
-  const yUp = useTransform(scrollYProgress, [0, 0.4, 0.6], ["100%", "-10%", "-100"]);
   const shadow = useTransform(scrollYProgress, [0, 0.5], ["0 0 1px #bf97ff70", "0 2px 20px #bf97ff"])
+  const transform = useTransform(scrollYProgress, [0.5, 0.7, 1], ["perspective(1000px) rotateX(0deg) translateY(-20%)", "perspective(-30px) rotateX(60deg) translateY(-90%)", "perspective(-20px) rotateX(80deg) translateY(-200%)"])
 
   return (
     <motion.div
@@ -48,12 +48,12 @@ const ToolbarSection = () => {
         />
       </motion.div>
       <motion.div
-        style={{ opacity: noteOpacity, y: yUp }}
-        className="w-[600px] h-full mt-40 flex items-center justify-start"
+        style={{ opacity: textEditorOpacity, transform }}
+        className="w-[900px] h-full mt-40 flex items-center justify-start"
       >
         <TextEditor
           readOnly
-          className="px-8 py-4 scale-[.80] border-1 border-divider rounded-xl bg-gradient-to-b from-background to-divider bg-clip-padding"
+          className="px-8 w-full py-4 scale-[.80] border-1 border-divider rounded-xl bg-gradient-to-b from-background to-divider bg-clip-padding"
           value={`<h1><span style="color: rgb(194, 133, 255);">Scroll Animations</span> with Framer Motion</h1><p><br></p><p>The code utilizes several features from <strong style="color: rgb(255, 225, 0); background-color: rgba(243, 238, 255, 0.06);">Framer Motion</strong> to create dynamic animations based on the user's scroll behavior.</p><p><br></p><blockquote><span style="background-color: rgb(68, 68, 68); color: rgb(255, 255, 255);">useScroll</span> is used to create scroll-linked animations, like progress indicators and parallax effects.</blockquote><p><br></p><p>Firstly, it employs the <span style="background-color: rgb(68, 68, 68); color: rgb(255, 255, 255);">useScroll</span> hook to track the scroll position of a specific reference element, sectionRef. This hook returns a <span style="color: rgb(255, 255, 255); background-color: rgb(68, 68, 68);">scrollYProgress</span> value, indicating the progress of scrolling from <u>0 to 1</u>. </p><p><br></p><p>Next, the useTransform hook is used to map the scrollYProgress value to various output ranges, enabling animations based on the scroll position. It alters </p><ul><li>opacity, </li><li>scale,</li><li>translate (xRight, xRight2, xLeft)</li><li><span style="color: rgba(239, 237, 253, 0.7);">backgroundColor</span></li></ul><p><br></p><p><br></p>`}
         />
       </motion.div>
