@@ -67,7 +67,7 @@ function App () {
 
                   <Route path="/explore" element={<AuthenticatedPageWrapper><Explore /></AuthenticatedPageWrapper>} />
                   <Route path="/profile" element={<AuthenticatedPageWrapper><Profile /></AuthenticatedPageWrapper>} />
-                  <Route path="/help" element={<AuthenticatedPageWrapper>help page</AuthenticatedPageWrapper>} />
+                  <Route path="/help" element={<AuthenticatedPageWrapper></AuthenticatedPageWrapper>} />
                 </>
             )}
           </Routes>

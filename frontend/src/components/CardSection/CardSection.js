@@ -30,13 +30,18 @@ const CardSection = ({ type, noTitle = false }) => {
         orientation='horizontal'
         className="flex justify-start items-center gap-4 hidden-scrollbar"
       >
-        {items.map(item =>
+        {items.length > 0 ? items.map(item =>
           type === cardSectionTypes.NOTES ? (
             <NoteCard note={item} />
           ) : (
             <FolderCard folder={item} />
           )
-        )}
+        ) : type === cardSectionTypes.NOTES ? (
+            <NoteCard empty={true} />
+          ): (
+            <FolderCard empty={true} />
+        )
+        }
       </ScrollShadow>
     </div>
   )
