@@ -44,6 +44,7 @@ const CreateNote = () => {
         try {
           const note = await noteService.getNote(id);
           await formik.setValues(note)
+          await formik.setFieldValue('folder', note.folder.id)
           setEditor({
             ...editor,
             content: note.code

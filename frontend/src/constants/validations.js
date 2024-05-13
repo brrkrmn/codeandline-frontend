@@ -27,6 +27,7 @@ export const noteDescriptionValidation = yup
 
 export const noteFolderValidation = yup
   .string()
+  .nullable(true)
 
 export const noteCodeValidation = yup
   .string()

@@ -94,14 +94,22 @@ notesRouter.put('/:id', folderExtractor, async (request, response) => {
 
   const updatedNote = await Note.findByIdAndUpdate(request.params.id, newNote, { new: true })
 
-  if (currentFolder) {
-    currentFolder.notes = currentFolder.notes.pull(updatedNote._id)
-    await currentFolder.save()
-  }
-
   if (newFolder) {
-    newFolder.notes = newFolder.notes.concat(updatedNote._id)
-    await newFolder.save()
+    if (currentFolder && newFolder.id !== currentFolder.id) {
+      currentFolder.notes = currentFolder.notes.pull(updatedNote._id)
+      await currentFolder.save()
+
+      newFolder.notes = newFolder.notes.concat(updatedNote._id)
+      await newFolder.save()
+    } else if (!currentFolder) {
+      newFolder.notes = newFolder.notes.concat(updatedNote._id)
+      await newFolder.save()
+    }
+  } else {
+    if (currentFolder) {
+      currentFolder.notes = currentFolder.notes.pull(updatedNote._id)
+      await currentFolder.save()
+    }
   }
 
   response.json(updatedNote)
