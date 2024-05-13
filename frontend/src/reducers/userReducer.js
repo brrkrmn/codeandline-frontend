@@ -56,7 +56,6 @@ export const signupUser = (user) => {
   return async dispatch => {
     try {
       const newUser = await signupService.signup(user);
-      dispatch(login(newUser))
       window.localStorage.setItem("currentUser", JSON.stringify(newUser))
     } catch (error) {
       toast.error(error.response.data)
