@@ -31,7 +31,7 @@ const FoldersSelect = ({ id, name, onChange, onBlur, value, data }) => {
         id={id}
         name={name}
         onChange={onChange}
-        defaultSelectedKeys={[""]}
+        selectedKeys={[value ? ((value.id && value.id) || value) : '']}
         disallowEmptySelection={true}
         onBlur={onBlur}
         variant="bordered"
