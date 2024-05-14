@@ -24,17 +24,17 @@ const FolderSection = () => {
     <motion.div
       style={{ opacity, backgroundImage: backgroundColor }}
       ref={sectionRef}
-      className="z-30 w-full mt-[30vh] h-[90vh] flex flex-col items-center justify-center gap-8">
+      className="z-30 w-full mt-[30vh] h-full tablet:h-[90vh] flex flex-col items-center justify-center tablet:gap-8">
       <motion.div
         style={{ scale }}
         className="flex flex-col items-center gap-4"
       >
-        <H2 className={`transition duration-[2000ms] text-6xl text-center text-transparent tracking-wide bg-clip-text bg-gradient-to-b from-[#F7F8F8] to-foreground-placeholder to-80%`}>
+        <H2 className={`transition duration-[2000ms] text-2xl tablet:text-[50px] laptop:text-6xl text-center text-transparent tracking-wide bg-clip-text bg-gradient-to-b from-[#F7F8F8] to-foreground-placeholder to-80%`}>
           Stay Organized
         </H2>
-        <p className="text-2xl tracking-wide text-foreground-secondary">Link your notes to folders</p>
+        <p className="text-lg tablet:text-2xl tracking-wide text-foreground-secondary">Link your notes to folders</p>
       </motion.div>
-      <div className="w-full flex items-center justify-center gap-8">
+      <div className="scale-[0.4] tablet:scale-[0.8] laptop:scale-[1] w-full flex items-center justify-center gap-8">
         <motion.div
           style={{ x: xLeft }}
           className="transition hover:!scale-[1.05] w-fit border-1 border-divider rounded-xl px-4 py-4 flex flex-col items-center justify-center gap-4 *:bg-background bg-gradient-to-b from-background to-border hover:to-divider bg-clip-padding"

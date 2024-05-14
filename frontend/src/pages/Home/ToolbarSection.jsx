@@ -29,16 +29,16 @@ const ToolbarSection = () => {
         style={{ scale, y: yDown2 }}
         className="flex flex-col items-center gap-4"
       >
-        <H2 className={`transition duration-[2000ms] text-6xl text-center text-transparent tracking-wide bg-clip-text bg-gradient-to-b from-[#F7F8F8] to-foreground-placeholder to-80%`}>
+        <H2 className={`transition duration-[2000ms] text-2xl tablet:text-[50px] laptop:text-6xl text-center text-transparent tracking-wide bg-clip-text bg-gradient-to-b from-[#F7F8F8] to-foreground-placeholder to-80%`}>
           Rich Formatting
         </H2>
-        <p className="text-2xl tracking-wide text-foreground-secondary">
-          Customize your notes with Quill's toolbar
+        <p className="text-lg tablet:text-2xl tracking-wide text-foreground-secondary text-center">
+          Customize your notes
         </p>
       </motion.div>
       <motion.div
         style={{ scale: scale2, y: yDown, boxShadow: shadow }}
-        className="w-[700px] rounded-xl"
+        className="w-[90%] laptop:w-[700px] rounded-xl"
       >
         <TextEditor
           className="z-40 w-full customQuill"
@@ -49,7 +49,7 @@ const ToolbarSection = () => {
       </motion.div>
       <motion.div
         style={{ opacity: textEditorOpacity, transform }}
-        className="w-[900px] h-full mt-40 flex items-center justify-start"
+        className="*:scale-[0.3] *:tablet:scale-[0.5] *:laptop:scale-1 w-[900px] h-full -mt-20 tablet:mt-40 flex items-center justify-start"
       >
         <TextEditor
           readOnly

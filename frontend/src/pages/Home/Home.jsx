@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import icons from '../../assets/icons';
 import Video from '../../assets/videos/landing.mp4';
 import CustomButton from '../../components/CustomButton';
-import { H1 } from '../../components/Typography';
+import { H1, H2 } from '../../components/Typography';
 import { pStyles } from '../../components/Typography/constants';
 import VideoPlayer from '../../components/VideoPlayer/VideoPlayer';
 import FolderSection from './FolderSection';
@@ -35,11 +35,11 @@ const Home = () => {
     <div
       className="w-full h-[100%] flex flex-col justify-center items-start"
     >
-      <div className="z-30 pt-[15vh] min-h-[350px] h-[70vh] flex flex-col items-center gap-4">
-        <H1 className="animate-slide text-7xl text-center text-transparent tracking-wide bg-clip-text bg-gradient-to-br from-foreground-dark to-[#F7F8F8]">
+      <div className="z-30 pt-12 tablet:pt-[15vh] min-h-[350px] h-[70vh] flex flex-col items-center gap-4">
+        <H1 className="animate-slide text-[40px] tablet:text-5xl laptop:text-7xl text-center text-transparent tracking-wide bg-clip-text bg-gradient-to-br from-foreground-dark to-[#F7F8F8]">
           Transform your Programming Notes with Code&Line
         </H1>
-        <p className="animate-[slideInFromTop_1.5s_ease-in-out] text-xl font-medium text-foreground-dark">
+        <p className="animate-[slideInFromTop_1.5s_ease-in-out] text-lg tablet:text-2xl font-medium text-foreground-dark text-center">
           Effortless line-by-line note management.
         </p>
         <CustomButton
@@ -56,7 +56,7 @@ const Home = () => {
       >
         <motion.div
           style={{ boxShadow: shadow }}
-          className="self-center w-[80%] border-1 animate-[slideInFromTop_1.5s_ease-in-out] transition-all duration-1000 delay-300 border-primary-dark rounded-lg *:rounded-lg flex items-center justify-center"
+          className="self-center w-full tablet:w-[80%] border-1 animate-[slideInFromTop_1.5s_ease-in-out] transition-all duration-1000 delay-300 border-primary-dark rounded-lg *:rounded-lg flex items-center justify-center"
         >
           <VideoPlayer
             src={Video}
@@ -65,7 +65,7 @@ const Home = () => {
           />
         </motion.div>
         <motion.p
-          className={`${pStyles.big} pt-10`}
+          className={`${pStyles.big} pt-10 text-center text-lg tablet:text-2xl`}
         >
           Comprehensive and detailed code documentation
         </motion.p>
@@ -75,12 +75,12 @@ const Home = () => {
       <motion.div
         ref={lastSectionRef}
         style={{ backgroundImage: background }}
-        className="bg-contain h-[1200px] w-full self-center h-screen flex flex-col items-center justify-center gap-4"
+        className="bg-contain h-[1200px] w-screen px-2 laptop:px-0 laptop:w-full self-center h-screen flex flex-col items-center justify-center gap-4"
       >
-        <H1 className="text-6xl text-center text-transparent tracking-wide bg-clip-text bg-gradient-to-br from-foreground-dark to-[#F7F8F8]">
+        <H2 className="text-2xl tablet:text-[50px] laptop:text-6xl text-center text-transparent tracking-wide bg-clip-text bg-gradient-to-br from-foreground-dark to-[#F7F8F8]">
           Line-by-line Clarity
-        </H1>
-        <p className="text-xl font-medium text-foreground-dark">
+        </H2>
+        <p className="text-lg tablet:text-2xl text-center font-medium text-foreground-dark">
           Gain full understanding of your code
         </p>
         <CustomButton

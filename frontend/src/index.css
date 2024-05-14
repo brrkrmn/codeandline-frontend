@@ -81,16 +81,35 @@ p, h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 4px;
 }
 
 .customQuill > .ql-toolbar > .ql-formats > * {
   width: 40px;
   height: 40px;
+  @media only screen and (max-width: 640px) {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .customQuill > .ql-container {
   display: none;
+}
+
+.customQuill > .ql-toolbar .ql-picker-label {
+  display: flex;
+  align-items: center;
+}
+
+.customQuill > .ql-toolbar .ql-picker-label > svg {
+  width: 40px;
+  height: 40px;
+  @media only screen and (max-width: 640px) {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .customQuill > .ql-toolbar .ql-stroke {
@@ -106,6 +125,7 @@ p, h1, h2, h3, h4, h5, h6 {
 .customQuill > .ql-toolbar .ql-picker {
   color: #bf97ff;
 }
+
 
 /* NextUI Styles */
 
