@@ -27,7 +27,7 @@ const MenuList = ({ data }) => {
       <div key={folder.id}>
         <Link
           to={!data && `/folder-overview/${folder.id}`}
-          className={`${menuItemStyles} ${folder.id === id && selectedItemStyle}`}
+          className={`${menuItemStyles} ${folder.id === id && selectedItemStyle} mb-2`}
         >
           {icons.folder}
           <span className="truncate">{folder.title}</span>
