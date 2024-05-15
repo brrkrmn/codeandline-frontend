@@ -49,7 +49,7 @@ const ToolbarSection = () => {
       </motion.div>
       <motion.div
         style={{ opacity: textEditorOpacity, transform }}
-        className="*:scale-[0.3] *:tablet:scale-[0.5] *:laptop:scale-1 w-[900px] h-full -mt-20 tablet:mt-40 flex items-center justify-start"
+        className="*:scale-[0.3] *:tablet:scale-[0.5] *:laptop:scale-[0.9] w-[900px] h-full -mt-20 tablet:mt-20 laptop:mt-40 flex items-center justify-start"
       >
         <TextEditor
           readOnly

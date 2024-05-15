@@ -30,6 +30,7 @@ const Home = () => {
     "radial-gradient(circle, rgba(3,0,20,1) 2%, rgba(191,151,255,0.14) 4%, rgba(3,0,20,1) 10%, rgba(191,151,255,0.14) 20%, rgba(3,0,20,1) 30%, rgba(191,151,255,0.14) 40%, rgba(3,0,20,1) 50%)",
     "radial-gradient(circle, rgba(3,0,20,1) 10%, rgba(191,151,255,0.14) 40%, rgba(3,0,20,1) 50%, rgba(191,151,255,0.14) 50%, rgba(3,0,20,1) 60%, rgba(191,151,255,0.14) 60%, rgba(3,0,20,1) 70%)"
   ])
+  const sectionOpacity = useTransform(lastSectionScrollYProgress, [0, 0.5], [0, 1])
 
   return (
     <div
@@ -74,7 +75,7 @@ const Home = () => {
       <ToolbarSection />
       <motion.div
         ref={lastSectionRef}
-        style={{ backgroundImage: background }}
+        style={{ backgroundImage: background, opacity: sectionOpacity }}
         className="bg-contain h-[1200px] w-screen px-2 laptop:px-0 laptop:w-full self-center h-screen flex flex-col items-center justify-center gap-4"
       >
         <H2 className="text-2xl tablet:text-[50px] laptop:text-6xl text-center text-transparent tracking-wide bg-clip-text bg-gradient-to-br from-foreground-dark to-[#F7F8F8]">
