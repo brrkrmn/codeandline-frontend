@@ -4,7 +4,7 @@ import { config } from '../utils/token';
 const baseUrl =
   !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
     ? 'http://localhost:3001/api/notes'
-    : '/api/notes';
+    : 'https://www.codeandline.com/api/notes';
 
 const noteService = {
   getUserNotes: async () => {
