@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import icons from '../../assets/icons';
 import Video from '../../assets/videos/landing.mp4';
 import CustomButton from '../../components/CustomButton';
@@ -11,7 +11,6 @@ import FolderSection from './FolderSection';
 import ToolbarSection from './ToolbarSection';
 
 const Home = () => {
-  const navigate = useNavigate();
   const videoRef = useRef();
   const lastSectionRef = useRef();
   const { scrollYProgress: videoScrollYProgress } = useScroll({
@@ -43,12 +42,13 @@ const Home = () => {
         <p className="animate-[slideInFromTop_1.5s_ease-in-out] text-lg tablet:text-2xl font-medium text-foreground-dark text-center">
           Effortless line-by-line note management.
         </p>
-        <CustomButton
-          onPress={() => navigate('/signup')}
-          className="mt-4 animate-[slideInFromTop_1.5s_ease-in-out,gradient_5s_ease_infinite] transition *:hover:translate-x-4 min-h-10 border-primary-dark text-primary-light gradientBackground2"
-        >
-          Start Now {icons.chevronRight}
-        </CustomButton>
+        <Link to="/signup">
+          <CustomButton
+            className="mt-4 animate-[slideInFromTop_1.5s_ease-in-out,gradient_5s_ease_infinite] transition *:hover:translate-x-4 min-h-10 border-primary-dark text-primary-light gradientBackground2"
+          >
+            Start Now {icons.chevronRight}
+          </CustomButton>
+        </Link>
       </div>
       <motion.div
         style={{ opacity }}
@@ -84,12 +84,13 @@ const Home = () => {
         <p className="text-lg tablet:text-2xl text-center font-medium text-foreground-dark">
           Gain full understanding of your code
         </p>
-        <CustomButton
-          onPress={() => navigate('/signup')}
-          className="mt-4 animate-[gradient_5s_ease_infinite] transition *:hover:translate-x-4 min-h-10 border-primary-dark text-primary-light gradientBackground2"
-        >
-          Sign up for free{icons.chevronRight}
-        </CustomButton>
+        <Link to="/signup">
+          <CustomButton
+            className="mt-4 animate-[gradient_5s_ease_infinite] transition *:hover:translate-x-4 min-h-10 border-primary-dark text-primary-light gradientBackground2"
+          >
+            Sign up for free{icons.chevronRight}
+          </CustomButton>
+        </Link>
       </motion.div>
     </div>
   )

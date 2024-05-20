@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import CustomButton from '../CustomButton';
 import Logo from '../Logo/Logo';
 import ProfileMenu from '../ProfileMenu/ProfileMenu';
@@ -9,7 +9,6 @@ import { linkProps, navLinks } from './constants';
 
 const Navbar = () => {
   const location = useLocation();
-  const navigate = useNavigate();
   const [tab, setTab] = useState('');
   const currentUser = useSelector((state) => state.user)
 
@@ -54,19 +53,21 @@ const Navbar = () => {
         </>
       ) : (
           <div className="ml-auto flex items-center gap-8">
-            <CustomButton
-              onPress={() => navigate('/login')}
-              className="px-2 h-10 min-w-fit border-0 shadow-none hover:shadow-none"
-              disableRipple={true}
-            >
-              Login
-            </CustomButton>
-            <CustomButton
-              onPress={() => navigate('/signup')}
-              className="p-0 h-10 border-primary-dark text-primary-light gradientBackground2 animate-gradient mix-blend-multiply"
-            >
-              Sign up
-            </CustomButton>
+            <Link to="/login">
+              <CustomButton
+                className="px-2 h-10 min-w-fit border-0 shadow-none hover:shadow-none"
+                disableRipple={true}
+              >
+                Login
+              </CustomButton>
+            </Link>
+            <Link to="/signup">
+              <CustomButton
+                className="p-0 h-10 border-primary-dark text-primary-light gradientBackground2 animate-gradient mix-blend-multiply"
+              >
+                Sign up
+              </CustomButton>
+            </Link>
           </div>
       )}
     </div>

@@ -1,6 +1,6 @@
 import { Spacer } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import icons from '../../assets/icons';
 import noteService from '../../services/note';
 import formatDate from '../../utils/formatDate';
@@ -13,7 +13,6 @@ import { H1, P } from '../Typography';
 const NoteOverview = () => {
   const [note, setNote] = useState(null);
   const id = useParams().id
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchNote = async (id) => {
@@ -32,11 +31,12 @@ const NoteOverview = () => {
       <div>
         <div className="flex justify-between gap-4">
           <H1 className="text-primary-light font-thin mb-4">{note.title}</H1>
-          <CustomButton
-            onPress={() => navigate(`/notes/${note.id}`)}
-            className="ml-auto px-2 mt-2 min-w-10 h-10 border-primary-dark">
-            {icons.play}
-          </CustomButton>
+          <Link to={`/notes/${note.id}`} className="ml-auto">
+            <CustomButton
+              className="px-2 mt-2 min-w-10 h-10 border-primary-dark">
+              {icons.play}
+            </CustomButton>
+          </Link>
           <NoteDropdown />
         </div>
         <P
