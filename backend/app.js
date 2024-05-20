@@ -21,7 +21,9 @@ mongoose.connect(config.MONGODB_URI)
         console.log('Error connecting to MongoDB: ', error.message)
     });
 
-app.use(cors())
+app.use(cors({
+    origin: '*',
+}))
 app.use(express.static('build'))
 app.use(express.json())
 
