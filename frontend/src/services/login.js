@@ -3,7 +3,7 @@ import axios from "axios";
 const baseUrl =
   !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
     ? 'http://localhost:3001/api/login'
-    : 'https://www.codeandline.com/api/login';
+    : 'https://codeandline-backend.vercel.app/api/login';
 
 const loginService = {
   login: async (user) => {

@@ -4,7 +4,7 @@ import { config } from "../utils/token";
 const baseUrl =
   !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
     ? 'http://localhost:3001/api/folders'
-    : 'https://www.codeandline.com/api/folders';
+    : 'https://codeandline-backend.vercel.app/api/folders';
 
 const folderService = {
   getUserFolders: async () => {
