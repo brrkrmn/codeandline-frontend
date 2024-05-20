@@ -1,7 +1,6 @@
 const config = require('./utils/config')
 const express = require('express')
 const app = express()
-const cors = require('cors')
 const mongoose = require('mongoose');
 require('express-async-errors')
 const loginRouter = require('./controllers/login');
@@ -21,9 +20,7 @@ mongoose.connect(config.MONGODB_URI)
         console.log('Error connecting to MongoDB: ', error.message)
     });
 
-app.use(cors({
-    origin: '*',
-}))
+
 app.use(express.static('build'))
 app.use(express.json())
 
