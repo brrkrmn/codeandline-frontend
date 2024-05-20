@@ -8,6 +8,7 @@ const signupRouter = require('./controllers/signup');
 const notesRouter = require('./controllers/notes')
 const middleware = require('./utils/middleware');
 const foldersRouter = require('./controllers/folders');
+const cors = require('cors');
 
 mongoose.set('strictQuery', false);
 console.log('Connecting to MONGODB...');
@@ -23,6 +24,7 @@ mongoose.connect(config.MONGODB_URI)
 
 app.use(express.static('build'))
 app.use(express.json())
+app.use(cors());
 
 app.use(middleware.requestLogger)
 
