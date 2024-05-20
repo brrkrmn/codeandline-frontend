@@ -49,9 +49,9 @@ const ProfileMenu = () => {
           </DropdownItem>
         </DropdownSection>
         <DropdownSection aria-label="Help & Feedback">
-          <DropdownItem href="/help" key="help_and_feedback">
+          {/* <DropdownItem href="/help" key="help_and_feedback">
             Help & Feedback
-          </DropdownItem>
+          </DropdownItem> */}
           <DropdownItem
             key="logout"
             endContent={icons.logout}

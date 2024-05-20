@@ -8,7 +8,7 @@ const Footer = () => {
     <div className="py-20 px-4 tablet:px-40 wide:px-96 border-t-1 border-divider flex gap-8">
       <Logo className="mr-auto" />
       <Link to={'https://github.com/brrkrmn/codeandline'}>{icons.github}</Link>
-      <Link>{icons.mail}</Link>
+      {/* <Link>{icons.mail}</Link> */}
     </div>
   )
 }
