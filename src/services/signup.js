@@ -8,7 +8,7 @@ const baseUrl =
 const signupService = {
   signup: async (user) => {
     const response = await axios.post(baseUrl, user);
-    return response.data
+    return response?.data
   }
 }
 
