@@ -24,7 +24,9 @@ mongoose.connect(config.MONGODB_URI)
 
 app.use(express.static('build'))
 app.use(express.json())
-app.use(cors());
+app.use(cors({
+    preflightContinue:true,
+}));
 
 app.use(middleware.requestLogger)
 
