@@ -18,7 +18,7 @@ const LoginForm = () => {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="flex flex-col items-center justify-center gap-4 h-full"
+      className="flex flex-col items-center justify-center gap-4 h-full my-auto"
     >
       <CustomInput
         className="mt-auto"
