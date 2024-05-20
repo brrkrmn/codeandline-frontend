@@ -52,15 +52,13 @@ export const logoutUser = () => {
   }
 }
 
-export const signupUser = (user) => {
-  return async dispatch => {
+export const signupUser =async (user) => {
     try {
       const newUser = await signupService.signup(user);
       window.localStorage.setItem("currentUser", JSON.stringify(newUser))
     } catch (error) {
       toast.error(error.response.data)
     }
-  }
 }
 
 export const { login, logout } = userSlice.actions;
