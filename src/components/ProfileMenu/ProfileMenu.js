@@ -43,7 +43,7 @@ const ProfileMenu = () => {
         }}
       >
         <DropdownSection aria-label='Profile & Actions' showDivider>
-          <DropdownItem key="profile" className="h-14 gap-2 group">
+          <DropdownItem isReadOnly key="profile" className="h-14 gap-2 group cursor-default">
             <P variant="small" className="text-foreground-primary group-hover:text-primary-light">@{user.username}</P>
             <P variant="small" className="text-sm">{user.email}</P>
           </DropdownItem>
