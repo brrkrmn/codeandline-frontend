@@ -35,8 +35,8 @@ const Home = () => {
     <div
       className="w-full h-[100%] flex flex-col justify-center items-start"
     >
-      <div className="z-30 pt-12 tablet:pt-[15vh] min-h-[350px] h-[70vh] flex flex-col items-center gap-4">
-        <H1 className="animate-slide text-[40px] tablet:text-5xl laptop:text-7xl text-center text-transparent tracking-wide bg-clip-text bg-gradient-to-br from-foreground-dark to-[#F7F8F8]">
+      <div className="z-30 pt-12 tablet:py-[15vh] min-h-[350px] h-fit flex flex-col items-center gap-4">
+        <H1 className="animate-slide text-[40px] tablet:text-5xl laptop:text-7xl text-center text-transparent tracking-wide bg-clip-text bg-gradient-to-br from-foreground-dark to-[#F7F8F8] !leading-tight">
           Transform your Programming Notes with Code&Line
         </H1>
         <p className="animate-[slideInFromTop_1.5s_ease-in-out] text-lg tablet:text-2xl font-medium text-foreground-dark text-center">
