@@ -129,7 +129,7 @@ const CodeEditor = ({ size, code, highlightedLine }) => {
         value={value}
         minHeight={size === editorSize.screen ? '300px' : 'auto'}
         maxHeight={size === editorSize.screen ? '80vh' : 'auto'}
-        placeholder={"Paste your code here!"}
+        placeholder={"Paste your code here! \n"}
         onChange={onChange}
         extensions={[
           javascript({ jsx: true }),
