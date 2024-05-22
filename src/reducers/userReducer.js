@@ -36,7 +36,11 @@ export const loginUser = (credentials) => {
       window.localStorage.setItem("currentUser", JSON.stringify(user))
       setToken(user.token)
     } catch (error) {
-      toast.error(error.response.data)
+      if (error.response?.data) {
+        toast.error(error.response.data, { position: 'top-center' })
+      } else {
+        toast.error("Something went wrong", { position: 'top-center' })
+       }
     }
   }
 }
@@ -56,10 +60,13 @@ export const signupUser =async (user) => {
     try {
       const newUser = await signupService.signup(user);
       window.localStorage.setItem("currentUser", JSON.stringify(newUser))
-      toast.success('Account created successfully')
+      toast.success('Account created successfully', { position: 'top-center'})
     } catch (error) {
-      console.log(error);
-      toast.error(error.response.data)
+      if (error.response?.data) {
+        toast.error(error.response.data, {position: 'top-center'})
+      } else {
+        toast.error("Something went wrong", { position: 'top-center' })
+       }
     }
 }
 

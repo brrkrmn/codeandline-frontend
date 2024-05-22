@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import toast from "react-hot-toast";
 import folderService from "../services/folder";
 import formatDate from "../utils/formatDate";
 
@@ -45,22 +46,37 @@ export const getUserFolders = () => {
 
 export const createFolder = (data) => {
   return async dispatch => {
-    const folder = await folderService.createFolder(data);
-    dispatch(addFolder(folder));
+    try {
+      const folder = await folderService.createFolder(data);
+      dispatch(addFolder(folder));
+      toast.success("Folder created successfully")
+    } catch (error) {
+      toast.error("Couldn't create folder")
+    }
   }
 }
 
 export const deleteFolder = (id) => {
   return async dispatch => {
-    await folderService.deleteFolder(id)
+    try {
+      await folderService.deleteFolder(id)
       .then(dispatch(removeFolder(id)))
+      toast.success("Folder deleted successfully")
+    } catch (error) {
+      toast.error("Couldn't delete folder")
+    }
   }
 }
 
 export const editFolder = (id, folder) => {
   return async dispatch => {
-    const updatedFolder = await folderService.updateFolder(id, folder)
-    dispatch(updateFolder(updatedFolder))
+    try {
+      const updatedFolder = await folderService.updateFolder(id, folder)
+      dispatch(updateFolder(updatedFolder))
+      toast.success("Folder edited successfully")
+    } catch (error) {
+      toast.error("Couldn't edit folder")
+    }
   }
 }
 

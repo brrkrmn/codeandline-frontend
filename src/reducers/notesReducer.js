@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import toast from "react-hot-toast";
 import noteService from "../services/note";
 import formatDate from "../utils/formatDate";
 import { getUserFolders } from "./foldersReducer";
@@ -48,25 +49,40 @@ export const getUserNotes = () => {
 
 export const createNote = (data) => {
   return async dispatch => {
-    await noteService.createNote(data);
-    dispatch(getUserNotes())
-    dispatch(getUserFolders())
+    try {
+      await noteService.createNote(data);
+      dispatch(getUserNotes())
+      dispatch(getUserFolders())
+      toast.success("Note created successfully")
+    } catch (error) {
+      toast.error("Couldn't create note")
+    }
   }
 }
 
 export const deleteNote = (id) => {
   return async dispatch => {
-    await noteService.deleteNote(id)
-    dispatch(getUserNotes())
-    dispatch(getUserFolders())
+    try {
+      await noteService.deleteNote(id)
+      dispatch(getUserNotes())
+      dispatch(getUserFolders())
+      toast.success("Note deleted successfully")
+    } catch (error) {
+      toast.error("Couldn't delete note")
+    }
   }
 }
 
 export const editNote = (id, note) => {
   return async dispatch => {
-    await noteService.updateNote(id, note)
-    dispatch(getUserNotes())
-    dispatch(getUserFolders())
+    try {
+      await noteService.updateNote(id, note)
+      dispatch(getUserNotes())
+      dispatch(getUserFolders())
+      toast.success("Note edited successfully")
+    } catch (error) {
+      toast.error("Couldn't edit note")
+    }
   }
 }
 
