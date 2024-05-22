@@ -56,6 +56,7 @@ export const signupUser =async (user) => {
     try {
       const newUser = await signupService.signup(user);
       window.localStorage.setItem("currentUser", JSON.stringify(newUser))
+      toast.success('Account created successfully')
     } catch (error) {
       console.log(error);
       toast.error(error.response.data)
