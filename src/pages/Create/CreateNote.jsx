@@ -1,4 +1,4 @@
-import { Accordion, AccordionItem, Divider } from '@nextui-org/react';
+import { Accordion, AccordionItem, Divider, Tooltip } from '@nextui-org/react';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useContext, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import icons from '../../assets/icons';
 import CodeEditor from '../../components/CodeEditor';
 import CustomButton from '../../components/CustomButton/CustomButton';
+import { buttonStyles } from '../../components/CustomButton/constants';
 import FoldersSelect from '../../components/FoldersSelect/FoldersSelect';
 import TextEditor from '../../components/TextEditor/TextEditor';
 import TextInput from '../../components/TextInput/TextInput';
@@ -148,6 +149,13 @@ const CreateNote = () => {
                     >
                       {icons.create}
                     </CustomButton>
+                    <Tooltip
+                      color="secondary"
+                      content="To select lines, open any entry and click on the code lines to add them to that entry."
+                    ><span className={`${buttonStyles} transition p-1 ml-auto`}>
+                      {icons.questionBox}
+                    </span>
+                    </Tooltip>
                   </div>
                   <Divider />
                   <Accordion

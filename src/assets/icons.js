@@ -1,3 +1,4 @@
+import { BsQuestion } from "react-icons/bs";
 import { FaChevronRight, FaEdit, FaFolder, FaGithub, FaRegUser, FaTrash, FaTwitter } from "react-icons/fa";
 import { FaArrowDown, FaArrowUp, FaEllipsisVertical } from "react-icons/fa6";
 import { FiPlay } from "react-icons/fi";
@@ -31,7 +32,8 @@ const icons = {
   github: <FaGithub className="text-xl text-foreground-dark" />,
   twitter: <FaTwitter className="text-xl text-foreground-dark" />,
   mail: <MdEmail className="text-xl text-foreground-dark" />,
-  chevronRight: <FaChevronRight className="transition duration-1000 delay-100" />
+  chevronRight: <FaChevronRight className="transition duration-1000 delay-100" />,
+  questionBox: <BsQuestion className="transition text-4xl text-primary-light"/>
 }
 
 export default icons;
