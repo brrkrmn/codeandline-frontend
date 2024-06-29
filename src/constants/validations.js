@@ -21,6 +21,7 @@ export const confirmPasswordValidation = yup
 
 export const noteTitleValidation = yup
   .string()
+  .required("Your note should have a title")
 
 export const noteDescriptionValidation = yup
   .string()

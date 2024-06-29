@@ -1,6 +1,7 @@
 import { Accordion, AccordionItem, Divider, Tooltip } from '@nextui-org/react';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import icons from '../../assets/icons';
@@ -26,6 +27,8 @@ const CreateNote = () => {
   const formik = useFormik({
     initialValues: createNoteInitialValues,
     validationSchema: createNoteSchema,
+    validateOnBlur: false,
+    validateOnChange: false,
     onSubmit: values => {onSubmit(values)}
   })
 
@@ -95,6 +98,12 @@ const CreateNote = () => {
       })
     }
   }, [selectedEntry])
+
+  useEffect(() => {
+    if (formik.errors?.title) {
+      toast.error(formik.errors.title)
+    }
+  }, [formik.errors.title, formik.submitCount])
 
   return (
     <FormikProvider value={formik}>
