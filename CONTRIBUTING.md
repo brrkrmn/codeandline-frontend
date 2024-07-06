@@ -6,6 +6,12 @@
 
 ## Table of Contents
 - [Code of Conduct](#code-of-conduct)
+- [Opening Issues](#opening-issues)
+- [Submitting Pull Requests](#submitting-pull-requests)
+- [Code Review](#code-review)
+- [Coding Style](#coding-style)
+  
+<br>
 
 ## Code of Conduct
 
@@ -30,6 +36,8 @@ In the interest of fostering an open and welcoming environment, we as contributo
 * Other conduct which could reasonably be considered inappropriate in a
  professional setting ❌
 
+<br>
+
 ## Opening Issues
 
 Have a question, idea, or a suggestion for the website? Have you noticed a bug or found a way to improve the project? 
@@ -41,7 +49,7 @@ Before doing anything else, review the [existing issues](https://github.com/brrk
  
 If you're ready to create an issue, here's a checklist for you to follow:
 
-**Creating the issue**
+### Creating the issue
 1. ⚠️ Apply the appropriate label for the issue
    > See the descriptions of the [project's labels](https://github.com/brrkrmn/codeandline-frontend/labels) to pick the perfect one for your issue.
 3. Write a short descriptive title
@@ -50,4 +58,31 @@ If you're ready to create an issue, here's a checklist for you to follow:
    - If it's about a bug, describe how to reproduce the error step by step. ([see example](https://github.com/unstructuredstudio/zubhub/issues/991))
    - If it's about a new feature, describe the intended flow.
    - Include screenshots and recordings.
-   - Link relevant resources that might be helpful. 
+   - Link relevant resources that might be helpful.
+5. Engage with the other contributors in the comments section to discuss the issue, trying to come up with a solution/design/suggestion.
+
+<br>
+
+## Submitting Pull Requests
+
+If you're ready to work on an issue, create pull requests. Here are some of the things to consider before submitting a PR:
+
+* Create pull requests for existing issues. If such an issue does not exists, create an issue first, and then submit a PR.
+* If an issue is too broad, submit multiple smaller PRs instead of submitting a one big PR, which is harder to review.
+
+### Creating the PR
+1. Add a descriptive title
+2. Link the issue which this PR is referring to.
+3. Summarize the problem and the aim of the PR in a few sentences.
+4. List important changes that took place in the code and what they achieved.
+5. Include before and after screenshots and recordings if any.
+6. Add relevant resources that helped you.
+> Here's an [example](https://github.com/unstructuredstudio/zubhub/pull/1020) to refer to.
+7. Submit your PR to the repo's default branch.
+8. Wait for reviews.
+
+<br>
+
+## Code Review
+
+## Coding Style
