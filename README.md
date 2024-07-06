@@ -32,3 +32,23 @@ Code&Line is a note-taking app designed for developers to provide a more detaile
 </p>
 
 ***
+
+## Contributing
+
+Code&Line is an open-source project, and your help is always welcome! I encourage you to go through the [Contribution Guidelines](CONTRIBUTING.md) and check out the [Ideas for Improvement](#ideas-for-improvement) section.
+
+## Ideas for Improvement
+- Display verification modal on delete (folders and notes)
+- Password reset
+- Profile page
+- Add other authentication
+- Add Light theme
+- Add tests
+- Auto save (folders and notes)
+- Public notes and folders
+  - upvoting
+  - explore page
+
+## License
+
+Licensed under the MIT License.
