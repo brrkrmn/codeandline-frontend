@@ -36,6 +36,8 @@ In the interest of fostering an open and welcoming environment, we as contributo
 * Other conduct which could reasonably be considered inappropriate in a
  professional setting ❌
 
+> Credit: [@jessesquires](https://github.com/jessesquires/.github/blob/main/CODE_OF_CONDUCT.md)
+
 <br>
 
 ## Opening Issues
@@ -85,4 +87,10 @@ If you're ready to work on an issue, create pull requests. Here are some of the 
 
 ## Code Review
 
+If you don't have time to open issues or PRs but want to contribute, I'd appreciate if you reviewed existing pull requests by providing constructive feedback with clear reasoning and suggestions.
+
+<br>
+
 ## Coding Style
+
+Consistency is the most important. For a quick code review process, try to follow the existing style, formatting, and naming conventions of the overall project and the file you are modifying so that the code reviewers can focus on functionality and performance rather than style.
