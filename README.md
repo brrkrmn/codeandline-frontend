@@ -21,9 +21,9 @@
 Code&Line is a note-taking app designed for developers to provide a more detailed understanding of their code. Its core feature allows users to target specific code lines with each note, aiming for a line-by-line explanation of the snippet.
 
 <div align="center">
-  <img width="300" src="https://github.com/brrkrmn/codeandline-frontend/assets/92817363/a6b0fbee-ec57-4af5-93be-ce10a2f07eb9"/>
-  <img width="300" src="https://github.com/brrkrmn/codeandline-frontend/assets/92817363/6ec46148-ce1d-4454-a67d-6fa8a24c9e2d"/>
-  <img width="300" src="https://github.com/brrkrmn/codeandline-frontend/assets/92817363/976c5909-f5d7-4d53-b6d2-b20fc197321d"/>
+  <img width="200" src="https://github.com/brrkrmn/codeandline-frontend/assets/92817363/a6b0fbee-ec57-4af5-93be-ce10a2f07eb9"/>
+  <img width="200" src="https://github.com/brrkrmn/codeandline-frontend/assets/92817363/6ec46148-ce1d-4454-a67d-6fa8a24c9e2d"/>
+  <img width="200" src="https://github.com/brrkrmn/codeandline-frontend/assets/92817363/976c5909-f5d7-4d53-b6d2-b20fc197321d"/>
 </div>
 <br>
 
