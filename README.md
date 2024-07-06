@@ -31,11 +31,21 @@ Code&Line is a note-taking app designed for developers to provide a more detaile
   <a href="https://www.producthunt.com/posts/code-line?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-code&#0045;line" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=458788&theme=light" alt="Code&#0038;Line - Note&#0045;taking&#0032;app&#0032;for&#0032;developers | Product Hunt" width="200" /></a>
 </p>
 
-***
+<br>
+
+## Table of Contents
+- [Contributing](#contributing)
+- [Ideas for Improvement](#ideas-for-improvement)
+- [Resources](#resources)
+- [License](#license)
+
+<br>
 
 ## Contributing
 
 Code&Line is an open-source project, and your help is always welcome! I encourage you to go through the [Contribution Guidelines](CONTRIBUTING.md) and check out the [Ideas for Improvement](#ideas-for-improvement) section.
+
+<br>
 
 ## Ideas for Improvement
 - Display verification modal on delete (folders and notes)
@@ -48,6 +58,23 @@ Code&Line is an open-source project, and your help is always welcome! I encourag
 - Public notes and folders
   - upvoting
   - explore page
+
+<br>
+
+## Resources
+
+* **Landing Page Animations**
+  - [Framer Motion - useTransform docs](https://www.framer.com/motion/use-transform/)
+  - [Framer Motion - useScroll docs](https://www.framer.com/motion/use-scroll/)
+* **Code Editor Styling and Events**
+  - [Code Mirror ClassName Extension](https://uiwjs.github.io/react-codemirror/#/extensions/classname)
+  - [Code Mirror Events Extension](https://uiwjs.github.io/react-codemirror/#/extensions/classname)
+  - [Code Mirror styling docs](https://codemirror.net/examples/styling/)
+  - [Code Mirror custom gutter](https://codemirror.net/examples/gutter/)
+* **Text Editor**
+  - [React Quill docs](https://quilljs.com/docs/quickstart)
+
+<br>
 
 ## License
 
