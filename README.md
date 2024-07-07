@@ -83,7 +83,8 @@ cd codeandline-backend
 ```bash
 npm install
 ```
-4. **Set up environment variables**
+4. **Initialize your MongoDB database manually**
+5. **Set up environment variables**
    * Create `.env` file in the root of the project
    * Include the following variables in your `.env`
     ```bash
@@ -92,7 +93,7 @@ npm install
     TEST_MONGODB_URI = <your test database uri>
     SECRET = <your secret>
     ``` 
-5. **Run the server**
+6. **Run the server**
 ```bash
 npm run dev
 ```
