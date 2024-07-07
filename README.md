@@ -34,10 +34,68 @@ Code&Line is a note-taking app designed for developers to provide a more detaile
 <br>
 
 ## Table of Contents
+- [Development Setup](#development-setup)
 - [Contributing](#contributing)
 - [Ideas for Improvement](#ideas-for-improvement)
 - [Resources](#resources)
 - [License](#license)
+
+<br>
+
+## Development Setup
+
+To clone and run this project, you'll need Git and Node.js (which comes with npm) installed on your computer.
+
+<br>
+
+### Setting up Frontend
+
+1. **Clone frontend repo**
+```bash
+$ git clone https://github.com/brrkrmn/codeandline-frontend.git
+```
+2. **Go into the repo**
+```bash
+$ cd codeandline-frontend
+```
+3. **Install dependencies**
+```bash
+$ npm install
+```
+4. **Run the app**
+```bash
+$ npm start
+```
+
+<br>
+
+### Setting up Backend
+
+1. **Clone the repo**
+```bash
+$ git clone https://github.com/brrkrmn/codeandline-backend.git
+```
+2. **Go into the repo**
+```bash
+$ cd codeandline-backend
+```
+3. **Install dependencies**
+```bash
+$ npm install
+```
+4. **Set up environment variables**
+   * Create `.env` file in the root of the project
+   * Include the following variables in your `.env`
+    ```bash
+    PORT = 3001
+    MONGODB_URI = <your mongodb uri>
+    TEST_MONGODB_URI = <your test database uri>
+    SECRET = <your secret>
+    ``` 
+5. **Run the server**
+```bash
+$ npm run dev
+```
 
 <br>
 
