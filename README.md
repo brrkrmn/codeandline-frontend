@@ -52,19 +52,19 @@ To clone and run this project, you'll need Git and Node.js (which comes with npm
 
 1. **Clone frontend repo**
 ```bash
-$ git clone https://github.com/brrkrmn/codeandline-frontend.git
+git clone https://github.com/brrkrmn/codeandline-frontend.git
 ```
 2. **Go into the repo**
 ```bash
-$ cd codeandline-frontend
+cd codeandline-frontend
 ```
 3. **Install dependencies**
 ```bash
-$ npm install
+npm install
 ```
 4. **Run the app**
 ```bash
-$ npm start
+npm start
 ```
 
 <br>
@@ -73,15 +73,15 @@ $ npm start
 
 1. **Clone the repo**
 ```bash
-$ git clone https://github.com/brrkrmn/codeandline-backend.git
+git clone https://github.com/brrkrmn/codeandline-backend.git
 ```
 2. **Go into the repo**
 ```bash
-$ cd codeandline-backend
+cd codeandline-backend
 ```
 3. **Install dependencies**
 ```bash
-$ npm install
+npm install
 ```
 4. **Set up environment variables**
    * Create `.env` file in the root of the project
@@ -94,7 +94,7 @@ $ npm install
     ``` 
 5. **Run the server**
 ```bash
-$ npm run dev
+npm run dev
 ```
 
 <br>
