@@ -35,6 +35,9 @@ Code&Line is a note-taking app designed for developers to provide a more detaile
 
 ## Table of Contents
 - [Development Setup](#development-setup)
+  - [Setting up Frontend](#setting-up-frontend)
+  - [Setting up Backend](#setting-up-backend)
+  - [Running Tests](#running-tests)
 - [Contributing](#contributing)
 - [Ideas for Improvement](#ideas-for-improvement)
 - [Resources](#resources)
@@ -96,6 +99,12 @@ npm install
 6. **Run the server**
 ```bash
 npm run dev
+```
+<br>
+
+### Running Tests
+```bash
+npm test
 ```
 
 <br>
