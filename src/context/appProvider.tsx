@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import { createContext, useContext, useState } from "react";
 import toast from "react-hot-toast";
 import folderService from "../services/folder";
@@ -6,18 +7,23 @@ import noteService from "../services/note";
 import signupService from "../services/signup";
 import formatDate from "../utils/formatDate";
 import { setToken } from "../utils/token";
+import { AppContextValue, Folder, Note, User } from "./appContext.types";
 import { LS_USER_ITEM } from "./constants";
 
-export const AppContext = createContext(null);
+export const AppContext = createContext<AppContextValue>(null);
 
 export const useAppContext = () => {
-  return useContext(AppContext);
+  const context = useContext(AppContext);
+  if (context === null) {
+    throw new Error("You can only call this hook inside AppProvider");
+  }
+  return context;
 }
 
-const AppProvider = ({ children }) => {
-  const [userState, setUserState] = useState();
-  const [notesState, setNotesState] = useState([]);
-  const [foldersState, setFoldersState] = useState([]);
+const AppProvider = ({ children }: { children: React.ReactNode }) => {
+  const [userState, setUserState] = useState<User | null>(null);
+  const [notesState, setNotesState] = useState<Note[]>([]);
+  const [foldersState, setFoldersState] = useState<Folder[]>([]);
 
   const initializeLogin = () => {
     const currentUser = window.localStorage.getItem(LS_USER_ITEM)
@@ -28,14 +34,14 @@ const AppProvider = ({ children }) => {
     }
   }
 
-  const loginUser = async (data) => {
+  const loginUser = async (data: User) => {
     try {
       const user = await loginService.login(data)
       setUserState(user)
       window.localStorage.setItem(LS_USER_ITEM, JSON.stringify(user))
       setToken(user.token)
     } catch (error) {
-      if (error.response?.data) {
+      if (error instanceof AxiosError && error.response?.data) {
         toast.error(error.response.data, { position: 'top-center' })
       } else {
         toast.error("Something went wrong", { position: 'top-center' })
@@ -52,13 +58,13 @@ const AppProvider = ({ children }) => {
     }
   }
 
-  const signupUser = async (data) => {
+  const signupUser = async (data: User) => {
     try {
       const newUser = await signupService.signup(data);
       window.localStorage.setItem(LS_USER_ITEM, JSON.stringify(newUser))
       toast.success('Account created successfully', { position: 'top-center'})
     } catch (error) {
-      if (error.response?.data) {
+      if (error instanceof AxiosError && error.response?.data) {
         toast.error(error.response.data, {position: 'top-center'})
       } else {
         toast.error("Something went wrong", { position: 'top-center' })
@@ -67,10 +73,10 @@ const AppProvider = ({ children }) => {
   }
 
   const getUserNotes = async () => {
-    const userNotes = [];
+    const userNotes:Note[] = [];
     const response = await noteService.getUserNotes();
-    response.map(note => {
-      const noteObject = {
+    response.map((note: Note) => {
+      const noteObject: Note = {
         id: note.id,
         title: note.title,
         description: note.description,
@@ -86,7 +92,7 @@ const AppProvider = ({ children }) => {
     setNotesState(userNotes);
   }
 
-  const createNote = async (data) => {
+  const createNote = async (data: Note) => {
     try {
       await noteService.createNote(data);
       getUserNotes()
@@ -97,7 +103,7 @@ const AppProvider = ({ children }) => {
     }
   }
 
-  const deleteNote = async (id) => {
+  const deleteNote = async (id: string) => {
     try {
       await noteService.deleteNote(id)
       getUserNotes()
@@ -108,7 +114,7 @@ const AppProvider = ({ children }) => {
     }
   }
 
-  const editNote = async (id, data) => {
+  const editNote = async (id: string, data: Note) => {
     try {
       await noteService.updateNote(id, data)
       getUserNotes()
@@ -120,9 +126,9 @@ const AppProvider = ({ children }) => {
   }
 
   const getUserFolders = async () => {
-    const userFolders = [];
+    const userFolders: Folder[] = [];
     const response = await folderService.getUserFolders();
-    response.map(folder => {
+    response.map((folder: Folder) => {
       const folderObject = {
         id: folder.id,
         title: folder.title,
@@ -137,7 +143,7 @@ const AppProvider = ({ children }) => {
     setFoldersState(userFolders)
   }
 
-  const createFolder = async (data) => {
+  const createFolder = async (data: Folder) => {
     try {
       await folderService.createFolder(data);
       getUserFolders()
@@ -148,7 +154,7 @@ const AppProvider = ({ children }) => {
     }
   }
 
-  const deleteFolder = async (id) => {
+  const deleteFolder = async (id: string) => {
     try {
       await folderService.deleteFolder(id)
       getUserFolders()
@@ -159,7 +165,7 @@ const AppProvider = ({ children }) => {
     }
   }
 
-  const editFolder = async (id, data) => {
+  const editFolder = async (id: string, data: Folder) => {
     try {
       await folderService.updateFolder(id, data)
       getUserFolders();

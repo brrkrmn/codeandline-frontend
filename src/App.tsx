@@ -1,5 +1,5 @@
 import { NextUIProvider } from '@nextui-org/react';
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import Toast from './components/Toast/Toast';
 import { useAppContext } from './context/appProvider';
@@ -66,7 +66,7 @@ function App () {
 
                   <Route path="/explore" element={<AuthenticatedPageWrapper><Explore /></AuthenticatedPageWrapper>} />
                   <Route path="/profile" element={<AuthenticatedPageWrapper><Profile /></AuthenticatedPageWrapper>} />
-                  <Route path="/help" element={<AuthenticatedPageWrapper></AuthenticatedPageWrapper>} />
+                  <Route path="/help" element={<AuthenticatedPageWrapper> </AuthenticatedPageWrapper>} />
                 </>
             )}
           </Routes>

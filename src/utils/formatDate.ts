@@ -1,5 +1,11 @@
-const formatDate = (date) => {
-  const options = { day: 'numeric', month: 'long' };
+const formatDate = (date: string): string => {
+  type Options = {
+    day?: "numeric" | "2-digit" | undefined;
+    month?: "numeric" | "2-digit" | "long" | "short" | "narrow" | undefined;
+    year?: "numeric" | "2-digit" | undefined;
+  }
+
+  const options: Options = { day: 'numeric', month: 'long' };
   const ye = new Date(date)
 
   if (new Date().getFullYear() !== ye.getFullYear()) {
