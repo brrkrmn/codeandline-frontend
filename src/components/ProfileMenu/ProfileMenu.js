@@ -1,19 +1,18 @@
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger } from '@nextui-org/react';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import icons from '../../assets/icons';
-import { logoutUser } from '../../reducers/userReducer';
+import { useAppContext } from '../../context/appProvider';
 import { buttonStyles } from '../CustomButton/constants';
 import { P } from '../Typography/Typography';
 
 const ProfileMenu = () => {
-  const dispatch = useDispatch();
+  const { userState, logoutUser } = useAppContext();
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user);
+  const user = userState;
 
   const handleLogout = () => {
-    dispatch(logoutUser());
+    logoutUser();
     navigate('/')
   }
 

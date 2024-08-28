@@ -1,16 +1,15 @@
 import { useFormik } from 'formik';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import TextInput from '../../components/TextInput/TextInput';
 import { textInputTypes } from '../../components/TextInput/constants';
-import { createFolder, editFolder } from '../../reducers/foldersReducer';
+import { useAppContext } from '../../context/appProvider';
 import folderService from '../../services/folder';
 import { createFolderInitialValues, createFolderSchema } from './Create.constants';
 
 const CreateFolder = () => {
-  const dispatch = useDispatch();
+  const { editFolder, createFolder } = useAppContext()
   const navigate = useNavigate();
   const id = useParams().id;
   const formik = useFormik({
@@ -36,10 +35,10 @@ const CreateFolder = () => {
 
   const onSubmit = (values) => {
     if (window.location.pathname === '/create/folder') {
-      dispatch(createFolder(values))
+      createFolder(values)
       navigate('/')
     } else if (window.location.pathname.split('/')[1] === 'edit-folder') {
-      dispatch(editFolder(id, values))
+      editFolder(id, values)
       navigate(`/folder-overview/${id}`)
     }
   }

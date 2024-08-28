@@ -1,25 +1,24 @@
 import { Divider, Spacer } from "@nextui-org/react"
 import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
 import CardSection from "../../components/CardSection/CardSection"
 import { cardSectionTypes } from "../../components/CardSection/constants"
 import FolderOverview from "../../components/FolderOverview/FolderOverview"
 import MenuList from "../../components/MenuList/MenuList"
 import NoteOverview from "../../components/NoteOverview/NoteOverview"
-import { getUserFolders } from "../../reducers/foldersReducer"
-import { getUserNotes } from "../../reducers/notesReducer"
+import { useAppContext } from "../../context/appProvider"
 
 const Dashboard = () => {
+  const { notesState, foldersState, getUserNotes, getUserFolders } = useAppContext();
   const [loading, setLoading] = useState(true)
-  const dispatch = useDispatch();
   const path = window.location.pathname.split('/')[1]
-  const notes = useSelector((state) => state.notes)
-  const folders = useSelector((state) => state.folders)
+
+  const notes = notesState
+  const folders = foldersState
 
   useEffect(() => {
     const fetchData = async () => {
-      await dispatch(getUserNotes())
-      await dispatch(getUserFolders())
+      await getUserNotes()
+      await getUserFolders()
       setLoading(false)
     }
     fetchData()

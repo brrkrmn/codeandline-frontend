@@ -1,15 +1,16 @@
 import { ScrollShadow } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useAppContext } from '../../context/appProvider';
 import FolderCard from '../FolderCard';
 import NoteCard from '../NoteCard';
 import { H2 } from '../Typography';
 import { cardSectionTitles, cardSectionTypes } from './constants';
 
 const CardSection = ({ type, noTitle = false }) => {
+  const { notesState, foldersState } = useAppContext();
   const [items, setItems] = useState([]);
-  const notes = useSelector((state) => state.notes)
-  const folders = useSelector((state) => state.folders)
+  const notes = notesState
+  const folders = foldersState
 
   useEffect(() => {
     if (type === cardSectionTypes.NOTES) {

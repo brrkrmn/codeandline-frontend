@@ -2,7 +2,6 @@ import { Accordion, AccordionItem, Divider, Tooltip } from '@nextui-org/react';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import icons from '../../assets/icons';
 import CodeEditor from '../../components/CodeEditor';
@@ -13,13 +12,13 @@ import TextEditor from '../../components/TextEditor/TextEditor';
 import TextInput from '../../components/TextInput/TextInput';
 import { textInputTypes } from '../../components/TextInput/constants';
 import { H5 } from '../../components/Typography';
-import { createNote, editNote } from '../../reducers/notesReducer';
+import { useAppContext } from '../../context/appProvider';
 import noteService from '../../services/note';
 import EditorContext from '../../utils/EditorContext';
 import { createNoteInitialValues, createNoteSchema } from './Create.constants';
 
 const CreateNote = () => {
-  const dispatch = useDispatch();
+  const { createNote, editNote } = useAppContext();
   const navigate = useNavigate();
   const id = useParams().id;
   const [selectedEntry, setSelectedEntry] = useState('')
@@ -34,10 +33,10 @@ const CreateNote = () => {
 
   const onSubmit = (values) => {
     if (window.location.pathname === '/create/note') {
-      dispatch(createNote(values))
+      createNote(values)
       navigate('/')
     } else if (window.location.pathname.split('/')[1] === 'edit-note') {
-      dispatch(editNote(id, values))
+      editNote(id, values)
       navigate(`/note-overview/${id}`)
     }
   }

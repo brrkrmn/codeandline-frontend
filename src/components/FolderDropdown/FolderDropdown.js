@@ -1,13 +1,12 @@
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger } from '@nextui-org/react';
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import icons from '../../assets/icons';
-import { deleteFolder } from '../../reducers/foldersReducer';
+import { useAppContext } from '../../context/appProvider';
 import { buttonStyles } from '../CustomButton/constants';
 
 const FolderDropdown = () => {
-  const dispatch = useDispatch();
+  const { deleteFolder } = useAppContext();
   const id = useParams().id;
   const navigate = useNavigate();
 
@@ -16,7 +15,7 @@ const FolderDropdown = () => {
   }
 
   const onDelete = () => {
-    dispatch(deleteFolder(id));
+    deleteFolder(id);
     navigate('/');
   }
 
