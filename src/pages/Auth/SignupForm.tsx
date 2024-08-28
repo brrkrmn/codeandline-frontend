@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import CustomInput from "../../components/CustomInput/CustomInput";
-import { useAppContext } from "../../context/appProvider";
+import { useAppContext } from "../../context/appContext/appProvider";
 import { signupFormInitialValues, signupSchema } from "./Auth.constants";
 
 const SignupForm = () => {

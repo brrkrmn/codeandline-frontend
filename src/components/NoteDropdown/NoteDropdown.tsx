@@ -1,8 +1,7 @@
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger } from '@nextui-org/react';
-import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import icons from '../../assets/icons';
-import { useAppContext } from '../../context/appProvider';
+import { useAppContext } from '../../context/appContext/appProvider';
 import { buttonStyles } from '../CustomButton/constants';
 
 const NoteDropdown = () => {

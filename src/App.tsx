@@ -1,8 +1,9 @@
 import { NextUIProvider } from '@nextui-org/react';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect } from 'react';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import Toast from './components/Toast/Toast';
-import { useAppContext } from './context/appProvider';
+import { useAppContext } from './context/appContext/appProvider';
+import EditorProvider from './context/editorContext/editorProvider';
 import AuthenticatedPageWrapper from './layouts/AuthenticatedPageWrapper';
 import PageWrapper from './layouts/PageWrapper';
 import Auth from './pages/Auth/Auth';
@@ -14,20 +15,10 @@ import Explore from './pages/Explore/Explore';
 import Home from './pages/Home/Home';
 import Note from './pages/Note/Note';
 import Profile from './pages/Profile/Profile';
-import EditorContext from './utils/EditorContext';
 
 function App () {
   const { initializeLogin, userState } = useAppContext()
   const navigate = useNavigate();
-  const [editor, setEditor] = useState({
-    content: '',
-    selectableLines: false,
-    selectedLines: []
-  })
-
-  const editorValue = useMemo(() => {
-    return { editor, setEditor };
-  }, [editor])
 
   useEffect(() => {
     initializeLogin()
@@ -37,7 +28,7 @@ function App () {
 
   return (
     <NextUIProvider navigate={navigate}>
-      <EditorContext.Provider value={editorValue}>
+      <EditorProvider>
         <main className='dark text-foreground bg-background min-h-screen'>
           <Routes>
             {!currentUser ? (
@@ -72,7 +63,7 @@ function App () {
           </Routes>
           <Toast />
         </main>
-      </EditorContext.Provider>
+      </EditorProvider>
     </NextUIProvider>
   );
 }

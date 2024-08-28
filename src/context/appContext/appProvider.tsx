@@ -1,12 +1,12 @@
 import { AxiosError } from "axios";
 import { createContext, useContext, useState } from "react";
 import toast from "react-hot-toast";
-import folderService from "../services/folder";
-import loginService from "../services/login";
-import noteService from "../services/note";
-import signupService from "../services/signup";
-import formatDate from "../utils/formatDate";
-import { setToken } from "../utils/token";
+import folderService from "../../services/folder";
+import loginService from "../../services/login";
+import noteService from "../../services/note";
+import signupService from "../../services/signup";
+import formatDate from "../../utils/formatDate";
+import { setToken } from "../../utils/token";
 import { AppContextValue, Folder, Note, User } from "./appContext.types";
 import { LS_USER_ITEM } from "./constants";
 

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useAppContext } from '../../context/appProvider';
+import { useAppContext } from '../../context/appContext/appProvider';
 import CustomButton from '../CustomButton';
 import Logo from '../Logo/Logo';
 import ProfileMenu from '../ProfileMenu/ProfileMenu';

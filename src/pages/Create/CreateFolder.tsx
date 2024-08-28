@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import TextInput from '../../components/TextInput/TextInput';
 import { textInputTypes } from '../../components/TextInput/constants';
-import { useAppContext } from '../../context/appProvider';
+import { useAppContext } from '../../context/appContext/appProvider';
 import folderService from '../../services/folder';
 import { createFolderInitialValues, createFolderSchema } from './Create.constants';
 

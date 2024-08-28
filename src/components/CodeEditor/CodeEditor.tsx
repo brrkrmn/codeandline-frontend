@@ -3,14 +3,14 @@ import { classname } from '@uiw/codemirror-extensions-classname';
 import * as events from '@uiw/codemirror-extensions-events';
 import { tokyoNightInit } from '@uiw/codemirror-theme-tokyo-night';
 import CodeMirror, { EditorView } from '@uiw/react-codemirror';
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import EditorContext from '../../utils/EditorContext';
+import { useEditorContext } from '../../context/editorContext/editorProvider';
 import { editorSize, editorStyles } from './constants';
 
 const CodeEditor = ({ size, code, highlightedLine }) => {
   const [value, setValue] = React.useState(code);
-  const { editor, setEditor } = useContext(EditorContext);
+  const { editor, setEditor } = useEditorContext().editorValue;
   const [isEditable, setIsEditable] = React.useState(false);
   const location = useLocation();
 

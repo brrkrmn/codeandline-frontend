@@ -5,7 +5,7 @@ import { cardSectionTypes } from "../../components/CardSection/constants"
 import FolderOverview from "../../components/FolderOverview/FolderOverview"
 import MenuList from "../../components/MenuList/MenuList"
 import NoteOverview from "../../components/NoteOverview/NoteOverview"
-import { useAppContext } from "../../context/appProvider"
+import { useAppContext } from "../../context/appContext/appProvider"
 
 const Dashboard = () => {
   const { notesState, foldersState, getUserNotes, getUserFolders } = useAppContext();

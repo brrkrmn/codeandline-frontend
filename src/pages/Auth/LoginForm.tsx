@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import CustomInput from "../../components/CustomInput/CustomInput";
-import { useAppContext } from '../../context/appProvider';
+import { useAppContext } from '../../context/appContext/appProvider';
 import { loginFormInitialValues, loginSchema } from "./Auth.constants";
 
 const LoginForm = () => {

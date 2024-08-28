@@ -1,6 +1,6 @@
 import { ScrollShadow } from '@nextui-org/react';
-import React, { useEffect, useState } from 'react';
-import { useAppContext } from '../../context/appProvider';
+import { useEffect, useState } from 'react';
+import { useAppContext } from '../../context/appContext/appProvider';
 import FolderCard from '../FolderCard';
 import NoteCard from '../NoteCard';
 import { H2 } from '../Typography';

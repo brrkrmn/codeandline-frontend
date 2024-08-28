@@ -1,7 +1,7 @@
 import { Select, SelectItem, SelectSection } from '@nextui-org/react';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import icons from '../../assets/icons';
-import { useAppContext } from '../../context/appProvider';
+import { useAppContext } from '../../context/appContext/appProvider';
 
 const FoldersSelect = ({ id, name, onChange, onBlur, value, data }) => {
   const { foldersState, getUserFolders } = useAppContext();

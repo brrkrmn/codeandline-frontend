@@ -2,7 +2,7 @@ import { Avatar, Divider, Tooltip } from "@nextui-org/react"
 import icons from "../../assets/icons"
 import CustomButton from "../../components/CustomButton/CustomButton"
 import { H5, P } from "../../components/Typography/Typography"
-import { useAppContext } from "../../context/appProvider"
+import { useAppContext } from "../../context/appContext/appProvider"
 
 const Profile = () => {
   const { userState } = useAppContext();

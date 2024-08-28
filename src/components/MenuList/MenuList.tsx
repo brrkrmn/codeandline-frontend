@@ -1,7 +1,7 @@
 import { ScrollShadow } from "@nextui-org/react";
 import { Link, useParams } from "react-router-dom";
 import icons from "../../assets/icons";
-import { useAppContext } from '../../context/appProvider';
+import { useAppContext } from '../../context/appContext/appProvider';
 import { menuItemStyles, selectedItemStyle } from "./constants";
 
 const MenuList = ({ data }) => {

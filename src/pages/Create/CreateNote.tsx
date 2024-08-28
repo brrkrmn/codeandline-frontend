@@ -1,6 +1,6 @@
 import { Accordion, AccordionItem, Divider, Tooltip } from '@nextui-org/react';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
 import icons from '../../assets/icons';
@@ -12,9 +12,9 @@ import TextEditor from '../../components/TextEditor/TextEditor';
 import TextInput from '../../components/TextInput/TextInput';
 import { textInputTypes } from '../../components/TextInput/constants';
 import { H5 } from '../../components/Typography';
-import { useAppContext } from '../../context/appProvider';
+import { useAppContext } from '../../context/appContext/appProvider';
+import { useEditorContext } from '../../context/editorContext/editorProvider';
 import noteService from '../../services/note';
-import EditorContext from '../../utils/EditorContext';
 import { createNoteInitialValues, createNoteSchema } from './Create.constants';
 
 const CreateNote = () => {
@@ -22,7 +22,7 @@ const CreateNote = () => {
   const navigate = useNavigate();
   const id = useParams().id;
   const [selectedEntry, setSelectedEntry] = useState('')
-  const { editor, setEditor } = useContext(EditorContext);
+  const { editor, setEditor } = useEditorContext().editorValue;
   const formik = useFormik({
     initialValues: createNoteInitialValues,
     validationSchema: createNoteSchema,
