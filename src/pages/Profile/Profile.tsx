@@ -23,8 +23,8 @@ const Profile = () => {
             src="https://avatars.githubusercontent.com/u/30373425?v=4"
           />
         </Tooltip>
-        <H5 className="mt-6 mb-1">@{user.username}</H5>
-        <P variant="tiny">{user.email}</P>
+        <H5 className="mt-6 mb-1">@{user?.username}</H5>
+        <P variant="small">{user?.email}</P>
         <CustomButton className="my-6 h-10">Edit Profile</CustomButton>
       </div>
       <Divider className="w-full h-divider laptop:h-full laptop:w-divider" />

@@ -1,8 +1,13 @@
 import { Code, Divider } from '@nextui-org/react';
-import React from 'react';
+import { Entry } from '../../context/appContext/appContext.types';
 import { H2, P } from '../Typography';
 
-const EntryList = ({ entries, code }) => {
+type ComponentProps = {
+  entries: Entry[];
+  code: string;
+}
+
+const EntryList = ({ entries, code }: ComponentProps) => {
   return (
     <div>
       <H2 className="font-thin mb-6 text-primary-light">Notes</H2>
@@ -13,7 +18,7 @@ const EntryList = ({ entries, code }) => {
               <div className="basis-1/2 flex overflow-hidden gap-8">
                 <P>{index + 1}.</P>
                 <div className="flex flex-col gap-2 overflow-hidden">
-                  {entry.lineNumbers.map(lineNumber => (
+                  {entry.lineNumbers?.map(lineNumber => (
                     <Code className="overflow-hidden text-ellipsis border-1 border-border">{code.split('\n')[lineNumber - 1]}</Code>
                   ))}
                 </div>

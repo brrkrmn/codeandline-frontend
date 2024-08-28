@@ -4,7 +4,7 @@ import TextEditor from '../../components/TextEditor/TextEditor';
 import { H2 } from '../../components/Typography';
 
 const ToolbarSection = () => {
-  const sectionRef = useRef();
+  const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]

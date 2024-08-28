@@ -7,7 +7,7 @@ import noteService from "../../services/note";
 import signupService from "../../services/signup";
 import formatDate from "../../utils/formatDate";
 import { setToken } from "../../utils/token";
-import { AppContextValue, Folder, Note, User } from "./appContext.types";
+import { AppContextValue, Folder, FolderRequestValues, Note, NoteRequestValues, User } from "./appContext.types";
 import { LS_USER_ITEM } from "./constants";
 
 export const AppContext = createContext<AppContextValue>(null);
@@ -92,7 +92,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
     setNotesState(userNotes);
   }
 
-  const createNote = async (data: Note) => {
+  const createNote = async (data: NoteRequestValues) => {
     try {
       await noteService.createNote(data);
       getUserNotes()
@@ -114,7 +114,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
-  const editNote = async (id: string, data: Note) => {
+  const editNote = async (id: string, data: NoteRequestValues) => {
     try {
       await noteService.updateNote(id, data)
       getUserNotes()
@@ -143,7 +143,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
     setFoldersState(userFolders)
   }
 
-  const createFolder = async (data: Folder) => {
+  const createFolder = async (data: FolderRequestValues) => {
     try {
       await folderService.createFolder(data);
       getUserFolders()
@@ -165,7 +165,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
-  const editFolder = async (id: string, data: Folder) => {
+  const editFolder = async (id: string, data: FolderRequestValues) => {
     try {
       await folderService.updateFolder(id, data)
       getUserFolders();

@@ -3,24 +3,28 @@ import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import TextInput from '../../components/TextInput/TextInput';
-import { textInputTypes } from '../../components/TextInput/constants';
 import { useAppContext } from '../../context/appContext/appProvider';
 import folderService from '../../services/folder';
 import { createFolderInitialValues, createFolderSchema } from './Create.constants';
 
+type FormValues = {
+  title: string;
+  description?: string;
+}
+
 const CreateFolder = () => {
   const { editFolder, createFolder } = useAppContext()
   const navigate = useNavigate();
-  const id = useParams().id;
+  const id = useParams().id as string;
   const formik = useFormik({
     initialValues: createFolderInitialValues,
     validationSchema: createFolderSchema,
-    onSubmit: values => { onSubmit(values)}
+    onSubmit: (values: FormValues) => { onSubmit(values)}
   });
 
   useEffect(() => {
     if (window.location.pathname.split('/')[1] === 'edit-folder') {
-      const fetchFolder = async (id) => {
+      const fetchFolder = async (id: string) => {
         try {
           const folder = await folderService.getFolder(id)
           formik.setFieldValue('title', folder.title)
@@ -33,7 +37,7 @@ const CreateFolder = () => {
     }
   }, [id])
 
-  const onSubmit = (values) => {
+  const onSubmit = (values: FormValues) => {
     if (window.location.pathname === '/create/folder') {
       createFolder(values)
       navigate('/')
@@ -51,7 +55,7 @@ const CreateFolder = () => {
       <TextInput
         id="title"
         name="title"
-        type={textInputTypes.title}
+        type="title"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.title}
@@ -59,7 +63,7 @@ const CreateFolder = () => {
       <TextInput
         id="description"
         name="description"
-        type={textInputTypes.folderDescription}
+        type="folderDescription"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.description}

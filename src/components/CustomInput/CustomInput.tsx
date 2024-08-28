@@ -4,7 +4,19 @@ import icons from '../../assets/icons';
 import useToggle from '../../hooks/useToggle';
 import CustomButton from '../CustomButton/CustomButton';
 
-function CustomInput ({ id, name, type, label, onChange, onBlur, value, errorMessage, className }) {
+type ComponentProps = {
+  id: string;
+  name: string;
+  type: "password" | "text" | "email" | "username";
+  label: string;
+  onChange: (e: React.ChangeEvent) => void;
+  onBlur: (e: React.FocusEvent) => void;
+  value: string;
+  errorMessage?: string;
+  className?: string;
+}
+
+function CustomInput ({ id, name, type, label, onChange, onBlur, value, errorMessage, className }: ComponentProps) {
   const { isTrue, handleToggleTrue } = useToggle();
 
   return (

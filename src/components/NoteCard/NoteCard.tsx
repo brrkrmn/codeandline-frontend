@@ -1,11 +1,15 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import icons from "../../assets/icons";
+import { Note } from '../../context/appContext/appContext.types';
 import CodeEditor from '../CodeEditor/CodeEditor';
-import { editorSize } from '../CodeEditor/constants';
 import { P } from '../Typography';
 
-const NoteCard = ({ note, empty }) => {
+type ComponentProps = {
+  note?: Note;
+  empty?: boolean;
+}
+
+const NoteCard = ({ note, empty }: ComponentProps) => {
   if (empty) {
     return (
       <Link to='/create/note' className="flex flex-col p-4 grow-0 shrink-0 w-[240px] wide:w-[280px] h-[314px] rounded-xl border-1 border-border shadow-small transition hover:drop-shadow-sm">
@@ -19,17 +23,17 @@ const NoteCard = ({ note, empty }) => {
     )
   } else {
     return (
-      <Link to={`/note-overview/${note.id}`} className="flex flex-col p-2 grow-0 shrink-0 w-[240px] wide:w-[280px] h-[314px] rounded-xl border-1 border-border shadow-small transition hover:drop-shadow-sm">
+      <Link to={`/note-overview/${note?.id}`} className="flex flex-col p-2 grow-0 shrink-0 w-[240px] wide:w-[280px] h-[314px] rounded-xl border-1 border-border shadow-small transition hover:drop-shadow-sm">
         <div className="bg-primary-dark rounded-xl w-full h-[180px]">
-          <CodeEditor size={editorSize.card} code={note.code} />
+          <CodeEditor size="card" code={note?.code} />
         </div>
         <div className="flex flex-col justify-start pl-2 pt-2">
-          <P className="text-primary-light line-clamp-1">{note.title}</P>
-          <P variant="small" className="line-clamp-2 text-[16px] font-light">{note.description}</P>
+          <P className="text-primary-light line-clamp-1">{note?.title}</P>
+          <P variant="small" className="line-clamp-2 text-[16px] font-light">{note?.description}</P>
         </div>
         <div className="flex items-end justify-end mt-auto gap-2 pr-2">
-          <P variant="tiny" className="font-normal text-primary-light">{note.date}</P>
-          <span>{note.public ? icons.public : icons.private}</span>
+          <P variant="small" className="font-normal text-primary-light">{note?.date}</P>
+          <span>{note?.public ? icons.public : icons.private}</span>
         </div>
       </Link>
     )

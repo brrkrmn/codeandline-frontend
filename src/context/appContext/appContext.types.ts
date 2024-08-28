@@ -7,13 +7,13 @@ export type AppContextValue = null | {
   logoutUser: () => void;
   signupUser: (data: User) => void;
   getUserNotes: () => void;
-  createNote: (data: Note) => void;
+  createNote: (data: NoteRequestValues) => void;
   deleteNote: (id: string) => void;
-  editNote: (id: string, data: Note) => void;
+  editNote: (id: string, data: NoteRequestValues) => void;
   getUserFolders: () => void;
-  createFolder: (data: Folder) => void;
+  createFolder: (data: FolderRequestValues) => void;
   deleteFolder: (id: string) => void;
-  editFolder: (id: string, data: Folder) => void;
+  editFolder: (id: string, data: FolderRequestValues) => void;
 }
 
 export type Folder = {
@@ -23,7 +23,13 @@ export type Folder = {
   date: string;
   public: boolean;
   notes: Note[];
-  user: User
+  user?: User;
+  mock?: boolean;
+}
+
+export type FolderRequestValues = {
+  title: string;
+  description?: string;
 }
 
 export type Note = {
@@ -38,6 +44,14 @@ export type Note = {
   user: User;
 }
 
+export type NoteRequestValues = {
+  title: string;
+  description?: string;
+  code: string;
+  folder?: string;
+  entries: Entry[];
+}
+
 export type User = {
   username: string;
   email: string;
@@ -45,5 +59,16 @@ export type User = {
 }
 
 export type Entry = {
+  lineNumbers?: number[];
+  content: string;
+}
 
+export type MockFolder = {
+  id: string;
+  title: string;
+  description?: string;
+  notes?: string[];
+  public?: boolean;
+  mock?: boolean;
+  date?: string;
 }

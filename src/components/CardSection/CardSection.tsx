@@ -6,7 +6,11 @@ import NoteCard from '../NoteCard';
 import { H2 } from '../Typography';
 import { cardSectionTitles, cardSectionTypes } from './constants';
 
-const CardSection = ({ type, noTitle = false }) => {
+type ComponentProps = {
+  type: "notes" | "folders";
+  noTitle?: boolean;
+}
+const CardSection = ({ type, noTitle = false }: ComponentProps) => {
   const { notesState, foldersState } = useAppContext();
   const [items, setItems] = useState([]);
   const notes = notesState

@@ -11,8 +11,8 @@ import FolderSection from './FolderSection';
 import ToolbarSection from './ToolbarSection';
 
 const Home = () => {
-  const videoRef = useRef();
-  const lastSectionRef = useRef();
+  const videoRef = useRef(null);
+  const lastSectionRef = useRef(null);
   const { scrollYProgress: videoScrollYProgress } = useScroll({
     target: videoRef,
     offset: ["start center", "end start"]

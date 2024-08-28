@@ -1,8 +1,17 @@
 import { Input } from '@nextui-org/react';
-import React from 'react';
 import { inputProps } from './constants';
 
-function TextInput ({ type, id, name, onChange, onBlur, value, className }) {
+type ComponentProps = {
+  type: "title" | "noteDescription" | "folderDescription";
+  id: string;
+  name: string;
+  onChange: (e: React.ChangeEvent) => void;
+  onBlur: (e: React.FocusEvent) => void;
+  value?: string;
+  className?: string;
+}
+
+function TextInput ({ type, id, name, onChange, onBlur, value, className }: ComponentProps) {
   return (
     <Input
       id={id}
