@@ -4,12 +4,12 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css';
 import 'react-quill/dist/quill.snow.css';
 
-const TextEditor = ({ name, value, onChange, readOnly = false, className, snow = false }) => {
+const TextEditor = ({ name, value, onChange = () => {}, readOnly = false, className, snow = false }) => {
   const quillRef = useRef(null);
 
   const saveCursorPosition = () => {
-    const quill = quillRef.current.getEditor();
-    const selection = quill.getSelection();
+    const quill = quillRef.current?.getEditor();
+    const selection = quill?.getSelection();
     return selection ? selection.index : null;
   }
 
