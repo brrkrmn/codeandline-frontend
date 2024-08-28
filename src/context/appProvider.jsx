@@ -13,8 +13,8 @@ export const useAppContext = () => {
   return useContext(AppContext);
 }
 
-const AppProvider = () => {
-  const [userState, setUserState] = useState({});
+const AppProvider = ({ children }) => {
+  const [userState, setUserState] = useState();
   const [notesState, setNotesState] = useState([]);
   const [foldersState, setFoldersState] = useState([]);
 
@@ -189,7 +189,7 @@ const AppProvider = () => {
         editFolder
       }}
     >
-
+      {children}
     </AppContext.Provider>
   )
 }
