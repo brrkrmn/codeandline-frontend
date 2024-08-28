@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
+import { useAppContext } from '../../context/appProvider';
 import CustomButton from '../CustomButton';
 import Logo from '../Logo/Logo';
 import ProfileMenu from '../ProfileMenu/ProfileMenu';
@@ -8,9 +8,10 @@ import { pStyles } from '../Typography/constants';
 import { linkProps, navLinks } from './constants';
 
 const Navbar = () => {
+  const { userState } = useAppContext();
   const location = useLocation();
   const [tab, setTab] = useState('');
-  const currentUser = useSelector((state) => state.user)
+  const currentUser = userState
 
   useEffect(() => {
     if (currentUser) {

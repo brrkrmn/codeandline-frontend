@@ -1,8 +1,8 @@
 import { NextUIProvider } from '@nextui-org/react';
 import React, { useEffect, useMemo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import Toast from './components/Toast/Toast';
+import { useAppContext } from './context/appProvider';
 import AuthenticatedPageWrapper from './layouts/AuthenticatedPageWrapper';
 import PageWrapper from './layouts/PageWrapper';
 import Auth from './pages/Auth/Auth';
@@ -14,12 +14,11 @@ import Explore from './pages/Explore/Explore';
 import Home from './pages/Home/Home';
 import Note from './pages/Note/Note';
 import Profile from './pages/Profile/Profile';
-import { initializeLogin } from './reducers/userReducer';
 import EditorContext from './utils/EditorContext';
 
 function App () {
+  const { initializeLogin, userState } = useAppContext()
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [editor, setEditor] = useState({
     content: '',
     selectableLines: false,
@@ -31,10 +30,10 @@ function App () {
   }, [editor])
 
   useEffect(() => {
-    dispatch(initializeLogin())
+    initializeLogin()
   }, [])
 
-  const currentUser = useSelector((state) => state.user)
+  const currentUser = userState
 
   return (
     <NextUIProvider navigate={navigate}>

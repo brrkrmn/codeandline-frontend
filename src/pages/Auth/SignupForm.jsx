@@ -3,10 +3,11 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import CustomInput from "../../components/CustomInput/CustomInput";
-import { signupUser } from "../../reducers/userReducer";
+import { useAppContext } from "../../context/appProvider";
 import { signupFormInitialValues, signupSchema } from "./Auth.constants";
 
 const SignupForm = () => {
+  const { signupUser } = useAppContext();
   const navigate = useNavigate();
   const { t } = useTranslation();
   const formik = useFormik({

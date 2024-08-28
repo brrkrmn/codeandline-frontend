@@ -1,13 +1,12 @@
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger } from '@nextui-org/react';
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import icons from '../../assets/icons';
-import { deleteNote } from '../../reducers/notesReducer';
+import { useAppContext } from '../../context/appProvider';
 import { buttonStyles } from '../CustomButton/constants';
 
 const NoteDropdown = () => {
-  const dispatch = useDispatch();
+  const { deleteNote } = useAppContext();
   const id = useParams().id;
   const navigate = useNavigate();
 
@@ -16,7 +15,7 @@ const NoteDropdown = () => {
   }
 
   const onDelete = () => {
-    dispatch(deleteNote(id));
+    deleteNote(id);
     navigate('/');
   }
 

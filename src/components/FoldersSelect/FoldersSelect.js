@@ -1,20 +1,19 @@
 import { Select, SelectItem, SelectSection } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import icons from '../../assets/icons';
-import { getUserFolders } from '../../reducers/foldersReducer';
+import { useAppContext } from '../../context/appProvider';
 
 const FoldersSelect = ({ id, name, onChange, onBlur, value, data }) => {
-  const dispatch = useDispatch();
+  const { foldersState, getUserFolders } = useAppContext();
   const [folders, setFolders] = useState();
 
   useEffect(() => {
     if (!data) {
-      dispatch(getUserFolders())
+      getUserFolders()
     }
   }, [])
 
-  const userFolders = useSelector((state) => state.folders)
+  const userFolders = foldersState
 
   useEffect(() => {
     if (data) {

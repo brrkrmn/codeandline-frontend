@@ -1,11 +1,12 @@
 import { Avatar, Divider, Tooltip } from "@nextui-org/react"
-import { useSelector } from "react-redux"
 import icons from "../../assets/icons"
 import CustomButton from "../../components/CustomButton/CustomButton"
 import { H5, P } from "../../components/Typography/Typography"
+import { useAppContext } from "../../context/appProvider"
 
 const Profile = () => {
-  const user = useSelector((state) => state.user)
+  const { userState } = useAppContext();
+  const user = userState
 
   return (
     <div className="w-full overflow-hidden flex flex-col laptop:flex-row gap-12 mobile:px-20">
