@@ -6,6 +6,7 @@ import noteService from "../services/note";
 import signupService from "../services/signup";
 import formatDate from "../utils/formatDate";
 import { setToken } from "../utils/token";
+import { LS_USER_ITEM } from "./constants";
 
 export const AppContext = createContext(null);
 
@@ -19,7 +20,7 @@ const AppProvider = ({ children }) => {
   const [foldersState, setFoldersState] = useState([]);
 
   const initializeLogin = () => {
-    const currentUser = window.localStorage.getItem("currentUser")
+    const currentUser = window.localStorage.getItem(LS_USER_ITEM)
     if (currentUser) {
       const user = JSON.parse(currentUser)
       setUserState(user)
@@ -27,11 +28,11 @@ const AppProvider = ({ children }) => {
     }
   }
 
-  const loginUser = async (credentials) => {
+  const loginUser = async (data) => {
     try {
-      const user = await loginService.login(credentials)
+      const user = await loginService.login(data)
       setUserState(user)
-      window.localStorage.setItem("currentUser", JSON.stringify(user))
+      window.localStorage.setItem(LS_USER_ITEM, JSON.stringify(user))
       setToken(user.token)
     } catch (error) {
       if (error.response?.data) {
@@ -45,16 +46,16 @@ const AppProvider = ({ children }) => {
   const logoutUser = () => {
     try {
       setUserState(null)
-      window.localStorage.removeItem("currentUser")
+      window.localStorage.removeItem(LS_USER_ITEM)
     } catch (error) {
       console.log(error)
     }
   }
 
-  const signupUser = async (user) => {
+  const signupUser = async (data) => {
     try {
-      const newUser = await signupService.signup(user);
-      window.localStorage.setItem("currentUser", JSON.stringify(newUser))
+      const newUser = await signupService.signup(data);
+      window.localStorage.setItem(LS_USER_ITEM, JSON.stringify(newUser))
       toast.success('Account created successfully', { position: 'top-center'})
     } catch (error) {
       if (error.response?.data) {
@@ -107,9 +108,9 @@ const AppProvider = ({ children }) => {
     }
   }
 
-  const editNote = async (id, note) => {
+  const editNote = async (id, data) => {
     try {
-      await noteService.updateNote(id, note)
+      await noteService.updateNote(id, data)
       getUserNotes()
       getUserFolders()
       toast.success("Note edited successfully")
@@ -158,9 +159,9 @@ const AppProvider = ({ children }) => {
     }
   }
 
-  const editFolder = async (id, folder) => {
+  const editFolder = async (id, data) => {
     try {
-      await folderService.updateFolder(id, folder)
+      await folderService.updateFolder(id, data)
       getUserFolders();
       getUserNotes();
       toast.success("Folder edited successfully")
