@@ -1,4 +1,4 @@
-import { Folder } from "../../context/appContext/appContext.types";
+import { Folder } from "../../types";
 
 export type GetUserFoldersResponse = Folder[];
 

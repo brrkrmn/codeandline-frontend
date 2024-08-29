@@ -1,13 +1,18 @@
 import { AxiosError } from "axios";
 import { createContext, useContext, useState } from "react";
 import toast from "react-hot-toast";
-import folderService from "../../services/folder";
-import loginService from "../../services/login";
-import noteService from "../../services/note";
-import signupService from "../../services/signup";
+import folderService from "../../services/folder/folder";
+import { CreateFolderRequestData, UpdateFolderRequestData } from "../../services/folder/folder.types";
+import loginService from "../../services/login/login";
+import { LoginRequestData } from "../../services/login/login.types";
+import noteService from "../../services/note/note";
+import { CreateNoteRequestData, UpdateNoteRequestData } from "../../services/note/note.types";
+import signupService from "../../services/signup/signup";
+import { SignupRequestData } from "../../services/signup/signup.types";
+import { Folder, Note } from "../../types";
 import formatDate from "../../utils/formatDate";
 import { setToken } from "../../utils/token";
-import { AppContextValue, Folder, FolderRequestValues, Note, NoteRequestValues, User } from "./appContext.types";
+import { AppContextValue, UserState } from "./appContext.types";
 import { LS_USER_ITEM } from "./constants";
 
 export const AppContext = createContext<AppContextValue>(null);
@@ -21,7 +26,7 @@ export const useAppContext = () => {
 }
 
 const AppProvider = ({ children }: { children: React.ReactNode }) => {
-  const [userState, setUserState] = useState<User | null>(null);
+  const [userState, setUserState] = useState<UserState | null>(null);
   const [notesState, setNotesState] = useState<Note[]>([]);
   const [foldersState, setFoldersState] = useState<Folder[]>([]);
 
@@ -34,7 +39,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
-  const loginUser = async (data: User) => {
+  const loginUser = async (data: LoginRequestData) => {
     try {
       const user = await loginService.login(data)
       setUserState(user)
@@ -58,7 +63,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
-  const signupUser = async (data: User) => {
+  const signupUser = async (data: SignupRequestData) => {
     try {
       const newUser = await signupService.signup(data);
       window.localStorage.setItem(LS_USER_ITEM, JSON.stringify(newUser))
@@ -92,7 +97,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
     setNotesState(userNotes);
   }
 
-  const createNote = async (data: NoteRequestValues) => {
+  const createNote = async (data: CreateNoteRequestData) => {
     try {
       await noteService.createNote(data);
       getUserNotes()
@@ -114,7 +119,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
-  const editNote = async (id: string, data: NoteRequestValues) => {
+  const editNote = async (id: string, data: UpdateNoteRequestData) => {
     try {
       await noteService.updateNote(id, data)
       getUserNotes()
@@ -143,7 +148,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
     setFoldersState(userFolders)
   }
 
-  const createFolder = async (data: FolderRequestValues) => {
+  const createFolder = async (data: CreateFolderRequestData) => {
     try {
       await folderService.createFolder(data);
       getUserFolders()
@@ -165,7 +170,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }
 
-  const editFolder = async (id: string, data: FolderRequestValues) => {
+  const editFolder = async (id: string, data: UpdateFolderRequestData) => {
     try {
       await folderService.updateFolder(id, data)
       getUserFolders();

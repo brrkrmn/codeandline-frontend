@@ -1,74 +1,29 @@
+import { CreateFolderRequestData, UpdateFolderRequestData } from "../../services/folder/folder.types";
+import { LoginRequestData } from "../../services/login/login.types";
+import { CreateNoteRequestData, UpdateNoteRequestData } from "../../services/note/note.types";
+import { SignupRequestData } from "../../services/signup/signup.types";
+import { Folder, Note } from "../../types";
+
 export type AppContextValue = null | {
-  userState: User | null;
+  userState: UserState | null;
   notesState: Note[];
   foldersState: Folder[];
   initializeLogin: () => void;
-  loginUser: (data: User) => void;
+  loginUser: (data: LoginRequestData) => void;
   logoutUser: () => void;
-  signupUser: (data: User) => void;
+  signupUser: (data: SignupRequestData) => void;
   getUserNotes: () => void;
-  createNote: (data: NoteRequestValues) => void;
+  createNote: (data: CreateNoteRequestData) => void;
   deleteNote: (id: string) => void;
-  editNote: (id: string, data: NoteRequestValues) => void;
+  editNote: (id: string, data: UpdateNoteRequestData) => void;
   getUserFolders: () => void;
-  createFolder: (data: FolderRequestValues) => void;
+  createFolder: (data: CreateFolderRequestData) => void;
   deleteFolder: (id: string) => void;
-  editFolder: (id: string, data: FolderRequestValues) => void;
+  editFolder: (id: string, data: UpdateFolderRequestData) => void;
 }
 
-export type Folder = {
-  id: string;
-  title: string;
-  description?: string;
-  date: string;
-  public: boolean;
-  notes: Note[];
-  user?: User;
-  mock?: boolean;
-}
-
-export type FolderRequestValues = {
-  title: string;
-  description?: string;
-}
-
-export type Note = {
-  id: string;
-  title: string;
-  description?: string;
-  date: string;
-  public: boolean;
-  code: string;
-  entries: Entry[];
-  folder: Folder;
-  user: User;
-}
-
-export type NoteRequestValues = {
-  title: string;
-  description?: string;
-  code: string;
-  folder?: string;
-  entries: Entry[];
-}
-
-export type User = {
+export type UserState = {
   username: string;
   email: string;
-  passwordHash: string;
-}
-
-export type Entry = {
-  lineNumbers?: number[];
-  content: string;
-}
-
-export type MockFolder = {
-  id: string;
-  title: string;
-  description?: string;
-  notes?: string[];
-  public?: boolean;
-  mock?: boolean;
-  date?: string;
+  token: string;
 }

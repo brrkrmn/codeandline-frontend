@@ -1,4 +1,4 @@
-import { Entry, Note } from "../../context/appContext/appContext.types";
+import { Entry, Note } from "../../types";
 
 export type GetUserNotesResponse = Note[]
 

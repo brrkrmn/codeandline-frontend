@@ -1,4 +1,6 @@
-export const menuListData = {
+import { MockFolder, MockFoldersSelectItem, MockMenuList } from "../../types"
+
+export const menuListData: MockMenuList = {
   notes: [
     {
       id: 'n1',
@@ -54,7 +56,7 @@ export const menuListData = {
   ]
 }
 
-export const foldersSelectData = [
+export const foldersSelectData: MockFoldersSelectItem[] = [
   {
     id: 'f1',
     title: 'UI',
@@ -65,23 +67,23 @@ export const foldersSelectData = [
   }
 ]
 
-export const folderCardData = [
+export const folderCardData: MockFolder[] = [
   {
     id: 'f2',
     title: 'UI',
     description: 'Styling components',
-    notes: ['1', '2'],
+    date: 'May 2',
     public: false,
+    notes: ['1', '2'],
     mock: true,
-    date: 'May 2'
   },
   {
     id: 'f1',
     title: 'Full Stack Open',
     description: 'Working with backend',
-    notes: ['1'],
+    date: 'March 24',
     public: false,
+    notes: ['1'],
     mock: true,
-    date: 'March 24'
   },
 ]
