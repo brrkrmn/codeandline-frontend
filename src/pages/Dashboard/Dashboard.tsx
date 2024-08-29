@@ -1,7 +1,6 @@
 import { Divider, Spacer } from "@nextui-org/react"
 import { useEffect, useState } from "react"
 import CardSection from "../../components/CardSection/CardSection"
-import { cardSectionTypes } from "../../components/CardSection/constants"
 import FolderOverview from "../../components/FolderOverview/FolderOverview"
 import MenuList from "../../components/MenuList/MenuList"
 import NoteOverview from "../../components/NoteOverview/NoteOverview"
@@ -42,9 +41,9 @@ const Dashboard = () => {
             <NoteOverview />
           ) : (
             <>
-              <CardSection type={cardSectionTypes.NOTES} />
+              <CardSection type="notes" />
               <Divider />
-              <CardSection type={cardSectionTypes.FOLDERS} noTitle={true} />
+              <CardSection type="folders" noTitle={true} />
             </>
           )
           }

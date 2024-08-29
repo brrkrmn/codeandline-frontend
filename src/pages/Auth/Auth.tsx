@@ -38,7 +38,9 @@ const Auth = () => {
         <Tabs
           aria-label="Tabs form"
           selectedKey={selected}
-          onSelectionChange={setSelected}
+          onSelectionChange={(key: string | number) => {
+            setSelected(String(key));
+          }}
           variant="bordered"
           radius="full"
           size="lg"

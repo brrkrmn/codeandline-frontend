@@ -5,12 +5,8 @@ import CustomButton from '../../components/CustomButton/CustomButton';
 import TextInput from '../../components/TextInput/TextInput';
 import { useAppContext } from '../../context/appContext/appProvider';
 import folderService from '../../services/folder/folder';
+import { CreateFolderRequestData } from '../../services/folder/folder.types';
 import { createFolderInitialValues, createFolderSchema } from './Create.constants';
-
-type FormValues = {
-  title: string;
-  description?: string;
-}
 
 const CreateFolder = () => {
   const { editFolder, createFolder } = useAppContext()
@@ -19,7 +15,7 @@ const CreateFolder = () => {
   const formik = useFormik({
     initialValues: createFolderInitialValues,
     validationSchema: createFolderSchema,
-    onSubmit: (values: FormValues) => { onSubmit(values)}
+    onSubmit: (values: CreateFolderRequestData) => { onSubmit(values)}
   });
 
   useEffect(() => {
@@ -37,7 +33,7 @@ const CreateFolder = () => {
     }
   }, [id])
 
-  const onSubmit = (values: FormValues) => {
+  const onSubmit = (values: CreateFolderRequestData) => {
     if (window.location.pathname === '/create/folder') {
       createFolder(values)
       navigate('/')

@@ -28,7 +28,7 @@ const LoginForm = () => {
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.username}
-        errorMessage={formik.touched?.username && formik.errors?.username}
+        errorMessage={formik.touched?.username ? formik.errors?.username : undefined}
       />
       <CustomInput
         id="password"
@@ -38,7 +38,7 @@ const LoginForm = () => {
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.password}
-        errorMessage={formik.touched?.password && formik.errors?.password}
+        errorMessage={formik.touched?.password ? formik.errors?.password : undefined}
       />
       <CustomButton
         type="submit"

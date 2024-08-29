@@ -1,11 +1,11 @@
 import { Divider } from '@nextui-org/react';
 import { Link } from 'react-router-dom';
 import icons from "../../assets/icons";
-import { Folder } from '../../types';
+import { Folder, MockFolder } from '../../types';
 import { P } from '../Typography';
 
 type ComponentProps = {
-  folder?: Folder;
+  folder?: Folder | MockFolder;
 }
 
 const FolderCard = ({ folder }: ComponentProps) => {

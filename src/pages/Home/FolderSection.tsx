@@ -7,7 +7,7 @@ import { H2 } from '../../components/Typography';
 import { folderCardData, foldersSelectData, menuListData } from './constants';
 
 const FolderSection = () => {
-  const sectionRef = useRef();
+  const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]

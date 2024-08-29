@@ -3,17 +3,17 @@ import { useEffect, useState } from "react";
 import { InView } from "react-intersection-observer";
 import { useParams } from "react-router-dom";
 import CodeEditor from "../../components/CodeEditor/CodeEditor";
-import { editorSize } from "../../components/CodeEditor/constants";
 import TextEditor from '../../components/TextEditor';
 import noteService from "../../services/note/note";
+import { Note as NoteType } from "../../types";
 
 const Note = () => {
-  const [note, setNote] = useState(null);
+  const [note, setNote] = useState<NoteType>();
   const [currentNote, setCurrentNote] = useState(0);
-  const id = useParams().id;
+  const id = useParams().id as string
 
   useEffect(() => {
-    const fetchNote = async (id) => {
+    const fetchNote = async (id: string) => {
       try {
         const note = await noteService.getNote(id);
         setNote(note)
@@ -24,10 +24,12 @@ const Note = () => {
     fetchNote(id);
   }, [id])
 
-  const handleOnViewChange = (inView, entry) => {
+  const handleOnViewChange = (inView: boolean, entry: IntersectionObserverEntry) => {
     if (inView) {
-      const index = note.entries.findIndex(ent => ent._id === entry.target.id)
-      setCurrentNote(index)
+      const index = note?.entries.findIndex(ent => ent._id === entry.target.id)
+      if (index) {
+        setCurrentNote(index)
+      }
     }
   }
 
@@ -60,7 +62,7 @@ const Note = () => {
             <BreadcrumbItem>{note.title}</BreadcrumbItem>
           </Breadcrumbs>
           <CodeEditor
-            size={editorSize.screen}
+            size="screen"
             code={note.code}
             highlightedLine={note.entries[currentNote]?.lineNumbers} />
         </div>

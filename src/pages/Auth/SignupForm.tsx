@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import CustomInput from "../../components/CustomInput/CustomInput";
 import { useAppContext } from "../../context/appContext/appProvider";
+import { SignupRequestData } from "../../services/signup/signup.types";
 import { signupFormInitialValues, signupSchema } from "./Auth.constants";
 
 const SignupForm = () => {
@@ -13,10 +14,10 @@ const SignupForm = () => {
   const formik = useFormik({
     initialValues: signupFormInitialValues,
     validationSchema: signupSchema,
-    onSubmit: values => {onSubmit(values)}
+    onSubmit: (values: SignupRequestData) => {onSubmit(values)}
   });
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (values: SignupRequestData) => {
     await signupUser(values);
     navigate('/login')
   }
@@ -34,7 +35,7 @@ const SignupForm = () => {
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.username}
-        errorMessage={formik.touched?.username && formik.errors?.username}
+        errorMessage={formik.touched?.username ? formik.errors?.username : undefined}
       />
       <CustomInput
         id="email"
@@ -44,7 +45,7 @@ const SignupForm = () => {
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values.email}
-        errorMessage={formik.touched?.email && formik.errors?.email}
+        errorMessage={formik.touched?.email ? formik.errors?.email : undefined}
       />
       <div className="flex flex-col gap-4 justify-between mobile:flex-row mobile:gap-2 w-full">
         <CustomInput
@@ -55,7 +56,7 @@ const SignupForm = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
-          errorMessage={formik.touched?.password && formik.errors?.password}
+          errorMessage={formik.touched?.password ? formik.errors?.password : undefined}
         />
         <CustomInput
           id="confirmPassword"
@@ -65,7 +66,7 @@ const SignupForm = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.confirmPassword}
-          errorMessage={formik.touched?.confirmPassword && formik.errors?.confirmPassword}
+          errorMessage={formik.touched?.confirmPassword ? formik.errors?.confirmPassword : undefined}
         />
       </div>
       <CustomButton

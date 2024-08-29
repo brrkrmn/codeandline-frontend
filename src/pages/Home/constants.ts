@@ -35,11 +35,13 @@ export const menuListData: MockMenuList = {
       notes: [
         {
           id: 'n4',
-          title: 'NextUI ScrollShadow'
+          title: 'NextUI ScrollShadow',
+          folder: ""
         },
         {
           id: 'n3',
-          title: 'CodeMirror custom lines'
+          title: 'CodeMirror custom lines',
+          folder: ""
         },
       ]
     },
@@ -49,7 +51,8 @@ export const menuListData: MockMenuList = {
       notes: [
         {
           id: 'n5',
-          title: 'REST'
+          title: 'REST',
+          folder: ""
         }
       ]
     }
