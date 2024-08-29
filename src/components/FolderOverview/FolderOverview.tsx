@@ -2,7 +2,7 @@ import { Divider } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import icons from '../../assets/icons';
-import folderService from '../../services/folder';
+import folderService from '../../services/folder/folder';
 import formatDate from '../../utils/formatDate';
 import FolderDropdown from '../FolderDropdown/FolderDropdown';
 import NoteCard from '../NoteCard';

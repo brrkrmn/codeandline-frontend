@@ -14,7 +14,7 @@ import { textInputTypes } from '../../components/TextInput/constants';
 import { H5 } from '../../components/Typography';
 import { useAppContext } from '../../context/appContext/appProvider';
 import { useEditorContext } from '../../context/editorContext/editorProvider';
-import noteService from '../../services/note';
+import noteService from '../../services/note/note';
 import { createNoteInitialValues, createNoteSchema } from './Create.constants';
 
 const CreateNote = () => {

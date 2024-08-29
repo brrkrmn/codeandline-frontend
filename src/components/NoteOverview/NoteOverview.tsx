@@ -1,8 +1,8 @@
 import { Spacer } from '@nextui-org/react';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import icons from '../../assets/icons';
-import noteService from '../../services/note';
+import noteService from '../../services/note/note';
 import formatDate from '../../utils/formatDate';
 import CodeEditor from '../CodeEditor';
 import CustomButton from '../CustomButton';

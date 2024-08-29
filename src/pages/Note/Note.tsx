@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import CodeEditor from "../../components/CodeEditor/CodeEditor";
 import { editorSize } from "../../components/CodeEditor/constants";
 import TextEditor from '../../components/TextEditor';
-import noteService from "../../services/note";
+import noteService from "../../services/note/note";
 
 const Note = () => {
   const [note, setNote] = useState(null);
