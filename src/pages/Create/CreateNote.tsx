@@ -20,7 +20,7 @@ const CreateNote = () => {
   const { createNote, editNote } = useAppContext();
   const navigate = useNavigate();
   const id = useParams().id as string;
-  const [selectedEntry, setSelectedEntry] = useState()
+  const [selectedEntry, setSelectedEntry] = useState('')
   const { editor, setEditor } = useEditorContext().editorValue;
   const formik = useFormik({
     initialValues: createNoteInitialValues,
