@@ -9,18 +9,16 @@ type ComponentProps = {
   className?: string;
   disabled?: boolean;
   disableRipple?: boolean;
-  isIconOnly?: boolean;
 }
 
-function CustomButton({ children, type, onPress, className, disabled = false, disableRipple = false, isIconOnly }: ComponentProps) {
+function CustomButton({ children, type, onPress, className, disabled = false, disableRipple = false }: ComponentProps) {
   return (
     <Button
       isDisabled={disabled}
       type={type}
       onPress={onPress}
-      size='lg'
+      size="lg"
       disableRipple={disableRipple}
-      isIconOnly
       className={`
         ${buttonStyles}
         ${className}`

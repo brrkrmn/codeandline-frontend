@@ -31,7 +31,6 @@ function CustomInput ({ id, name, type, label, onChange, onBlur, value, errorMes
       errorMessage={errorMessage}
       endContent={type === "password" &&
         <CustomButton
-          isIconOnly
           onPress={handleToggleTrue}
           className="shadow-none border-none p-1 min-w-fit h-fit hover:shadow-none hover:border-none"
         >
