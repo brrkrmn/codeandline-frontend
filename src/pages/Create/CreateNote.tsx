@@ -10,7 +10,6 @@ import { buttonStyles } from '../../components/CustomButton/constants';
 import FoldersSelect from '../../components/FoldersSelect/FoldersSelect';
 import TextEditor from '../../components/TextEditor/TextEditor';
 import TextInput from '../../components/TextInput/TextInput';
-import { textInputTypes } from '../../components/TextInput/constants';
 import { H5 } from '../../components/Typography';
 import { useAppContext } from '../../context/appContext/appProvider';
 import { useEditorContext } from '../../context/editorContext/editorProvider';
@@ -20,8 +19,8 @@ import { createNoteInitialValues, createNoteSchema } from './Create.constants';
 const CreateNote = () => {
   const { createNote, editNote } = useAppContext();
   const navigate = useNavigate();
-  const id = useParams().id;
-  const [selectedEntry, setSelectedEntry] = useState('')
+  const id = useParams().id as string;
+  const [selectedEntry, setSelectedEntry] = useState()
   const { editor, setEditor } = useEditorContext().editorValue;
   const formik = useFormik({
     initialValues: createNoteInitialValues,
@@ -43,7 +42,7 @@ const CreateNote = () => {
 
   useEffect(() => {
     if (window.location.pathname.split('/')[1] === 'edit-note') {
-      const fetchNote = async (id) => {
+      const fetchNote = async (id: string) => {
         try {
           const note = await noteService.getNote(id);
           await formik.setValues(note)
@@ -78,13 +77,13 @@ const CreateNote = () => {
 
   useEffect(() => {
     const onSelectedLineChange = async () => {
-      await formik.setFieldValue(`entries[${selectedEntry.currentKey}].lineNumbers`, editor.selectedLines)
+      await formik.setFieldValue(`entries[${selectedEntry?.currentKey}].lineNumbers`, editor.selectedLines)
     }
     onSelectedLineChange()
   }, [editor.selectedLines])
 
   useEffect(() => {
-    if (selectedEntry.size === 1) {
+    if (selectedEntry?.size === 1) {
       setEditor({
         ...editor,
         selectableLines: true,
@@ -113,7 +112,7 @@ const CreateNote = () => {
         <TextInput
           id="title"
           name="title"
-          type={textInputTypes.title}
+          type="title"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.title}
@@ -121,7 +120,7 @@ const CreateNote = () => {
         <TextInput
           id="description"
           name="description"
-          type={textInputTypes.noteDescription}
+          type="noteDescription"
           className="line-clamp-2"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -181,8 +180,8 @@ const CreateNote = () => {
                           <div className="flex items-center gap-2">
                             Selected lines:
                             <div className="flex items-center gap-2">
-                              {formik.values.entries[index].lineNumbers.map(number => (
-                                <div className="border-1 border-divider w-8 text-lg font-light flex items-center justify-center rounded-md text-primary-light border-primary-dark">
+                              {formik.values.entries[index].lineNumbers.map((number: number) => (
+                                <div className="border-1 w-8 text-lg font-light flex items-center justify-center rounded-md text-primary-light border-primary-dark">
                                   {number}
                                 </div>
                               ))}
@@ -201,7 +200,6 @@ const CreateNote = () => {
                         }}
                       >
                         <TextEditor
-                          name={`entries[${index}].content`}
                           value={formik.values.entries[index].content}
                           onChange={value => formik.setFieldValue(`entries[${index}].content`, value)}
                         />
