@@ -1,7 +1,12 @@
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 
-const AuthenticatedPageWrapper = ({ children, background = false }) => {
+type ComponentProps = {
+  children: React.ReactNode;
+  background?: boolean;
+}
+
+const AuthenticatedPageWrapper = ({ children, background = false }: ComponentProps) => {
   return (
     <>
       <Navbar />

@@ -1,8 +1,8 @@
 const formatDate = (date: string): string => {
   type Options = {
-    day?: "numeric" | "2-digit" | undefined;
-    month?: "numeric" | "2-digit" | "long" | "short" | "narrow" | undefined;
-    year?: "numeric" | "2-digit" | undefined;
+    day?: "numeric" | "2-digit";
+    month?: "numeric" | "2-digit" | "long" | "short" | "narrow";
+    year?: "numeric" | "2-digit";
   }
 
   const options: Options = { day: 'numeric', month: 'long' };

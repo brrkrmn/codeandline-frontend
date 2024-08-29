@@ -1,7 +1,14 @@
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 
-const PageWrapper = ({ children, background = false, footer = false, navbar = false }) => {
+type ComponentProps = {
+  children: React.ReactNode;
+  background?: boolean;
+  footer?: boolean;
+  navbar?: boolean;
+}
+
+const PageWrapper = ({ children, background = false, footer = false, navbar = false }: ComponentProps) => {
   return (
     <>
       {navbar && <Navbar />}
