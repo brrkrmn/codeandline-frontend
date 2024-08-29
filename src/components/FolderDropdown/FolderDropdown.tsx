@@ -6,7 +6,7 @@ import { buttonStyles } from '../CustomButton/constants';
 
 const FolderDropdown = () => {
   const { deleteFolder } = useAppContext();
-  const id = useParams().id;
+  const id = useParams().id as string;
   const navigate = useNavigate();
 
   const onEdit = () => {

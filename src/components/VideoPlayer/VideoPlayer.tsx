@@ -1,20 +1,25 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-const VideoPlayer = ({ src, enlargeOnView = false, className }) => {
-  const videoRef = useRef();
+type ComponentProps = {
+  src: string;
+  enlargeOnView?: boolean;
+  className?: string;
+}
+const VideoPlayer = ({ src, enlargeOnView = false, className }: ComponentProps) => {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const { ref, inView } = useInView({
     threshold: 0.7
   })
 
   useEffect(() => {
-    let timeoutId;
+    let timeoutId: ReturnType<typeof setTimeout>;
     if (inView) {
       timeoutId = setTimeout(() => {
-        videoRef.current.play();
+        if (videoRef.current) videoRef.current.play();
       }, 100)
     } else if (!inView) {
-      videoRef.current.pause();
+      if (videoRef.current) videoRef.current.pause();
     }
 
     return () => clearTimeout(timeoutId)

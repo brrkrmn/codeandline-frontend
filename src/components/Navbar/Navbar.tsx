@@ -7,20 +7,22 @@ import ProfileMenu from '../ProfileMenu/ProfileMenu';
 import { pStyles } from '../Typography/constants';
 import { linkProps, navLinks } from './constants';
 
+export type LinkPropType = "create" | "home" | "explore"
+
 const Navbar = () => {
   const { userState } = useAppContext();
   const location = useLocation();
-  const [tab, setTab] = useState('');
+  const [tab, setTab] = useState<LinkPropType>();
   const currentUser = userState
 
   useEffect(() => {
     if (currentUser) {
       if (location.pathname.includes(linkProps.create.path)) {
-        setTab(linkProps.create.name)
+        setTab("create")
       } else if (location.pathname === linkProps.explore.path) {
-        setTab(linkProps.explore.name)
+        setTab("explore")
       } else if (location.pathname === linkProps.home.path) {
-        setTab(linkProps.home.name)
+        setTab("home")
       }
     }
   }, [location.pathname])

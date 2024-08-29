@@ -1,5 +1,5 @@
 import { Code, Divider } from '@nextui-org/react';
-import { Entry } from '../../context/appContext/appContext.types';
+import { Entry } from '../../types';
 import { H2, P } from '../Typography';
 
 type ComponentProps = {

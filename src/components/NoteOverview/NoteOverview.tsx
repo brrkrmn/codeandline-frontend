@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import icons from '../../assets/icons';
 import noteService from '../../services/note/note';
+import { Note } from '../../types';
 import formatDate from '../../utils/formatDate';
 import CodeEditor from '../CodeEditor';
 import CustomButton from '../CustomButton';
@@ -11,11 +12,11 @@ import NoteDropdown from '../NoteDropdown/NoteDropdown';
 import { H1, P } from '../Typography';
 
 const NoteOverview = () => {
-  const [note, setNote] = useState(null);
-  const id = useParams().id
+  const [note, setNote] = useState<Note>();
+  const id = useParams().id as string
 
   useEffect(() => {
-    const fetchNote = async (id) => {
+    const fetchNote = async (id: string) => {
       try {
         const note = await noteService.getNote(id);
         setNote(note)

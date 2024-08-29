@@ -8,7 +8,6 @@ import { P } from '../Typography/Typography';
 const ProfileMenu = () => {
   const { userState, logoutUser } = useAppContext();
   const navigate = useNavigate();
-  const user = userState;
 
   const handleLogout = () => {
     logoutUser();
@@ -42,8 +41,8 @@ const ProfileMenu = () => {
       >
         <DropdownSection aria-label='Profile & Actions' showDivider>
           <DropdownItem isReadOnly key="profile" className="h-14 gap-2 group cursor-default">
-            <P variant="small" className="text-foreground-primary group-hover:text-primary-light">@{user.username}</P>
-            <P variant="small" className="text-sm">{user.email}</P>
+            <P variant="small" className="text-foreground-primary group-hover:text-primary-light">@{userState?.username}</P>
+            <P variant="small" className="text-sm">{userState?.email}</P>
           </DropdownItem>
         </DropdownSection>
         <DropdownSection aria-label="Help & Feedback">

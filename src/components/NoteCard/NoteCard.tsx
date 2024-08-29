@@ -1,16 +1,15 @@
 import { Link } from 'react-router-dom';
 import icons from "../../assets/icons";
-import { Note } from '../../context/appContext/appContext.types';
+import { Note } from '../../types';
 import CodeEditor from '../CodeEditor/CodeEditor';
 import { P } from '../Typography';
 
 type ComponentProps = {
   note?: Note;
-  empty?: boolean;
 }
 
-const NoteCard = ({ note, empty }: ComponentProps) => {
-  if (empty) {
+const NoteCard = ({ note }: ComponentProps) => {
+  if (!note) {
     return (
       <Link to='/create/note' className="flex flex-col p-4 grow-0 shrink-0 w-[240px] wide:w-[280px] h-[314px] rounded-xl border-1 border-border shadow-small transition hover:drop-shadow-sm">
         <div className="border-2 border-dashed border-primary-dark h-full rounded-xl bg-content1 flex flex-col items-center justify-center *:text-5xl *:text-primary-light">

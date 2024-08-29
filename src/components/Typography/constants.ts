@@ -2,7 +2,7 @@ export const pVariants = {
   big: 'big',
   medium: 'medium',
   small: 'small',
-  footer: 'footer',
+  tiny: 'tiny',
 }
 
 export const pStyles = {

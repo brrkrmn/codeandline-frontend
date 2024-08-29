@@ -2,19 +2,24 @@ import { ScrollShadow } from "@nextui-org/react";
 import { Link, useParams } from "react-router-dom";
 import icons from "../../assets/icons";
 import { useAppContext } from '../../context/appContext/appProvider';
+import { Folder, MockMenuFolder, MockMenuList, MockMenuNote, Note } from "../../types";
 import { menuItemStyles, selectedItemStyle } from "./constants";
 
-const MenuList = ({ data }) => {
+type ComponentProps = {
+  data?: MockMenuList;
+}
+
+const MenuList = ({ data }: ComponentProps) => {
   const { notesState, foldersState } = useAppContext();
   const id = useParams().id
   const notes = notesState
   const folders = foldersState
 
-  const noteItem = (note) => {
+  const noteItem = (note: Note | MockMenuNote) => {
     return (
       <Link
         key={note.id}
-        to={!data && `/note-overview/${note.id}`}
+        to={data ? "#" : `/note-overview/${note.id}`}
         className={`${menuItemStyles} ${note.id === id && selectedItemStyle}`}
       >
         {icons.arrowDownRight}
@@ -23,11 +28,11 @@ const MenuList = ({ data }) => {
     )
   }
 
-  const folderItem = (folder) => {
+  const folderItem = (folder: Folder | MockMenuFolder) => {
     return (
       <div key={folder.id}>
         <Link
-          to={!data && `/folder-overview/${folder.id}`}
+          to={data ? "#" : `/folder-overview/${folder.id}`}
           className={`${menuItemStyles} ${folder.id === id && selectedItemStyle} mb-2`}
         >
           {icons.folder}

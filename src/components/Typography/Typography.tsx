@@ -1,7 +1,18 @@
 import React from 'react';
-import { pStyles, pVariants } from './constants';
+import { pStyles } from './constants';
 
-const H1 = ({ children, className }) => (
+type ComponentProps = {
+  children: React.ReactNode;
+  className?: string;
+}
+
+type PProps = {
+  variant?: "big" | "medium" | "small" | "tiny"
+  children: React.ReactNode;
+  className?: string;
+}
+
+const H1 = ({ children, className }: ComponentProps) => (
   <h1
     className={`font-primary text-foreground-primary text-5xl font-medium leading-tight ${className}`}
   >
@@ -9,7 +20,7 @@ const H1 = ({ children, className }) => (
   </h1>
 )
 
-const H2 = ({ children, className }) => (
+const H2 = ({ children, className }: ComponentProps) => (
   <h2
     className={`font-primary text-foreground-primary text-4xl font-medium leading-tight ${className}`}
   >
@@ -17,7 +28,7 @@ const H2 = ({ children, className }) => (
   </h2>
 )
 
-const H5 = ({ children, className }) => (
+const H5 = ({ children, className }: ComponentProps) => (
   <h5
     className={`font-primary text-foreground-primary text-3xl font-medium leading-tight ${className}`}
   >
@@ -25,7 +36,7 @@ const H5 = ({ children, className }) => (
   </h5>
 )
 
-const P = ({ variant = pVariants.medium, children, className }) => (
+const P = ({ variant = "medium", children, className }: PProps) => (
   <p className={`${pStyles[variant]} ${className}`} >
     {children}
   </p>

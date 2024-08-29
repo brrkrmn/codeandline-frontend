@@ -1,4 +1,3 @@
-import React from 'react';
 import Image from '../../assets/images/undraw_programmer_re_owql.svg';
 import { H1 } from '../Typography';
 

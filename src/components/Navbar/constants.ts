@@ -1,10 +1,12 @@
 import icons from "../../assets/icons";
+import { LinkPropType } from "./Navbar";
 
-export const navLinks = [
+export const navLinks: LinkPropType[] = [
   'create',
   'home',
   'explore'
 ]
+
 export const linkProps = {
   create: {
     name: 'create',

@@ -2,10 +2,20 @@ import { Select, SelectItem, SelectSection } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 import icons from '../../assets/icons';
 import { useAppContext } from '../../context/appContext/appProvider';
+import { Folder, MockFoldersSelectItem } from '../../types';
 
-const FoldersSelect = ({ id, name, onChange, onBlur, value, data }) => {
+type ComponentProps = {
+  id?: string;
+  name?: string;
+  onChange?: (e: React.ChangeEvent) => void;
+  onBlur?: (e: React.FocusEvent) => void;
+  value?: string;
+  data?: MockFoldersSelectItem[];
+}
+
+const FoldersSelect = ({ id, name, onChange, onBlur, value, data }: ComponentProps) => {
   const { foldersState, getUserFolders } = useAppContext();
-  const [folders, setFolders] = useState();
+  const [folders, setFolders] = useState<Folder[] | MockFoldersSelectItem[]>();
 
   useEffect(() => {
     if (!data) {
@@ -79,13 +89,15 @@ const FoldersSelect = ({ id, name, onChange, onBlur, value, data }) => {
             title="None"
           />
         </SelectSection>
-        {folders.map(item => (
-          <SelectItem
-            key={item.id}
-            value={item.id}
-            title={item.title}
-          />
-        ))}
+        <SelectSection>
+          {folders.map(item => (
+            <SelectItem
+              key={item.id}
+              value={item.id}
+              title={item.title}
+            />
+          ))}
+        </SelectSection>
       </Select>
     )
   }

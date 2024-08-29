@@ -1,8 +1,11 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { P } from '../Typography';
 
-const Logo = ({ className }) => {
+type ComponentProps = {
+  className?: string;
+}
+
+const Logo = ({ className }: ComponentProps) => {
   return (
     <Link
       to="/"

@@ -8,21 +8,32 @@ import { useLocation } from 'react-router-dom';
 import { useEditorContext } from '../../context/editorContext/editorProvider';
 import { editorSize, editorStyles } from './constants';
 
-const CodeEditor = ({ size, code, highlightedLine }) => {
+type ComponentProps = {
+  size: "card" | "screen";
+  code: string;
+  highlightedLine?: number[]
+}
+
+interface CMHTMLElement extends HTMLElement {
+  cmView?: {
+    parent: {
+      dom: HTMLElement;
+    }
+  }
+}
+
+const CodeEditor = ({ size, code, highlightedLine }: ComponentProps) => {
   const [value, setValue] = React.useState(code);
   const { editor, setEditor } = useEditorContext().editorValue;
   const [isEditable, setIsEditable] = React.useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    const resetEditor = async () => {
-      await setEditor({
-        content: '',
-        selectableLines: false,
-        selectedLines: [],
-      })
-    }
-    resetEditor()
+    setEditor({
+      content: '',
+      selectableLines: false,
+      selectedLines: [],
+    })
   }, [location])
 
   useEffect(() => {
@@ -41,7 +52,7 @@ const CodeEditor = ({ size, code, highlightedLine }) => {
     }
   }, [editor.selectableLines])
 
-  const onChange = React.useCallback((value, viewUpdate) => {
+  const onChange = React.useCallback((value: string) => {
     setValue(value);
     setEditor({
       ...editor,
@@ -92,15 +103,15 @@ const CodeEditor = ({ size, code, highlightedLine }) => {
   })
 
   const eventExt = events.dom({
-    click: (evn) => {
+    click: (evn: MouseEvent) => {
       if ((location.pathname === '/create/note' && editor.selectableLines) || (location.pathname.split('/')[1] === 'edit-note' && editor.selectableLines)) {
         let clickedLine
-
-        if (evn.target.classList.contains('selectableLine')) {
-          clickedLine = evn.target
+        const target = evn.target as CMHTMLElement
+        if (target.classList.contains('selectableLine')) {
+          clickedLine = target
         }
-        else if (evn.target.cmView?.parent.dom.classList.contains('selectableLine')) {
-          clickedLine = evn.target.cmView.parent.dom
+        else if (target.cmView?.parent.dom.classList.contains('selectableLine')) {
+          clickedLine = target.cmView.parent.dom
         }
 
         const clickedLineNumber = Number(clickedLine?.classList[0].split('-')[1])

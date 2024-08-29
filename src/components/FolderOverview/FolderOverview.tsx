@@ -3,17 +3,18 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import icons from '../../assets/icons';
 import folderService from '../../services/folder/folder';
+import { Folder } from '../../types';
 import formatDate from '../../utils/formatDate';
 import FolderDropdown from '../FolderDropdown/FolderDropdown';
 import NoteCard from '../NoteCard';
 import { H1, H5, P } from '../Typography';
 
 const FolderOverview = () => {
-  const [folder, setFolder] = useState(null);
-  const id = useParams().id
+  const [folder, setFolder] = useState<Folder>();
+  const id = useParams().id as string
 
   useEffect(() => {
-    const fetchFolder = async (id) => {
+    const fetchFolder = async (id: string) => {
       try {
         const folder = await folderService.getFolder(id);
         setFolder(folder)

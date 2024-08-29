@@ -1,6 +1,7 @@
 import { ScrollShadow } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 import { useAppContext } from '../../context/appContext/appProvider';
+import { Folder, Note } from '../../types';
 import FolderCard from '../FolderCard';
 import NoteCard from '../NoteCard';
 import { H2 } from '../Typography';
@@ -10,19 +11,18 @@ type ComponentProps = {
   type: "notes" | "folders";
   noTitle?: boolean;
 }
+
 const CardSection = ({ type, noTitle = false }: ComponentProps) => {
   const { notesState, foldersState } = useAppContext();
-  const [items, setItems] = useState([]);
-  const notes = notesState
-  const folders = foldersState
+  const [items, setItems] = useState<Note[] | Folder[]>([]);
 
   useEffect(() => {
     if (type === cardSectionTypes.NOTES) {
-      setItems(notes.toReversed())
+      setItems(notesState.toReversed())
     } else if (type === cardSectionTypes.FOLDERS) {
-      setItems(folders.toReversed())
+      setItems(foldersState.toReversed())
     }
-  }, [type, folders, notes])
+  }, [type, foldersState, notesState])
 
   return (
     <div>
@@ -37,14 +37,14 @@ const CardSection = ({ type, noTitle = false }: ComponentProps) => {
       >
         {items.length > 0 ? items.map(item =>
           type === cardSectionTypes.NOTES ? (
-            <NoteCard note={item} />
+            <NoteCard note={item as Note} />
           ) : (
-            <FolderCard folder={item} />
+            <FolderCard folder={item as Folder} />
           )
         ) : type === cardSectionTypes.NOTES ? (
-            <NoteCard empty={true} />
+            <NoteCard />
           ): (
-            <FolderCard empty={true} />
+            <FolderCard />
         )
         }
       </ScrollShadow>

@@ -46,19 +46,20 @@ export type MockFolder = {
 }
 
 export type MockMenuList = {
-  notes: {
-    id: string;
-    title: string;
-    folder: string | null;
-  }[],
-  folders: {
-    id: string;
-    title: string;
-    notes: {
-      id: string;
-      title: string;
-    }[]
-  }[]
+  notes: MockMenuNote[],
+  folders: MockMenuFolder[]
+}
+
+export type MockMenuNote = {
+  id: string;
+  title: string;
+  folder: string | null;
+}
+
+export type MockMenuFolder = {
+  id: string;
+  title: string;
+  notes: MockMenuNote[]
 }
 
 export type MockFoldersSelectItem = {
