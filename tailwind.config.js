@@ -1,7 +1,6 @@
-import type { Config } from 'tailwindcss';
-
 const { nextui } = require("@nextui-org/react");
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./src/**/*",
@@ -82,4 +81,4 @@ module.exports = {
       }
     }
   })],
-} satisfies Config
+}
