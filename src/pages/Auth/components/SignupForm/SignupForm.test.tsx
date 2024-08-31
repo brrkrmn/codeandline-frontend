@@ -8,9 +8,7 @@ import { render } from "../../../../utils/testUtils";
 import SignupForm from "./SignupForm";
 
 describe('SignupForm', () => {
-  it('should create user on submit', async () => {
-    render(<SignupForm />);
-
+  const submitForm = () => {
     const usernameInput = screen.getByTestId('input-username');
     userEvent.type(usernameInput, 'test');
 
@@ -25,6 +23,11 @@ describe('SignupForm', () => {
 
     const submitButton = screen.getByRole('button', { name: 'auth.form.submitLabel.signup' })
     userEvent.click(submitButton);
+  }
+
+  it('should create user on submit', async () => {
+    render(<SignupForm />);
+    submitForm()
 
     await waitFor(() => {
       expect(screen.getByText('Account created successfully')).toBeInTheDocument();
@@ -46,21 +49,7 @@ describe('SignupForm', () => {
   it('should show error toast with invalid credentials', async () => {
     server.use(postSignup.error);
     render(<SignupForm />);
-
-    const usernameInput = screen.getByTestId('input-username');
-    userEvent.type(usernameInput, 'test');
-
-    const emailInput = screen.getByTestId('input-email');
-    userEvent.type(emailInput, "test@test.com")
-
-    const passwordInput = screen.getByTestId('input-password');
-    userEvent.type(passwordInput, "testtest")
-
-    const confirmPasswordInput = screen.getByTestId('input-confirmPassword');
-    userEvent.type(confirmPasswordInput, "testtest")
-
-    const submitButton = screen.getByRole('button', { name: 'auth.form.submitLabel.signup' })
-    userEvent.click(submitButton);
+    submitForm();
 
     await waitFor(() => {
       expect(screen.getByText("There's already an account with this email")).toBeInTheDocument();
