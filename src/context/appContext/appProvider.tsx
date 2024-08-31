@@ -47,7 +47,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
       setToken(user.token)
     } catch (error) {
       if (error instanceof AxiosError && error.response?.data) {
-        toast.error(error.response.data, { position: 'top-center' })
+        toast.error(error.response.data.error, { position: 'top-center' })
       } else {
         toast.error("Something went wrong", { position: 'top-center' })
        }

@@ -1,5 +1,6 @@
 import { render, RenderOptions, RenderResult } from '@testing-library/react';
 import { ReactElement, ReactNode } from "react";
+import Toast from '../components/Toast';
 import AppProvider from "../context/appContext/appProvider";
 import EditorProvider from "../context/editorContext/editorProvider";
 
@@ -8,6 +9,7 @@ const AllTheProviders = ({ children }: { children: ReactNode }): ReactElement =>
     <AppProvider>
       <EditorProvider>
         {children}
+        <Toast />
       </EditorProvider>
     </AppProvider>
   )
