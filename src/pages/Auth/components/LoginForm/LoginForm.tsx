@@ -16,6 +16,7 @@ const LoginForm = () => {
 
   return (
     <form
+      data-testid="form-login"
       onSubmit={formik.handleSubmit}
       className="flex flex-col items-center justify-center gap-4 h-full my-auto"
     >

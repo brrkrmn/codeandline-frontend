@@ -17,6 +17,7 @@ const SignupForm = () => {
 
   return (
     <form
+      data-testid="form-signup"
       onSubmit={formik.handleSubmit}
       className="flex flex-col items-center gap-4"
     >
