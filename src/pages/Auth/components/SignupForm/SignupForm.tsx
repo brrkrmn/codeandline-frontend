@@ -1,6 +1,5 @@
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import CustomButton from "../../../../components/CustomButton/CustomButton";
 import CustomInput from "../../../../components/CustomInput/CustomInput";
 import { useAppContext } from "../../../../context/appContext/appProvider";
@@ -9,18 +8,12 @@ import { signupFormInitialValues, signupSchema } from "../../Auth.constants";
 
 const SignupForm = () => {
   const { signupUser } = useAppContext();
-  const navigate = useNavigate();
   const { t } = useTranslation();
   const formik = useFormik({
     initialValues: signupFormInitialValues,
     validationSchema: signupSchema,
-    onSubmit: (values: SignupRequestData) => {onSubmit(values)}
+    onSubmit: (values: SignupRequestData) => {signupUser(values)}
   });
-
-  const onSubmit = async (values: SignupRequestData) => {
-    await signupUser(values);
-    navigate('/login')
-  }
 
   return (
     <form

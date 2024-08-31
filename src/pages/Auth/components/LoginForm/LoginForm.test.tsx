@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect'; // Ensure this line is present
+import '@testing-library/jest-dom/extend-expect';
 import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { LS_USER_ITEM } from "../../../../context/appContext/constants";
@@ -32,7 +32,7 @@ describe('LoginForm', () => {
     })
   })
 
-  it('should show error toast on invalid credentials', async () => {
+  it('should show error toast with invalid credentials', async () => {
     server.use(postLogin.error);
 
     render(<LoginForm />)

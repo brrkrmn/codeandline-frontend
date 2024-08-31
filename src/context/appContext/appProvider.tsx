@@ -65,12 +65,12 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
 
   const signupUser = async (data: SignupRequestData) => {
     try {
-      const newUser = await signupService.signup(data);
-      window.localStorage.setItem(LS_USER_ITEM, JSON.stringify(newUser))
-      toast.success('Account created successfully', { position: 'top-center'})
+      await signupService.signup(data);
+      toast.success('Account created successfully', { position: 'top-center' });
+      await loginUser({ username: data.username, password: data.password })
     } catch (error) {
       if (error instanceof AxiosError && error.response?.data) {
-        toast.error(error.response.data, {position: 'top-center'})
+        toast.error(error.response.data.error, {position: 'top-center'})
       } else {
         toast.error("Something went wrong", { position: 'top-center' })
        }
