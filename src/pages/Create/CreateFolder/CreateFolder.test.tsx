@@ -3,6 +3,7 @@ import { screen, waitFor } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { createFolder } from '../../../mocks/createFolder';
+import { editFolder } from '../../../mocks/editFolder';
 import server from '../../../utils/setupMockServer';
 import { render } from "../../../utils/testUtils";
 import CreateFolder from './CreateFolder';
@@ -13,7 +14,7 @@ describe('CreateFolder', () => {
     { path: '/edit-folder', testId: 'form-folder-edit', buttonLabel: "Edit Folder"}
   ]
 
-  const renderCreateFolder = (path: string) => {
+  const renderComponent = (path: string) => {
     render(
       <MemoryRouter initialEntries={[path]}>
         <CreateFolder />
@@ -21,11 +22,9 @@ describe('CreateFolder', () => {
     )
   }
 
-  const submitForm = (options?: {noTitle: boolean}) => {
-    if (!options?.noTitle) {
-      const titleInput = screen.getByTestId("input-title");
-      userEvent.type(titleInput, "test");
-    }
+  const submitForm = () => {
+    const titleInput = screen.getByTestId("input-title");
+    userEvent.type(titleInput, "test");
 
     const descriptionInput = screen.getByTestId("input-description");
     userEvent.type(descriptionInput, "test");
@@ -34,38 +33,76 @@ describe('CreateFolder', () => {
     userEvent.click(submitButton);
   }
 
+  const submitFormWithNoTitle = () => {
+    const submitButton = screen.getByRole('button')
+    userEvent.click(submitButton);
+  }
+
   it.each(routes)('should render the correct form on $path path', ({ path, testId, buttonLabel }) => {
-    renderCreateFolder(path)
+    renderComponent(path)
 
     expect(screen.getByTestId(testId)).toBeInTheDocument();
     expect(screen.getByText(buttonLabel)).toBeInTheDocument();
   })
 
-  it('should render success toast on folder creation', async () => {
-    renderCreateFolder('/create/folder')
-    submitForm()
+  describe('on folder creation', () => {
+    it('should render success toast on submit', async () => {
+      renderComponent('/create/folder')
+      submitForm()
 
-    await waitFor(() => {
-      expect(screen.getByText('Folder created successfully')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText('Folder created successfully')).toBeInTheDocument();
+      })
+    })
+
+    it('should render error toast with no title', async () => {
+      renderComponent('/create/folder')
+      submitFormWithNoTitle()
+
+      await waitFor(() => {
+        expect(screen.getByText('Your folder should have a title')).toBeInTheDocument();
+      })
+    })
+
+    it('should render error toast with bad request', async () => {
+      server.use(createFolder.error)
+      renderComponent('/create/folder')
+      submitForm()
+
+      await waitFor(() => {
+        expect(screen.getByText("Couldn't create folder")).toBeInTheDocument();
+      })
     })
   })
 
-  it('should render error toast with no title', async () => {
-    renderCreateFolder('/create/folder')
-    submitForm({ noTitle: true })
+  describe('on folder edition', () => {
+    it('should render success toast on submit', async () => {
+      renderComponent('/edit-folder')
+      submitForm()
 
-    await waitFor(() => {
-      expect(screen.getByText('Your folder should have a title')).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText("Folder edited successfully")).toBeInTheDocument();
+      })
     })
-  })
 
-  it('should render error toast with bad request', async () => {
-    server.use(createFolder.error)
-    renderCreateFolder('/create/folder')
-    submitForm()
+    it('should render error toast with no title', async () => {
+      server.use(editFolder.error)
+      renderComponent('/edit-folder')
+      submitFormWithNoTitle()
 
-    await waitFor(() => {
-      expect(screen.getByText("Couldn't create folder")).toBeInTheDocument();
+      await waitFor(() => {
+        expect(screen.getByText("Your folder should have a title")).toBeInTheDocument();
+      })
+    })
+
+    it('should render error toast with bad request', async () => {
+      server.use(editFolder.error)
+      renderComponent('/edit-folder')
+      submitForm()
+
+      await waitFor(() => {
+        expect(screen.getByText("Couldn't edit folder")).toBeInTheDocument();
+      })
     })
   })
 })

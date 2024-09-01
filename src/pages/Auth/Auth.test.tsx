@@ -11,7 +11,7 @@ describe('Auth', () => {
     { path: '/signup', testId: 'form-signup' },
   ]
 
-  const renderAuth = (path: typeof routes[number]['path']) => {
+  const renderComponent = (path: typeof routes[number]['path']) => {
     render(
       <MemoryRouter initialEntries={[path]}>
         <Auth />
@@ -20,12 +20,12 @@ describe('Auth', () => {
   }
 
   it.each(routes)('should render the correct form on $path path', ({ path, testId }) => {
-    renderAuth(path)
+    renderComponent(path)
     expect(screen.getByTestId(testId)).toBeInTheDocument();
   })
 
   it('should switch between tabs on click', async () => {
-    renderAuth(routes[0].path)
+    renderComponent(routes[0].path)
 
     const signupTabButton = screen.getByRole('tab', { name: 'auth.signup' })
     userEvent.click(signupTabButton)
