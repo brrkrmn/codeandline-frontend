@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom/extend-expect';
 import { screen, waitFor } from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
-import { MemoryRouter } from 'react-router-dom'; // Import MemoryRouter
+import { MemoryRouter } from 'react-router-dom';
 import { render } from "../../utils/testUtils";
 import Auth from "./Auth";
 
