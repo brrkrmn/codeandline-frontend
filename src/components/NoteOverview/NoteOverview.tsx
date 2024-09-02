@@ -63,7 +63,7 @@ const NoteOverview = () => {
         <EntryList entries={note.entries} code={note.code} />
       </div>
     )
-  }
+  } else return null
 }
 
 export default NoteOverview;

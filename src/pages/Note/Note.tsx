@@ -86,7 +86,7 @@ const Note = () => {
         </ScrollShadow>
       </div>
     )
-  }
+  } else return null
 }
 
 export default Note;

@@ -18,8 +18,10 @@ const CardSection = ({ type, noTitle = false }: ComponentProps) => {
 
   useEffect(() => {
     if (type === cardSectionTypes.NOTES) {
+      // @ts-ignore
       setItems(notesState.toReversed())
     } else if (type === cardSectionTypes.FOLDERS) {
+      // @ts-ignore
       setItems(foldersState.toReversed())
     }
   }, [type, foldersState, notesState])

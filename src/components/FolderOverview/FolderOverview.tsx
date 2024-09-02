@@ -57,7 +57,7 @@ const FolderOverview = () => {
         </div>
       </div>
     )
-  }
+  } else return null
 }
 
 export default FolderOverview;
