@@ -8,6 +8,10 @@ const jestConfig: JestConfigWithTsJest = {
     "^.+.tsx?$": ["ts-jest",{}],
   },
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  transformIgnorePatterns: ['node_modules/(?!(react-quill)/)'],
+  moduleNameMapper: {
+    '\\.(css|less|scss|sass)$': 'jest-transform-stub',
+  },
 };
 
 

@@ -1,8 +1,8 @@
-import { Accordion, AccordionItem, Divider, Tooltip } from '@nextui-org/react';
+import { Accordion, AccordionItem, Divider, Selection, Tooltip } from '@nextui-org/react';
 import { FieldArray, FormikProvider, useFormik } from 'formik';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import icons from '../../../assets/icons';
 import CodeEditor from '../../../components/CodeEditor';
 import CustomButton from '../../../components/CustomButton/CustomButton';
@@ -14,39 +14,50 @@ import { H5 } from '../../../components/Typography';
 import { useAppContext } from '../../../context/appContext/appProvider';
 import { useEditorContext } from '../../../context/editorContext/editorProvider';
 import noteService from '../../../services/note/note';
+import { CreateNoteRequestData } from '../../../services/note/note.types';
 import { createNoteInitialValues, createNoteSchema } from '../Create.constants';
+import { routes } from './CreateNote.constants';
+
+type SelectedEntry = {
+  currentKey: number;
+  size: 0 | 1
+}
 
 const CreateNote = () => {
   const { createNote, editNote } = useAppContext();
   const navigate = useNavigate();
+  const location = useLocation();
   const id = useParams().id as string;
-  const [selectedEntry, setSelectedEntry] = useState('')
+  const [selectedEntry, setSelectedEntry] = useState<Selection & SelectedEntry>()
   const { editor, setEditor } = useEditorContext().editorValue;
   const formik = useFormik({
     initialValues: createNoteInitialValues,
     validationSchema: createNoteSchema,
     validateOnBlur: false,
     validateOnChange: false,
-    onSubmit: values => {onSubmit(values)}
+    onSubmit: (values: CreateNoteRequestData) => {onSubmit(values)}
   })
 
-  const onSubmit = (values) => {
-    if (window.location.pathname === '/create/note') {
+  const path = location.pathname === routes.create.pathName ? routes.create.id : routes.edit.id;
+
+  const onSubmit = (values: CreateNoteRequestData) => {
+    if (path === routes.create.id) {
       createNote(values)
       navigate('/')
-    } else if (window.location.pathname.split('/')[1] === 'edit-note') {
+    } else if (path === routes.edit.id) {
       editNote(id, values)
       navigate(`/note-overview/${id}`)
     }
   }
 
   useEffect(() => {
-    if (window.location.pathname.split('/')[1] === 'edit-note') {
+    if (path === routes.edit.id) {
       const fetchNote = async (id: string) => {
         try {
           const note = await noteService.getNote(id);
+          // @ts-ignore
           await formik.setValues(note)
-          await formik.setFieldValue('folder', note.folder.id)
+          await formik.setFieldValue('folder', note.folder?.id)
           setEditor({
             ...editor,
             content: note.code
@@ -87,7 +98,7 @@ const CreateNote = () => {
       setEditor({
         ...editor,
         selectableLines: true,
-        selectedLines: formik.values.entries[selectedEntry.currentKey].lineNumbers
+        selectedLines: formik.values.entries![selectedEntry.currentKey]['lineNumbers']
       })
     } else {
       setEditor({
@@ -106,6 +117,7 @@ const CreateNote = () => {
   return (
     <FormikProvider value={formik}>
       <form
+        data-testid={`form-note-${path}`}
         onSubmit={formik.handleSubmit}
         className="w-full"
       >
@@ -167,11 +179,13 @@ const CreateNote = () => {
                   <Divider />
                   <Accordion
                     selectedKeys={selectedEntry}
+                    // @ts-ignore
                     onSelectionChange={setSelectedEntry}
                     selectionMode='single'
                     variant="splitted"
                   >
-                    {formik.values.entries.map((entry, index) => (
+                    {/* @ts-ignore */}
+                    {formik.values.entries?.map((entry, index) => (
                       <AccordionItem
                         key={index}
                         aria-label={`Entry ${index + 1}`}
@@ -180,7 +194,8 @@ const CreateNote = () => {
                           <div className="flex items-center gap-2">
                             Selected lines:
                             <div className="flex items-center gap-2">
-                              {formik.values.entries[index].lineNumbers.map((number: number) => (
+                              {/* @ts-ignore */}
+                              {formik.values.entries![index]?.lineNumbers.map((number: number) => (
                                 <div className="border-1 w-8 text-lg font-light flex items-center justify-center rounded-md text-primary-light border-primary-dark">
                                   {number}
                                 </div>
@@ -200,7 +215,7 @@ const CreateNote = () => {
                         }}
                       >
                         <TextEditor
-                          value={formik.values.entries[index].content}
+                          value={formik.values.entries![index]['content']}
                           onChange={value => formik.setFieldValue(`entries[${index}].content`, value)}
                         />
                       </AccordionItem>
@@ -212,8 +227,8 @@ const CreateNote = () => {
           </div>
         </div>
         <div className="mt-10 flex items-center justify-end">
-          <CustomButton type="submit" className="border-primary-dark">
-            {window.location.pathname === '/create/note' ? 'Create Note' : 'Save Changes'}
+          <CustomButton data-testid="submit-button" type="submit" className="border-primary-dark">
+            {routes[path].submitLabel}
           </CustomButton>
         </div>
       </form>

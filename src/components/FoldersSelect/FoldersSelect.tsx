@@ -100,6 +100,8 @@ const FoldersSelect = ({ id, name, onChange, onBlur, value, data }: ComponentPro
         </SelectSection>
       </Select>
     )
+  } else {
+    return null
   }
 }
 

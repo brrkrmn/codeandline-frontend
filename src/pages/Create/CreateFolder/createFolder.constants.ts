@@ -1,8 +1,4 @@
-type Route = {
-  pathName: string;
-  id: string;
-  submitLabel: string
-}
+import { Route } from "../Create.types";
 
 export const routes: Record<string, Route> = {
   create: {
