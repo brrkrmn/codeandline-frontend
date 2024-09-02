@@ -1,0 +1,1 @@
+export { getNote } from './getNote';

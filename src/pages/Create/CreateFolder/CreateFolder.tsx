@@ -1,16 +1,19 @@
 import { useFormik } from 'formik';
 import { useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import CustomButton from '../../components/CustomButton/CustomButton';
-import TextInput from '../../components/TextInput/TextInput';
-import { useAppContext } from '../../context/appContext/appProvider';
-import folderService from '../../services/folder/folder';
-import { CreateFolderRequestData } from '../../services/folder/folder.types';
-import { createFolderInitialValues, createFolderSchema } from './Create.constants';
+import toast from 'react-hot-toast';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import CustomButton from '../../../components/CustomButton/CustomButton';
+import TextInput from '../../../components/TextInput/TextInput';
+import { useAppContext } from '../../../context/appContext/appProvider';
+import folderService from '../../../services/folder/folder';
+import { CreateFolderRequestData } from '../../../services/folder/folder.types';
+import { createFolderInitialValues, createFolderSchema } from '../Create.constants';
+import { routes } from './CreateFolder.constants';
 
 const CreateFolder = () => {
   const { editFolder, createFolder } = useAppContext()
   const navigate = useNavigate();
+  const location = useLocation();
   const id = useParams().id as string;
   const formik = useFormik({
     initialValues: createFolderInitialValues,
@@ -18,8 +21,10 @@ const CreateFolder = () => {
     onSubmit: (values: CreateFolderRequestData) => { onSubmit(values)}
   });
 
+  const path = location.pathname === routes.create.pathName ? routes.create.id : routes.edit.id
+
   useEffect(() => {
-    if (window.location.pathname.split('/')[1] === 'edit-folder') {
+    if (path === routes.edit.id) {
       const fetchFolder = async (id: string) => {
         try {
           const folder = await folderService.getFolder(id)
@@ -33,11 +38,17 @@ const CreateFolder = () => {
     }
   }, [id])
 
+  useEffect(() => {
+    if (formik.errors?.title) {
+      toast.error(formik.errors.title)
+    }
+  }, [formik.errors.title, formik.submitCount])
+
   const onSubmit = (values: CreateFolderRequestData) => {
-    if (window.location.pathname === '/create/folder') {
+    if (path === routes.create.id) {
       createFolder(values)
       navigate('/')
-    } else if (window.location.pathname.split('/')[1] === 'edit-folder') {
+    } else if (path === routes.edit.id) {
       editFolder(id, values)
       navigate(`/folder-overview/${id}`)
     }
@@ -45,6 +56,7 @@ const CreateFolder = () => {
 
   return (
     <form
+      data-testid={`form-folder-${path}`}
       onSubmit={formik.handleSubmit}
       className="w-full"
     >
@@ -65,7 +77,7 @@ const CreateFolder = () => {
         value={formik.values.description}
       />
       <CustomButton type="submit" className="border-primary-dark ml-3 mt-10">
-        {window.location.pathname === '/create/folder' ? 'Create Folder' : 'Save Folder'}
+        {routes[path].submitLabel}
       </CustomButton>
     </form>
   )

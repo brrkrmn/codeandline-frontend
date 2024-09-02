@@ -1,0 +1,1 @@
+export { getFolder } from './getFolder';

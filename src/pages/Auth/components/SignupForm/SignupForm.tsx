@@ -1,29 +1,23 @@
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
-import CustomButton from "../../components/CustomButton/CustomButton";
-import CustomInput from "../../components/CustomInput/CustomInput";
-import { useAppContext } from "../../context/appContext/appProvider";
-import { SignupRequestData } from "../../services/signup/signup.types";
-import { signupFormInitialValues, signupSchema } from "./Auth.constants";
+import CustomButton from "../../../../components/CustomButton/CustomButton";
+import CustomInput from "../../../../components/CustomInput/CustomInput";
+import { useAppContext } from "../../../../context/appContext/appProvider";
+import { SignupRequestData } from "../../../../services/signup/signup.types";
+import { signupFormInitialValues, signupSchema } from "../../Auth.constants";
 
 const SignupForm = () => {
   const { signupUser } = useAppContext();
-  const navigate = useNavigate();
   const { t } = useTranslation();
   const formik = useFormik({
     initialValues: signupFormInitialValues,
     validationSchema: signupSchema,
-    onSubmit: (values: SignupRequestData) => {onSubmit(values)}
+    onSubmit: (values: SignupRequestData) => {signupUser(values)}
   });
-
-  const onSubmit = async (values: SignupRequestData) => {
-    await signupUser(values);
-    navigate('/login')
-  }
 
   return (
     <form
+      data-testid="form-signup"
       onSubmit={formik.handleSubmit}
       className="flex flex-col items-center gap-4"
     >

@@ -15,6 +15,7 @@ function TextInput ({ type, id, name, onChange, onBlur, value, className }: Comp
   return (
     <Input
       id={id}
+      data-testid={`input-${name}`}
       name={name}
       onChange={onChange}
       onBlur={onBlur}

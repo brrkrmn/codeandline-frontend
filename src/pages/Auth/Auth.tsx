@@ -4,8 +4,8 @@ import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 import { P } from "../../components/Typography/Typography";
 import { constants } from "./Auth.constants";
-import LoginForm from "./LoginForm";
-import SignupForm from "./SignupForm";
+import LoginForm from "./components/LoginForm/LoginForm";
+import SignupForm from "./components/SignupForm";
 
 const Auth = () => {
   const [selected, setSelected] = React.useState("");

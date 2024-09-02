@@ -29,6 +29,7 @@ function CustomInput ({ id, name, type, label, onChange, onBlur, value, errorMes
       onBlur={onBlur}
       value={value}
       errorMessage={errorMessage}
+      data-testid={`input-${name}`}
       endContent={type === "password" &&
         <CustomButton
           onPress={handleToggleTrue}

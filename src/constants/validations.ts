@@ -44,6 +44,7 @@ export const noteEntriesValidation = yup
 
 export const folderTitleValidation = yup
   .string()
+  .required("Your folder should have a title")
 
 export const folderDescriptionValidation = yup
   .string()

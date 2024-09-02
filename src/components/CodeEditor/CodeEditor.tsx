@@ -137,6 +137,7 @@ const CodeEditor = ({ size, code, highlightedLine }: ComponentProps) => {
   return (
     <div className={`${editorStyles[size]} border-1 border-divider text-[12px] w-full h-full bg-content1 rounded-lg p-2`}>
       <CodeMirror
+        data-testid="code-editor"
         value={value}
         minHeight={size === editorSize.screen ? '300px' : 'auto'}
         maxHeight={size === editorSize.screen ? '80vh' : 'auto'}
