@@ -16,7 +16,7 @@ import { useEditorContext } from '../../../context/editorContext/editorProvider'
 import noteService from '../../../services/note/note';
 import { CreateNoteRequestData } from '../../../services/note/note.types';
 import { createNoteInitialValues, createNoteSchema } from '../Create.constants';
-import { routes } from './CreateNote.constants';
+import { routes } from './constants';
 
 type SelectedEntry = {
   currentKey: number;

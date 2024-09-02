@@ -8,7 +8,7 @@ import { useAppContext } from '../../../context/appContext/appProvider';
 import folderService from '../../../services/folder/folder';
 import { CreateFolderRequestData } from '../../../services/folder/folder.types';
 import { createFolderInitialValues, createFolderSchema } from '../Create.constants';
-import { routes } from './CreateFolder.constants';
+import { routes } from './constants';
 
 const CreateFolder = () => {
   const { editFolder, createFolder } = useAppContext()
