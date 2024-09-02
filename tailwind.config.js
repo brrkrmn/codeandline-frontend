@@ -1,4 +1,4 @@
-const {nextui} = require("@nextui-org/react");
+const { nextui } = require("@nextui-org/react");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -29,11 +29,11 @@ module.exports = {
         'slideInFromTop': {
           '0%': {
             'transform': 'translateY(-6%)',
-            'opacity': 0
+            'opacity': '0'
           },
           '100%': {
             'transform': 'translateY(0)',
-            'opacity': 1
+            'opacity': '1'
           }
         }
       },
