@@ -1,0 +1,1 @@
+export { deleteNote } from './deleteNote';
