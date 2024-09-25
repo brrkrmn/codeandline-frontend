@@ -8,8 +8,8 @@ import './i18n';
 import './index.css';
 
 inject();
-
-const root = ReactDOM.createRoot(document.getElementById('root')!);
+// @ts-ignore
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
