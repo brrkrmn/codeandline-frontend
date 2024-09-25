@@ -20,3 +20,5 @@ root.render(
     </AppProvider>
   </React.StrictMode>
 );
+
+export default App;
