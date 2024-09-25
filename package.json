@@ -34,7 +34,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && react-scripts build",
     "test": "jest --coverage",
     "eject": "react-scripts eject"
   },
